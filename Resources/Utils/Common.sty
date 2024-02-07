@@ -1,0 +1,165 @@
+\ProvidesPackage{Common}
+
+%% List of used packages
+\usepackage[usernames, x11names]{xcolor}
+\usepackage[explicit, compact]{titlesec}
+\usepackage{fancyhdr}
+\usepackage[a4paper]{geometry}
+\usepackage{layout} %% The command \layout displays the document format
+\usepackage[fixamsmath, allowspaces]{mathtools}
+\usepackage{mathdots, mathrsfs, multicol}
+\usepackage{amssymb, amsthm, amsmath}
+\usepackage{physics}
+\usepackage{tikz, pgfplots, circuitikz, caption, siunitx, forest}
+\usepackage{listings, lstautogobble}
+\usepackage{caption, subcaption, graphicx, wrapfig}
+\usepackage[hidelinks]{hyperref}
+\usepackage[italian]{babel}
+\usepackage{subfiles}
+
+% Custom definition of theorem-like environments.
+%% Theorem styles for numbered theorem-like environments.
+\newtheoremstyle{Theorem}{5pt}{5pt}{\itshape}{}{\bfseries}{.}{\newline}{\thmname{#1} \thmnumber{#2}}
+\newtheoremstyle{Plain}{5pt}{5pt}{}{}{\bfseries}{.}{\newline}{\thmname{#1} \thmnumber{#2}}
+%% Theorem style for unnumbered theorem-like environments.
+\newtheoremstyle{Theorem*}{5pt}{5pt}{\itshape}{}{\bfseries}{.}{\newline}{\thmname{#1} \thmnote{#3}}
+\newtheoremstyle{Plain*}{5pt}{5pt}{}{}{\bfseries}{:}{5pt}{\thmname{#1}}
+\newtheoremstyle{Proof*}{5pt}{0}{}{}{\bfseries\itshape}{:}{5pt}{\thmname{#1}}
+
+%% Numberend theorem-like environments
+\theoremstyle{Theorem}
+\newtheorem{Corollary}{Corollario}[section]
+\newtheorem{Theorem}{Teorema}[section]
+\newtheorem{Lemma}{Lemma}[section]
+
+\theoremstyle{Plain}
+\newtheorem{Proposition}{Proposizione}[section]
+\newtheorem{Axiom}{Assioma}[section]
+
+%% Unnumbered theorem-like environments
+\theoremstyle{Theorem*}
+\newtheorem*{Algorithm*}{Algoritmo}
+\newtheorem*{Principle*}{Principio}
+\newtheorem*{Postulate*}{Postulato}
+\newtheorem*{Theorem*}{Teorema}
+\newtheorem*{Axiom*}{Assioma}
+\newtheorem*{Law*}{Legge}
+
+\theoremstyle{Plain*}
+\newtheorem*{CounterExample*}{Contro Esempio}
+\newtheorem*{Definition*}{Definizione}
+\newtheorem*{Solution*}{Svolgimento}
+\newtheorem*{Remark*}{Osservazione}
+\newtheorem*{Exercise*}{Esercizio}
+\newtheorem*{Example*}{Esempio}
+
+\theoremstyle{Proof*}
+\newtheorem*{Proof*}{Dimostrazione}
+
+%% Fixing some environment errors
+\AtEndEnvironment{equation}{\label{eq:\theequation}}
+\AtEndEnvironment{Proof*}{\qed}
+\counterwithin{figure}{section}
+
+\captionsetup[subfigure]{labelformat=simple}
+\renewcommand\thesubfigure{\alph{subfigure}:}
+
+%%Tikz & related
+\usetikzlibrary{angles, arrows.meta, quotes, patterns, calc, automata, positioning, decorations.pathmorphing, 3d}
+\ctikzset{american, full diodes}
+\pgfplotsset{compat=1.18}
+
+%%Lstlisting options
+\lstset{
+    autogobble = true,
+    frame = single,
+    mathescape,
+    basicstyle = \scriptsize
+}
+
+\lstdefinelanguage{RAM}{
+    keywords = {LOAD, STORE, READ, WRITE, ADD, SUB, MULT, DIV, JUMP, JZERO, JGTZ, HALT},
+    keywordstyle = \bfseries,
+    autogobble = false,
+}
+
+% Document customization
+\pagestyle{fancy}
+
+\renewcommand{\sectionmark}[1]{\markboth{{#1}}{}}
+\renewcommand{\footrulewidth}{0.1pt}
+\rhead{\leftmark}
+\lhead{\bfseries Sezione \thesection}
+
+\fancyfoot[C]{-- {\thepage} --}
+\setlength\oddsidemargin{10pt}
+\setlength\topmargin{0pt}
+\setlength\headheight{15pt}
+\setlength\headsep{12.5pt}
+\setlength\textheight{643.5pt}
+\setlength\textwidth{390pt}
+\setlength\marginparwidth{79pt}
+\setlength\marginparpush{0pt}
+\setlength\headwidth{390pt}
+
+\newcommand\sectionbreak{\clearpage}
+
+\let\oldToC\tableofcontents
+\let\oldMaketitle\maketitle
+
+\setcounter{secnumdepth}{5}
+\setcounter{tocdepth}{2}
+
+\renewcommand{\tableofcontents}{\pagestyle{plain} \oldToC \clearpage \pagestyle{fancy}}
+
+\let\oldText\text
+\renewcommand{\text}[1]{\oldText{ {\color{black} #1} }}
+
+\titleformat{\section}{\normalfont\Large\bfseries}{-- {\thesection} --}{1em}{#1.}
+\titleformat{\subsection}{\normalfont\large\bfseries}{-- {\thesubsection} --}{1em}{#1.}
+\titleformat{\subsubsection}{\normalfont\normalsize\bfseries}{-- {\thesubsubsection} --}{1em}{#1.}
+%\titleformat{\paragraph}[hang]{\normalfont\normalsize\bfseries}{-- {\theparagraph} --}{1em}{#1.}
+\titlespacing*{\paragraph}{0pt}{3.25ex plus 1ex minus .2ex}{1em}
+
+\DeclarePairedDelimiterX{\set}[1]{\{}{\}}{#1}
+\DeclarePairedDelimiterX{\openrange}[2]{]}{[}{#1, #2}
+\DeclarePairedDelimiterX{\closerange}[2]{[}{]}{#1, #2}
+\DeclarePairedDelimiterX{\floor}[1]{\lfloor}{\rfloor}{#1}
+\DeclarePairedDelimiterX{\ceil}[1]{\lceil}{\rceil}{#1}
+
+\let\oldsin\sin
+\let\oldcos\cos
+\let\oldtan\tan
+\let\oldatan\arctan
+\let\oldacos\arccos
+\let\oldasin\arcsin
+\let\oldcsc\csc
+\let\oldsec\sec
+\let\oldlim\lim
+\let\oldmin\min
+\let\oldmax\max
+\let\oldsum\sum
+\let\oldprod\prod
+\let\oldint\int
+\let\oldabs\abs
+\let\oldnorm\norm
+
+\renewcommand{\sin}[1]{\oldsin \left(#1\right)}
+\renewcommand{\cos}[1]{\oldcos \left(#1\right)}
+\renewcommand{\tan}[1]{\oldtan \left(#1\right)}
+\renewcommand{\arctan}[1]{\oldatan \left(#1\right)}
+\renewcommand{\arccos}[1]{\oldacos \left(#1\right)}
+\renewcommand{\arcsin}[1]{\oldasin \left(#1\right)}
+\renewcommand{\csc}[1]{\oldcsc \left(#1\right)}
+\renewcommand{\sec}[1]{\oldsec \left(#1\right)}
+\renewcommand{\lim}[2]{\oldlim\limits_{#1} #2}
+\renewcommand{\min}[2]{\oldmin\limits_{#1} #2}
+\renewcommand{\max}[2]{\oldmax\limits_{#1} #2}
+\renewcommand{\sum}[3]{\oldsum\limits_{#1}^{#2} #3}
+\renewcommand{\prod}[3]{\oldprod\limits_{#1}^{#2} #3}
+\renewcommand{\int}[4]{\oldint\limits_{#1}^{#2} #3 \, \dd#4}
+\renewcommand{\abs}[1]{\left\lvert #1 \right\rvert}
+\renewcommand{\norm}[2][]{\left\lVert #2 \right\rVert_{#1}}
+\newcommand{\scalarproduct}[2]{\left\langle #1, #2\right\rangle}
+\newcommand{\such}{\, : \,}
+\newcommand{\given}{\, \vert \,}
