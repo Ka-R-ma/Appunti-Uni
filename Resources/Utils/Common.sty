@@ -4,8 +4,8 @@
 \usepackage[usernames, x11names]{xcolor}
 \usepackage[explicit, compact]{titlesec}
 \usepackage{fancyhdr}
-\usepackage[a4paper]{geometry}
-\usepackage{layout} %% The command \layout displays the document format
+\usepackage[a4paper, showframe]{geometry}
+%\usepackage{layout} %% The command \layout displays the document format
 \usepackage[fixamsmath, allowspaces]{mathtools}
 \usepackage{mathdots, mathrsfs, multicol}
 \usepackage{amssymb, amsthm, amsmath}
@@ -60,6 +60,10 @@
 \AtEndEnvironment{equation}{\label{eq:\theequation}}
 \AtEndEnvironment{Proof*}{\qed}
 \counterwithin{figure}{section}
+\everydisplay{\color{SkyBlue4}}
+\everymath{\color{SkyBlue4}}
+\AtBeginEnvironment{tabular}{\color{black}}
+\AtBeginEnvironment{minipage}{\color{black}}
 
 \captionsetup[subfigure]{labelformat=simple}
 \renewcommand\thesubfigure{\alph{subfigure}:}
@@ -71,16 +75,16 @@
 
 %%Lstlisting options
 \lstset{
-    autogobble = true,
-    frame = single,
-    mathescape,
-    basicstyle = \scriptsize
+  autogobble = true,
+  frame = single,
+  mathescape,
+  basicstyle = \scriptsize
 }
 
 \lstdefinelanguage{RAM}{
-    keywords = {LOAD, STORE, READ, WRITE, ADD, SUB, MULT, DIV, JUMP, JZERO, JGTZ, HALT},
-    keywordstyle = \bfseries,
-    autogobble = false,
+  keywords = {LOAD, STORE, READ, WRITE, ADD, SUB, MULT, DIV, JUMP, JZERO, JGTZ, HALT},
+  keywordstyle = \bfseries,
+  autogobble = false,
 }
 
 % Document customization
@@ -102,6 +106,15 @@
 \setlength\marginparpush{0pt}
 \setlength\headwidth{390pt}
 
+\makeatletter
+\g@addto@macro\normalsize{%
+  \setlength\abovedisplayskip{12.5pt plus 2.5pt minus 2.5pt}
+  \setlength\belowdisplayskip{12.5pt plus 2.5pt minus 2.5pt}
+  \setlength\abovedisplayshortskip{7.5pt plus 2.5pt}
+  \setlength\belowdisplayshortskip{7.5pt plus 2.5pt}
+}
+\makeatother
+
 \newcommand\sectionbreak{\clearpage}
 
 \let\oldToC\tableofcontents
@@ -121,6 +134,7 @@
 %\titleformat{\paragraph}[hang]{\normalfont\normalsize\bfseries}{-- {\theparagraph} --}{1em}{#1.}
 \titlespacing*{\paragraph}{0pt}{3.25ex plus 1ex minus .2ex}{1em}
 
+%% Custom commands
 \DeclarePairedDelimiterX{\set}[1]{\{}{\}}{#1}
 \DeclarePairedDelimiterX{\openrange}[2]{]}{[}{#1, #2}
 \DeclarePairedDelimiterX{\closerange}[2]{[}{]}{#1, #2}
