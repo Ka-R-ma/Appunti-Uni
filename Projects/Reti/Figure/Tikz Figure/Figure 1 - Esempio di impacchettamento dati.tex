@@ -1,0 +1,18 @@
+\documentclass{subfiles}
+\begin{document}
+\begin{figure}[!h]
+    \centering
+    \begin{tikzpicture}[scale = 1, every node/.style={scale = 0.75}]
+
+        \node (lvl) at (0, 6) {level};
+        \foreach \i in {1, ..., 5}{
+                \node (lvl\i) at (0, \i) {\i};
+            }
+
+        //TODO: completare con riferimento figura slide 9 Reti PDF2.
+
+    \end{tikzpicture}
+    \caption{Esempio di impacchettamento dati.}
+    \label{fig:1}
+\end{figure}
+\end{document}
