@@ -4,6 +4,7 @@
 \usepackage[usernames, x11names]{xcolor}
 \usepackage[explicit, compact]{titlesec}
 \usepackage{fancyhdr}
+\usepackage{nicefrac}
 \usepackage[a4paper]{geometry}
 %\usepackage{layout} %% The command \layout displays the document format
 \usepackage[fixamsmath, allowspaces]{mathtools}
@@ -132,7 +133,7 @@
 \titleformat{\section}{\normalfont\Large\bfseries}{-- {\thesection} --}{1em}{#1.}
 \titleformat{\subsection}{\normalfont\large\bfseries}{-- {\thesubsection} --}{1em}{#1.}
 \titleformat{\subsubsection}{\normalfont\normalsize\bfseries}{-- {\thesubsubsection} --}{1em}{#1.}
-%\titleformat{\paragraph}[hang]{\normalfont\normalsize\bfseries}{-- {\theparagraph} --}{1em}{#1.}
+\titleformat{\paragraph}[hang]{\normalfont\normalsize\bfseries}{-- {\theparagraph} --}{1em}{#1.}
 \titlespacing*{\paragraph}{0pt}{3.25ex plus 1ex minus .2ex}{1em}
 
 %% Custom commands
@@ -171,8 +172,8 @@
 \renewcommand{\min}[2]{\oldmin\limits_{#1} #2}
 \renewcommand{\max}[2]{\oldmax\limits_{#1} #2}
 \renewcommand{\sum}[3]{\oldsum\limits_{#1}^{#2} #3}
+\renewcommand{\int}[4]{\oldint_{#1}^{#2} #3 \, \dd#4}
 \renewcommand{\prod}[3]{\oldprod\limits_{#1}^{#2} #3}
-\renewcommand{\int}[4]{\oldint\limits_{#1}^{#2} #3 \, \dd#4}
 \renewcommand{\abs}[1]{\left\lvert #1 \right\rvert}
 \renewcommand{\norm}[2][]{\left\lVert #2 \right\rVert_{#1}}
 \newcommand{\scalarproduct}[2]{\left\langle #1, #2\right\rangle}

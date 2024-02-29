@@ -1,0 +1,15 @@
+\documentclass{subfiles}
+\begin{document}
+Grazie al fisico \emph{Jean Baptiste Joseph Fourier}, si scoprì che una qualsiasi funzione periodica di periodo \(T\),
+può essere espressa come combinazione di un certo numero, eventualmente infinito, di funzioni sinusoidali.
+Se ne può cioè calcolare la \emph{trasformata di Fourier}. In simboli
+\begin{equation}
+    g(t) = \frac{a_{0}}{2} \sum{n = 1}{\infty}{a_{n} \sin{\frac{2tn\pi}{T}} + b_{n} \cos{\frac{2tn\pi}{T}}} \\
+\end{equation}
+ove, posto \(\omega = 2\pi / T\), rispettivamente
+\[
+    a_{0} = \frac{2}{T} \int{\nicefrac{-T}{2}}{\nicefrac{T}{2}}{g(t)}{t}                 \qquad
+    a_{n} = \frac{2}{T} \int{\nicefrac{-T}{2}}{\nicefrac{T}{2}}{g(t) \sin{\omega nt}}{t} \qquad
+    b_{n} = \frac{2}{T} \int{\nicefrac{-T}{2}}{\nicefrac{T}{2}}{g(t) \cos{\omega nt}}{t}
+\]
+\end{document}
