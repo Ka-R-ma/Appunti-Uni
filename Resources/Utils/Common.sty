@@ -137,12 +137,6 @@
 \titlespacing*{\paragraph}{0pt}{3.25ex plus 1ex minus .2ex}{1em}
 
 %% Custom commands
-\DeclarePairedDelimiterX{\set}[1]{\{}{\}}{#1}
-\DeclarePairedDelimiterX{\openrange}[2]{]}{[}{#1, #2}
-\DeclarePairedDelimiterX{\closerange}[2]{[}{]}{#1, #2}
-\DeclarePairedDelimiterX{\floor}[1]{\lfloor}{\rfloor}{#1}
-\DeclarePairedDelimiterX{\ceil}[1]{\lceil}{\rceil}{#1}
-
 \let\oldsin\sin
 \let\oldcos\cos
 \let\oldtan\tan
@@ -151,14 +145,17 @@
 \let\oldasin\arcsin
 \let\oldcsc\csc
 \let\oldsec\sec
-\let\oldlim\lim
 \let\oldmin\min
 \let\oldmax\max
-\let\oldsum\sum
-\let\oldprod\prod
-\let\oldint\int
 \let\oldabs\abs
 \let\oldnorm\norm
+\let\oldInt\int
+\let\oldSum\sum
+\let\oldProd\prod
+\let\oldCoProd\coprod
+\let\oldBigCap\bigcap
+\let\oldBigCup\bigcup
+\let\oldLim\lim
 
 \renewcommand{\sin}[1]{\oldsin \left(#1\right)}
 \renewcommand{\cos}[1]{\oldcos \left(#1\right)}
@@ -168,14 +165,67 @@
 \renewcommand{\arcsin}[1]{\oldasin \left(#1\right)}
 \renewcommand{\csc}[1]{\oldcsc \left(#1\right)}
 \renewcommand{\sec}[1]{\oldsec \left(#1\right)}
-\renewcommand{\lim}[2]{\oldlim\limits_{#1} #2}
 \renewcommand{\min}[2]{\oldmin\limits_{#1} #2}
 \renewcommand{\max}[2]{\oldmax\limits_{#1} #2}
-\renewcommand{\sum}[3]{\oldsum\limits_{#1}^{#2} #3}
-\renewcommand{\int}[4]{\oldint_{#1}^{#2} #3 \, \dd#4}
-\renewcommand{\prod}[3]{\oldprod\limits_{#1}^{#2} #3}
 \renewcommand{\abs}[1]{\left\lvert #1 \right\rvert}
-\renewcommand{\norm}[2][]{\left\lVert #2 \right\rVert_{#1}}
+\renewcommand{\norm}[2]{\left\lVert #2 \right\rVert_{#1}}
 \newcommand{\scalarproduct}[2]{\left\langle #1, #2\right\rangle}
 \newcommand{\such}{\, : \,}
 \newcommand{\given}{\, \vert \,}
+
+\DeclarePairedDelimiterX{\floor}[1]{\lfloor}{\rfloor}{#1}
+\DeclarePairedDelimiterX{\ceil}[1]{\lceil}{\rceil}{#1}
+
+\NewDocumentCommand{\range}{s m m}{
+    \IfBooleanTF{#1}
+    {\left(#2, \, #3\right)}
+    {\left[#2, \, #3\right]}
+}
+
+\NewDocumentCommand{\set}{s m o}{
+    \IfBooleanTF{#1}
+    {\left\{#2 \, : \, #3\right\}}
+    {\left\{#2\right\}}
+}
+
+\RenewDocumentCommand{\int}{s o o m m}{
+    \IfBooleanTF{#1}
+    {\oldInt\limits_{\IfValueTF{#2}{#2}{}}^{\IfValueTF{#3}{#3}{}}{#4 \, #5}}
+    {\oldInt_{\IfValueTF{#2}{#2}{}}^{\IfValueTF{#3}{#3}{}}{#4 \, \dd#5}}
+}
+
+\RenewDocumentCommand{\sum}{s o o m}{
+    \IfBooleanTF{#1}
+    {\oldSum\limits_{\IfValueTF{#2}{#2}{}}^{\IfValueTF{#3}{#3}{}}{#4}}
+    {\oldSum_{\IfValueTF{#2}{#2}{}}^{\IfValueTF{#3}{#3}{}}{#4}}
+}
+
+\RenewDocumentCommand{\prod}{s o o m}{
+    \IfBooleanTF{#1}
+    {\oldProd\limits_{\IfValueTF{#2}{#2}{}}^{\IfValueTF{#3}{#3}{}}{#4}}
+    {\oldProd_{\IfValueTF{#2}{#2}{}}^{\IfValueTF{#3}{#3}{}}{#4}}
+}
+
+\RenewDocumentCommand{\coprod}{s o o m}{
+    \IfBooleanTF{#1}
+    {\oldCoProd\limits_{\IfValueTF{#2}{#2}{}}^{\IfValueTF{#3}{#3}{}}{#4}}
+    {\oldCoProd_{\IfValueTF{#2}{#2}{}}^{\IfValueTF{#3}{#3}{}}{#4}}
+}
+
+\RenewDocumentCommand{\bigcap}{s o o m}{
+    \IfBooleanTF{#1}
+    {\oldBigCap\limits_{\IfValueTF{#2}{#2}{}}^{\IfValueTF{#3}{#3}{}}{#4}}
+    {\oldBigCap_{\IfValueTF{#2}{#2}{}}^{\IfValueTF{#3}{#3}{}}{#4}}
+}
+
+\RenewDocumentCommand{\bigcup}{s o o m}{
+    \IfBooleanTF{#1}
+    {\oldBigCup\limits_{\IfValueTF{#2}{#2}{}}^{\IfValueTF{#3}{#3}{}}{#4}}
+    {\oldBigCup_{\IfValueTF{#2}{#2}{}}^{\IfValueTF{#3}{#3}{}}{#4}}
+}
+
+\RenewDocumentCommand{\lim}{s m m m}{
+    \IfBooleanTF{#1}
+    {\oldLim\limits_{#2 \to #3}{#4}}
+    {\oldLim_{#2 \to #3}{#4}}
+}
