@@ -48,9 +48,7 @@
 \theoremstyle{Plain*}
 \newtheorem*{CounterExample*}{Contro Esempio}
 \newtheorem*{Definition*}{Definizione}
-\newtheorem*{Solution*}{Svolgimento}
 \newtheorem*{Remark*}{Osservazione}
-\newtheorem*{Exercise*}{Esercizio}
 \newtheorem*{Example*}{Esempio}
 \newtheorem*{Note*}{Nota}
 
@@ -140,7 +138,7 @@
 \DeclareMathOperator{\Dd}{d}
 \DeclareMathOperator{\BigO}{\mathcal{O}}
 \DeclareMathOperator{\Covariance}{\mathit{Cov}}
-\DeclareMathOperator{\Expected}{\mathbb{E}}
+\DeclareMathOperator{\E}{\mathbb{E}}
 \DeclareMathOperator{\Natural}{\mathbb{N}}
 \DeclareMathOperator{\Integer}{\mathbb{Z}}
 \DeclareMathOperator{\Rational}{\mathbb{Q}}
@@ -333,12 +331,12 @@
     }
 }
 
-\NewDocumentCommand{\Vector}{m}{
-    \overset{\to}{\textbf{#1}}
-}
-
-\NewDocumentCommand{\UnitVector}{m}{
-    \hat{\textbf{a}}
+\NewDocumentCommand{\Vector}{s m}{
+    \IfBooleanTF{#1}{
+        \hat{#2}
+    }{
+        \overset{\textbf{#2}}
+    }
 }
 
 \NewDocumentCommand{\Gradient}{s m}{
@@ -458,11 +456,11 @@
     }
 }
 
-\NewDocumentCommand{\E}{s m}{
+\NewDocumentCommand{\Expected}{s m}{
     \IfBooleanTF{#1}{
-        \Expected \left[#2\right]
+        \E \left[#2\right]
     }{
-        \Expected \left(#2\right)
+        \E \left(#2\right)
     }
 }
 
