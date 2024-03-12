@@ -287,6 +287,38 @@
     }
 }
 
+\NewDocumentCommand{\Bigvee}{s m m o}{
+    \IfBooleanTF{#1}{
+        \IfValueTF{#4}{
+            \bigvee\limits_{#3}^{#4}{\left(#2\right)}
+        }{
+            \bigvee\limits_{#3}{\left(#2\right)}
+        }
+    }{
+        \IfValueTF{#4}{
+            \bigvee\limits_{#3}^{#4}{#2}
+        }{
+            \bigvee\limits_{#3}{#2}
+        }
+    }
+}
+
+\NewDocumentCommand{\Bigwedge}{s m m o}{
+    \IfBooleanTF{#1}{
+        \IfValueTF{#4}{
+            \bigwedge\limits_{#3}^{#4}{\left(#2\right)}
+        }{
+            \bigwedge\limits_{#3}{\left(#2\right)}
+        }
+    }{
+        \IfValueTF{#4}{
+            \bigwedge\limits_{#3}^{#4}{#2}
+        }{
+            \bigwedge\limits_{#3}{#2}
+        }
+    }
+}
+
 \NewDocumentCommand{\Lim}{s m m m}{
     \IfBooleanTF{#1}{
         \lim\limits_{#2 \to #3}{\left(#4\right)}
