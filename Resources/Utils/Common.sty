@@ -134,6 +134,8 @@
 \titleformat{\paragraph}[hang]{\normalfont\normalsize\bfseries}{-- {\theparagraph} --}{1em}{#1.}
 
 \DeclareMathOperator{\Such}{\, : \,}
+\DeclareMathOperator{\Given}{\, \vert \,}
+\DeclareMathOperator{\Derivation}{\implies \hspace{-7.5pt}*}
 \DeclareMathOperator{\Variance}{Var}
 \DeclareMathOperator{\Dd}{d}
 \DeclareMathOperator{\BigO}{\mathcal{O}}
@@ -515,3 +517,16 @@
 \NewDocumentCommand{\Norm}{m O{2}}{
     \left\Vert #1 \right\Vert_{#2}
 }
+
+\NewDocumentCommand{\Grammar}{m m >{\SplitList{,}}o}{
+    \IfValueTF{#3}{
+        #1 \to #2 \ProcessList{#3}{\GrammarRule}
+    }{
+        #1 \to #2
+    }
+}
+
+\NewDocumentCommand{\GrammarRule}{m}{
+    \Given #1
+}
+%% TODO: review declare thm environments, possible modification are needde.

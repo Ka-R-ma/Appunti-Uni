@@ -1,0 +1,35 @@
+\documentclass{subfiles}
+\begin{document}
+Come detto Earley accetta qualsiasi CFG, più nello specifico: data \(x_{1} \ldots x_{n}\) una stringa,
+scandendo la stessa da sinistra a destra, per ogni \(x_{i}\) si costruiscono stati \(S_{j}\), stati del tipo \lstinline{(dotted_rule, address)}.
+Qui \lstinline{dotted_rule} sta ad indicare una produzione della grammatica alla cui destra è posto un punto,
+per per tenere traccia della posizione della ``sotto-stringa'' esaminata. Con \lstinline{address} si indica invece la posizione del punto.
+
+\begin{Example*}
+    si supponga uno stato \((A \to \alpha . \beta, i)\). Ciò sta ad indicare che si è esaminata la sola sotto-stringa \(\alpha\).
+\end{Example*}
+
+\noindent L'algoritmo in se è il seguente.
+\begin{lstlisting}[escapeinside={(*}{*)}]
+    input = (*$x_{1} \ldots x_{n}$*)
+    (*$x_{n + 1}$*) = (*\textdollar*)
+    for j = 0 to n do
+        per ogni stato di S[j] scegli
+            scansione, predizione, completamento.
+    if S[n + 1] == (*\textdollar*)
+        accetta
+    rifiuta
+\end{lstlisting}
+
+\subsubsection{Scanner}
+\subfile{../Livello III/Sottosottosezione 3.1.1 - Scanner.tex}
+
+\subsubsection{Predictor}
+\subfile{../Livello III/Sottosottosezione 3.1.2 - Predictor.tex}
+
+\subsubsection{Completed}
+\subfile{../Livello III/Sottosottosezione 3.1.3 - Completed.tex}
+
+\subsubsection{Complessità di Earley}
+\subfile{../Livello III/Sottosottosezione 3.1.4 - Complessita di Earley.tex}
+\end{document}
