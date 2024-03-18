@@ -1,2 +1,2 @@
-**/*.synctex.gz
+.vscode
 *.log
