@@ -1,0 +1,2 @@
+COMPILATORI
+	- Controllo sintattico/semantico.
