@@ -1,5 +1,1 @@
-COMPILATORI
-	- Controllo sintattico/semantico.
-
-RETI
-	- Completare schema protocollo
+RETI - Completare schema protocollo

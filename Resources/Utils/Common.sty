@@ -146,19 +146,22 @@
 \DeclareMathOperator{\Rational}{\mathbb{Q}}
 \DeclareMathOperator{\Real}{\mathbb{R}}
 \DeclareMathOperator{\Complex}{\mathbb{C}}
-\DeclareMathOperator{\Quarternion}{\mathbb{H}}
+\DeclareMathOperator{\Quaternion}{\mathbb{H}}
 
+\NewDocumentCommand{\InternalProduct}{m m}{
+    \left\langle #1, \ #2\right\rangle
+}
 
-\NewDocumentCommand{\Scalar}{m m}{
-    \left\langle #1, \, #2 \right\rangle
+\NewDocumentCommand{\DotProduct}{m m}{
+    {#1} {\bullet} {#2}
 }
 
 \NewDocumentCommand{\Floor}{m}{
-    \left\lfloor #1 \right\rfloor
+    \left\lfloor {#1} \right\rfloor
 }
 
 \NewDocumentCommand{\Ceil}{m}{
-    \left\lceil #1 \right\rceil
+    \left\lceil {#1} \right\rceil
 }
 
 \NewDocumentCommand{\Range}{s m m}{
@@ -169,11 +172,11 @@
     }
 }
 
-\NewDocumentCommand{\Set}{s m o}{
-    \IfBooleanTF{#1}{
-        \left\{#2 \Such \IfValueTF{#3}{#3}{}\right\}
+\NewDocumentCommand{\Set}{m o}{
+    \IfValueTF{#2}{
+        \left\{#1 \Such #2\right\}
     }{
-        \left\{#2\right\}
+        \left\{#1\right\}
     }
 }
 
@@ -365,6 +368,7 @@
     }
 }
 
+
 \NewDocumentCommand{\Vector}{s m}{
     \IfBooleanTF{#1}{
         \hat{#2}
@@ -387,18 +391,6 @@
     }{
         \nabla^{2} \left(#2\right)
     }
-}
-
-\NewDocumentCommand{\OrderOf}{m}{
-    \BigO \left(#1\right)
-}
-
-\NewDocumentCommand{\OmegaOf}{m}{
-    \Omega \left(#1\right)
-}
-
-\NewDocumentCommand{\ThetaOf}{m}{
-    \Theta \left(#1\right)
 }
 
 \NewDocumentCommand{\Sin}{s m}{
@@ -466,25 +458,33 @@
     }
 }
 
-\NewDocumentCommand{\Min}{m o}{
-    \IfValueTF{#2}{
-        \min \left\{#1 \Such #2\right\}
+\NewDocumentCommand{\Min}{s m o}{
+    \IfBooleanTF{#1}{
+        \IfValueTF{#3}{
+            \min\limits_{#3}\Set{#2}
+        }{
+            \min \Set{#2}
+        }
     }{
-        \min \left\{#1\right\}
+        \min\Set{#2}{#3}
     }
 }
 
-\NewDocumentCommand{\Max}{m o}{
-    \IfValueTF{#2}{
-        \max \left\{#1 \Such #2\right\}
+\NewDocumentCommand{\Max}{s m o}{
+    \IfBooleanTF{#1}{
+        \IfValueTF{#3}{
+            \max\limits_{#3}\Set{#2}
+        }{
+            \max \Set{#2}
+        }
     }{
-        \max \left\{#1\right\}
+        \max\Set{#2}{#3}
     }
 }
 
 \NewDocumentCommand{\Prob}{m o}{
     \IfValueTF{#2}{
-        \Pr \left(#1 \, \vert \, #2\right)
+        \Pr \left(#1 \Given #2\right)
     }{
         \Pr \left(#1\right)
     }
@@ -511,11 +511,23 @@
 }
 
 \NewDocumentCommand{\Abs}{m}{
-    \left\vert #1 \right\vert
+    \left\vert {#1} \right\vert
 }
 
 \NewDocumentCommand{\Norm}{m O{2}}{
-    \left\Vert #1 \right\Vert_{#2}
+    \left\Vert {#1} \right\Vert_{#2}
+}
+
+\NewDocumentCommand{\OrderOf}{m}{
+    \BigO \left(#1\right)
+}
+
+\NewDocumentCommand{\OmegaOf}{m}{
+    \Omega \left(#1\right)
+}
+
+\NewDocumentCommand{\ThetaOf}{m}{
+    \Theta \left(#1\right)
 }
 
 \NewDocumentCommand{\Grammar}{m m >{\SplitList{,}}o}{
@@ -530,11 +542,10 @@
     \Given #1
 }
 
-%TODOs: 
-%			Check spacing around function arguments
-%			Edit set removing s option.
-%			Rewrite derivative and vector commands
-%			Edit min and max commands adding an s option to put the "condition" under the operator.
-%			Edit prob command substituting "\, \vert \," with \Given.
-%			Command for array like vector.
-%			Check theorem styles and environment declaration.
+\NewDocumentCommand{\Tuple}{m m m o}{
+    \IfValueTF{#4}{
+        \left({#1}_{#2}, \ldots, {#1}_{#4}, {#1}_{#4 + 1}, \ldots, {#1}_{#3}\right)
+    }{
+        \left({#1}_{#2}, \ldots, {#1}_{#3}\right)
+    }
+}
