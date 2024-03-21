@@ -9,17 +9,17 @@ per per tenere traccia della posizione della ``sotto-stringa'' esaminata. Con \l
     si supponga uno stato \((A \to \alpha . \beta, i)\). Ciò sta ad indicare che si è esaminata la sola sotto-stringa \(\alpha\).
 \end{Example*}
 
-\noindent L'algoritmo in se è il seguente.
-\begin{lstlisting}[escapeinside={(*}{*)}]
-    input = (*$x_{1} \ldots x_{n}$*)
-    (*$x_{n + 1}$*) = (*\textdollar*)
-    for j = 0 to n do
-        per ogni stato di S[j] scegli
-            scansione, predizione, completamento.
-    if S[n + 1] == (*\textdollar*)
-        accetta
-    rifiuta
-\end{lstlisting}
+\begin{Algorithm*}[di Earley]\noindent
+    \begin{lstlisting}[language = PSEUDO]
+        input = __*$x_{1} \ldots x_{n}$*__
+        __*$x_{n + 1}$*__ = __*\textdollar*__
+        for j = 0 to n do
+            foreach state in S[j] choose between: scanner, predictor, completed
+        if S[n + 1] == __*\textdollar*__
+            accept()
+        refuse()
+    \end{lstlisting}
+\end{Algorithm*}
 
 \subsubsection{Scanner}
 \subfile{../Livello III/Sottosottosezione 3.1.1 - Scanner.tex}
