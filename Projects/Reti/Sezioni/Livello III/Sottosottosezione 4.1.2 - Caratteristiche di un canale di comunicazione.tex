@@ -14,29 +14,27 @@ ove, posto \(\omega = 2\pi / T\), rispettivamente
 \]
 
 \begin{Example*}
-    sia considerata un'onda quadra con \(A = 1 V, T = 10 ms, f = 100 Hz\). Se ne calcoli \(a_{0}, a_{k}, b_{k}\).
-    \begin{Solution*}
-        per struttura delle onde quadre, posto \(g(t)\) la rappresentazione della stessa, si ha:
-        \[
-            g(t) = \begin{cases}
-                -A \text{se} -\Frac*{T}{2} \le t \le 0 \\
-                A \text{se} 0 \le t \le -\Frac*{T}{2}
-            \end{cases}
-        \]
-        da cui
-        \[\begin{aligned}
-                a_{0} & = \Frac{2}{T} \Int{g(t)}{t}[\Frac*{-T}{2}][\Frac*{T}{2}]
-                = \cdots = \Frac{2}{T} \left(\Eval{-At}{\Frac*{-T}{2}}[0] + \Eval{At}{0}[\Frac*{T}{2}]\right) = 0                                \\
-                a_{k} & = \Frac{2}{T} \Int{g(t) \Sin{\omega nt}}{t}[\Frac*{-T}{2}][\Frac*{T}{2}]                                                 \\
-                      & = \Frac{2}{T} \left(\Int{-A \Sin{\omega k t}}{t} [\Frac*{-T}{2}][0]+ \Int{A \Sin{\omega k t}}{t}[0][\Frac*{T}{2}]\right) \\
-                      & = \begin{cases}
-                              0 \text{per k pari} \\
-                              4A/\pi k \text{per k dispari}
-                          \end{cases}                                                                                           \\
-                b_{k} & = \Frac{2}{T} \Int{g(t) \Cos{\omega nt}}{t}[\Frac*{-T}{2}][\Frac*{T}{2}]
-                = \cdots = 0
-            \end{aligned}\]
-    \end{Solution*}
+    sia considerata un'onda quadra con \(A = 1 V, T = 10 ms, f = 100 Hz\). Se ne calcoli \(a_{0}, a_{k}, b_{k}\). \\
+    Per struttura delle onde quadre, posto \(g(t)\) la rappresentazione della stessa, si ha:
+    \[
+        g(t) = \begin{cases}
+            -A \text{se} -\Frac*{T}{2} \le t \le 0 \\
+            A \text{se} 0 \le t \le -\Frac*{T}{2}
+        \end{cases}
+    \]
+    da cui
+    \[\begin{aligned}
+            a_{0} & = \Frac{2}{T} \Int{g(t)}{t}[\Frac*{-T}{2}][\Frac*{T}{2}]
+            = \cdots = \Frac{2}{T} \left(\Eval{-At}{\Frac*{-T}{2}}[0] + \Eval{At}{0}[\Frac*{T}{2}]\right) = 0                                \\
+            a_{k} & = \Frac{2}{T} \Int{g(t) \Sin{\omega nt}}{t}[\Frac*{-T}{2}][\Frac*{T}{2}]                                                 \\
+                  & = \Frac{2}{T} \left(\Int{-A \Sin{\omega k t}}{t} [\Frac*{-T}{2}][0]+ \Int{A \Sin{\omega k t}}{t}[0][\Frac*{T}{2}]\right) \\
+                  & = \begin{cases}
+                          0 \text{per k pari} \\
+                          4A/\pi k \text{per k dispari}
+                      \end{cases}                                                                                           \\
+            b_{k} & = \Frac{2}{T} \Int{g(t) \Cos{\omega nt}}{t}[\Frac*{-T}{2}][\Frac*{T}{2}]
+            = \cdots = 0
+        \end{aligned}\]
 \end{Example*}
 \clearpage
 

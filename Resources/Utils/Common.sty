@@ -1,93 +1,22 @@
 \ProvidesPackage{Common}
 
 %% List of used packages
+%%%  Other
 \usepackage[usernames, x11names]{xcolor}
-\usepackage[explicit, compact]{titlesec}
-\usepackage{fancyhdr}
-\usepackage{nicefrac}
-\usepackage[a4paper]{geometry}
-%\usepackage{layout} %% The command \layout displays the document format
-\usepackage[fixamsmath, allowspaces]{mathtools}
-\usepackage{mathdots, mathrsfs, multicol}
-\usepackage{amssymb, amsthm, amsmath}
-\usepackage{tikz, pgfplots, circuitikz, caption, siunitx, forest}
-\usepackage{listings, lstautogobble}
-\usepackage{caption, subcaption, graphicx, wrapfig}
 \usepackage[hidelinks]{hyperref}
 \usepackage[italian]{babel}
 \usepackage{subfiles}
+%%% Packages for document customization
+\usepackage{fancyhdr}
+\usepackage[a4paper]{geometry}
+\usepackage[explicit, compact]{titlesec}
+%%% Packagees related to math
+\usepackage[fixamsmath, allowspaces]{mathtools}
+\usepackage{amssymb, amsthm, mathdots, mathrsfs, multicol, nicefrac}
+%%% Packages related to graphics
+\usepackage{tikz, forest, listings, lstautogobble, graphicx, wrapfig, caption, subcaption}
 
-% Custom definition of theorem-like environments.
-%% Theorem styles for numbered theorem-like environments.
-\newtheoremstyle{Theorem}{5pt plus 2.5pt minus 2.5pt}{5pt plus 2.5pt minus 2.5pt}{\itshape}{}{\bfseries}{.}{\newline}{\thmname{#1} \thmnumber{#2}}
-\newtheoremstyle{Plain}{5pt plus 2.5pt minus 2.5pt}{5pt plus 2.5pt minus 2.5pt}{}{}{\bfseries}{.}{\newline}{\thmname{#1} \thmnumber{#2}}
-%% Theorem style for unnumbered theorem-like environments.
-\newtheoremstyle{Theorem*}{5pt plus 2.5pt minus 2.5pt}{5pt plus 2.5pt minus 2.5pt}{\itshape}{}{\bfseries}{.}{\newline}{\thmname{#1} \thmnote{#3}}
-\newtheoremstyle{Plain*}{5pt plus 2.5pt minus 2.5pt}{5pt plus 2.5pt minus 2.5pt}{}{}{\bfseries}{:}{5pt}{\thmname{#1}}
-\newtheoremstyle{Proof*}{5pt plus 2.5pt minus 2.5pt}{5pt plus 2.5pt minus 2.5pt}{}{}{\bfseries\itshape}{:}{5pt}{\thmname{#1}}
-
-%% Numberend theorem-like environments
-\theoremstyle{Theorem}
-\newtheorem{Corollary}{Corollario}[section]
-\newtheorem{Theorem}{Teorema}[section]
-\newtheorem{Lemma}{Lemma}[section]
-
-\theoremstyle{Plain}
-\newtheorem{Proposition}{Proposizione}[section]
-\newtheorem{Axiom}{Assioma}[section]
-
-%% Unnumbered theorem-like environments
-\theoremstyle{Theorem*}
-\newtheorem*{Algorithm*}{Algoritmo}
-\newtheorem*{Principle*}{Principio}
-\newtheorem*{Postulate*}{Postulato}
-\newtheorem*{Theorem*}{Teorema}
-\newtheorem*{Axiom*}{Assioma}
-\newtheorem*{Law*}{Legge}
-
-\theoremstyle{Plain*}
-\newtheorem*{CounterExample*}{Contro Esempio}
-\newtheorem*{Definition*}{Definizione}
-\newtheorem*{Remark*}{Osservazione}
-\newtheorem*{Example*}{Esempio}
-\newtheorem*{Note*}{Nota}
-
-\theoremstyle{Proof*}
-\newtheorem*{Proof*}{Dimostrazione}
-
-%% Fixing some environment errors
-\AtEndEnvironment{equation}{\label{eq:\theequation}}
-\AtEndEnvironment{Proof*}{\qed}
-\AtBeginEnvironment{tabular}{\color{black}}
-\AtBeginEnvironment{minipage}{\color{black}}
-
-\everydisplay{\color{SkyBlue4}}
-\everymath{\color{SkyBlue4}}
-
-\counterwithin{figure}{section}
-\captionsetup[subfigure]{labelformat=simple}
-\renewcommand\thesubfigure{\alph{subfigure}}
-
-%%Tikz & related
-\usetikzlibrary{angles, arrows.meta, quotes, patterns, calc, automata, positioning, decorations.pathmorphing, 3d}
-\ctikzset{american, full diodes}
-\pgfplotsset{compat=1.18}
-
-%%Lstlisting options
-\lstset{
-    autogobble = true,
-    frame = single,
-    mathescape,
-    basicstyle = \scriptsize
-}
-
-\lstdefinelanguage{RAM}{
-    keywords = {LOAD, STORE, READ, WRITE, ADD, SUB, MULT, DIV, JUMP, JZERO, JGTZ, HALT},
-    keywordstyle = \bfseries,
-    autogobble = false,
-}
-
-% Document customization
+%%-------------------------- Document Customization --------------------------
 \pagestyle{fancy}
 
 \renewcommand{\sectionmark}[1]{\markboth{{#1}}{}}
@@ -108,45 +37,39 @@
 
 \makeatletter
 \g@addto@macro\normalsize{%
-    \setlength\abovedisplayskip{12.5pt plus 2.5pt minus 2.5pt}
-    \setlength\belowdisplayskip{12.5pt plus 2.5pt minus 2.5pt}
-    \setlength\abovedisplayshortskip{7.5pt plus 2.5pt}
-    \setlength\belowdisplayshortskip{7.5pt plus 2.5pt}
+    \setlength\abovedisplayskip{7.5 pt plus 2.5pt minus 2.5pt}
+    \setlength\belowdisplayskip{7.5 pt plus 2.5pt minus 2.5pt}
+    \setlength\abovedisplayshortskip{5pt plus 2.5pt minus 2.5pt}
+    \setlength\belowdisplayshortskip{5pt plus 2.5pt minus 2.5pt}
 }
 \makeatother
 
 \newcommand\sectionbreak{\clearpage}
 
-\let\oldToC\tableofcontents
-\let\oldMaketitle\maketitle
-
 \setcounter{secnumdepth}{5}
 \setcounter{tocdepth}{2}
-
-\renewcommand{\tableofcontents}{\pagestyle{plain} \oldToC \clearpage \pagestyle{fancy}}
-
-\let\oldText\text
-\renewcommand{\text}[1]{\oldText{ {\color{black} #1} }}
 
 \titleformat{\section}{\normalfont\Large\bfseries}{-- {\thesection} --}{1em}{#1.}
 \titleformat{\subsection}{\normalfont\large\bfseries}{-- {\thesubsection} --}{1em}{#1.}
 \titleformat{\subsubsection}{\normalfont\normalsize\bfseries}{-- {\thesubsubsection} --}{1em}{#1.}
 \titleformat{\paragraph}[hang]{\normalfont\normalsize\bfseries}{-- {\theparagraph} --}{1em}{#1.}
+%%-----------------------------------------------------------------------------
 
+%%------------------------------- Custom Macros -------------------------------
 \DeclareMathOperator{\Such}{\, : \,}
-\DeclareMathOperator{\Given}{\, \vert \,}
-\DeclareMathOperator{\Derivation}{\implies \hspace{-7.5pt}*}
-\DeclareMathOperator{\Variance}{Var}
+\DeclareMathOperator{\Given}{\, | \,}
 \DeclareMathOperator{\Dd}{d}
-\DeclareMathOperator{\BigO}{\mathcal{O}}
-\DeclareMathOperator{\Covariance}{\mathit{Cov}}
-\DeclareMathOperator{\E}{\mathbb{E}}
 \DeclareMathOperator{\Natural}{\mathbb{N}}
 \DeclareMathOperator{\Integer}{\mathbb{Z}}
 \DeclareMathOperator{\Rational}{\mathbb{Q}}
 \DeclareMathOperator{\Real}{\mathbb{R}}
 \DeclareMathOperator{\Complex}{\mathbb{C}}
 \DeclareMathOperator{\Quaternion}{\mathbb{H}}
+\DeclareMathOperator{\E}{\mathbb{E}}
+\DeclareMathOperator{\Variance}{Var}
+\DeclareMathOperator{\Covariance}{Cov}
+\DeclareMathOperator{\BigO}{\mathcal{O}}
+\DeclareMathOperator{\GrammarDerivation}{\implies\hspace{-7.5pt}*}
 
 \NewDocumentCommand{\InternalProduct}{m m}{
     \left\langle #1, \ #2\right\rangle
@@ -549,3 +472,81 @@
         \left({#1}_{#2}, \ldots, {#1}_{#3}\right)
     }
 }
+%%-----------------------------------------------------------------------------
+
+%%---------------------------- Custom Environments ----------------------------
+%%%%-------------------------- Numbered Environments --------------------------
+\newtheoremstyle{Emphasised}{\abovedisplayskip}{\belowdisplayskip}{\itshape}{}{\bfseries}{:}{ }{\thmname{#1} \thmnumber{#2}}
+
+\theoremstyle{Emphasised}
+\newtheorem{Proposition}{Proposizione}
+\newtheorem{Theorem}{Teorema}[section]
+\newtheorem{Corollary}{Corollario}[Theorem]
+\newtheorem{Lemma}{Lemma}[Theorem]
+
+%%%%------------------------ Non Numbered Environments ------------------------
+\newtheoremstyle{Definition*}{\abovedisplayskip}{\belowdisplayskip}{}{}{\bfseries}{:}{ }{\thmname{#1}}
+
+\theoremstyle{Definition*}
+\newtheorem{Definition*}{Definizione}
+\newtheorem{Example*}{Esempio}
+\newtheorem{Axiom*}{Assioma}
+
+\newtheoremstyle{Remark*}{}{}{}{}{\bfseries}{:}{ }{\thmname{#1}}
+
+\theoremstyle{Remark*}
+\newtheorem{Remark*}{Osservazione}
+\newtheorem{Note*}{Nota}
+
+\newtheoremstyle{Proof*}{\abovedisplayskip}{\belowdisplayshortskip}{}{\parindent}{\itshape}{:}{ }{\thmname{#1}}
+
+\theoremstyle{Proof*}
+\newtheorem{Proof*}{Dimostrazione}
+
+\newtheoremstyle{Emphasised*}{\abovedisplayskip}{\belowdisplayshortskip}{}{}{\bfseries}{:}{ }{\thmname{#1} \thmnote{#3}}
+
+\theoremstyle{Emphasised*}
+\newtheorem{Algorithm*}{Algoritmo}
+\newtheorem{Theorem*}{Teorema}
+\newtheorem{Law*}{Legge}
+%%-----------------------------------------------------------------------------
+
+%%---------------------- Adjusting Existing Environments ----------------------
+\AtBeginEnvironment{tabular}{\color{black}}
+\AtBeginEnvironment{minipage}{\color{black}}
+
+\AtEndEnvironment{equation}{\label{Eq:\theequation}}
+\AtEndEnvironment{Proposition}{\label{Prop:\theProposition}}
+\AtEndEnvironment{Theorem}{\label{Thm:\theTheorem}}
+\AtEndEnvironment{Corollary}{\label{Corol:\theCorollary}}
+\AtEndEnvironment{Lemma}{\label{Lemma:\theLemma}}
+\AtEndEnvironment{Proof}{\qed}
+
+\counterwithin{figure}{section}
+\renewcommand\thesubfigure{\alph{subfigure}}
+%%-----------------------------------------------------------------------------
+
+%%------------------------------- Math settings -------------------------------
+\everydisplay{\color{SkyBlue4}}
+\everymath{\color{SkyBlue4}}
+%%-----------------------------------------------------------------------------
+
+%%-------------------------- Tikz & related settings --------------------------
+\usetikzlibrary{angles, arrows.meta, quotes, patterns, calc, automata, positioning, decorations.pathmorphing, 3d}
+\lstset{
+    autogobble = true,
+    frame = single,
+    mathescape,
+    basicstyle = \scriptsize
+}
+
+\lstdefinelanguage{PSEUDO}{
+    keywords = {if, then, else, for, do, while, true, false},
+    keywordstyle = \bfseries
+}
+%%%----------------------------------------------------------------------------
+
+%%---------------------------- Other customization ----------------------------
+\let\oldText\text
+\renewcommand{\text}[1]{\oldText{\color{black}{ #1 }}}
+%%%----------------------------------------------------------------------------
