@@ -17,7 +17,6 @@
 \usepackage{tikz, forest, listings, lstautogobble, graphicx, wrapfig, caption, subcaption}
 
 %%-------------------------- Document Customization --------------------------
-\pagestyle{fancy}
 
 \renewcommand{\sectionmark}[1]{\markboth{{#1}}{}}
 \renewcommand{\footrulewidth}{0.1pt}
@@ -37,10 +36,10 @@
 
 \makeatletter
 \g@addto@macro\normalsize{%
-    \setlength\abovedisplayskip{7.5 pt plus 2.5pt minus 2.5pt}
-    \setlength\belowdisplayskip{7.5 pt plus 2.5pt minus 2.5pt}
-    \setlength\abovedisplayshortskip{5pt plus 2.5pt minus 2.5pt}
-    \setlength\belowdisplayshortskip{5pt plus 2.5pt minus 2.5pt}
+    \setlength\abovedisplayskip{7.5 pt}
+    \setlength\belowdisplayskip{5 pt plus 2.5pt minus 2.5pt}
+    \setlength\abovedisplayshortskip{5pt}
+    \setlength\belowdisplayshortskip{5pt}
 }
 \makeatother
 
@@ -472,11 +471,15 @@
         \left({#1}_{#2}, \ldots, {#1}_{#3}\right)
     }
 }
+
+\NewDocumentCommand{\List}{s m m m}{
+    {#2}_{#3}, \ldots, {#2}_{#4}
+}
 %%-----------------------------------------------------------------------------
 
 %%---------------------------- Custom Environments ----------------------------
 %%%%-------------------------- Numbered Environments --------------------------
-\newtheoremstyle{Emphasised}{\abovedisplayskip}{\belowdisplayskip}{\itshape}{}{\bfseries}{:}{ }{\thmname{#1} \thmnumber{#2}}
+\newtheoremstyle{Emphasised}{\abovedisplayshortskip}{\belowdisplayshortskip}{\itshape}{}{\bfseries}{.}{ }{\thmname{#1} \thmnumber{#2}}
 
 \theoremstyle{Emphasised}
 \newtheorem{Proposition}{Proposizione}
@@ -485,25 +488,25 @@
 \newtheorem{Lemma}{Lemma}[Theorem]
 
 %%%%------------------------ Non Numbered Environments ------------------------
-\newtheoremstyle{Definition*}{\abovedisplayskip}{\belowdisplayskip}{}{}{\bfseries}{:}{ }{\thmname{#1}}
+\newtheoremstyle{Definition*}{\abovedisplayshortskip}{\belowdisplayshortskip}{}{}{\bfseries}{:}{ }{\thmname{#1}}
 
 \theoremstyle{Definition*}
 \newtheorem{Definition*}{Definizione}
 \newtheorem{Example*}{Esempio}
 \newtheorem{Axiom*}{Assioma}
 
-\newtheoremstyle{Remark*}{}{}{}{}{\bfseries}{:}{ }{\thmname{#1}}
+\newtheoremstyle{Remark*}{}{}{}{}{\bfseries}{.}{ }{\thmname{#1}}
 
 \theoremstyle{Remark*}
 \newtheorem{Remark*}{Osservazione}
 \newtheorem{Note*}{Nota}
 
-\newtheoremstyle{Proof*}{\abovedisplayskip}{\belowdisplayshortskip}{}{\parindent}{\itshape}{:}{ }{\thmname{#1}}
+\newtheoremstyle{Proof*}{\abovedisplayshortskip}{\belowdisplayshortskip}{}{\parindent}{\itshape}{:}{ }{\thmname{#1}}
 
 \theoremstyle{Proof*}
 \newtheorem{Proof*}{Dimostrazione}
 
-\newtheoremstyle{Emphasised*}{\abovedisplayskip}{\belowdisplayshortskip}{}{}{\bfseries}{:}{ }{\thmname{#1} \thmnote{#3}}
+\newtheoremstyle{Emphasised*}{\abovedisplayshortskip}{\belowdisplayshortskip}{}{}{\bfseries}{.}{ }{\thmname{#1} \thmnote{#3}}
 
 \theoremstyle{Emphasised*}
 \newtheorem{Algorithm*}{Algoritmo}
@@ -553,5 +556,7 @@
 
 %%---------------------------- Other customization ----------------------------
 \let\oldText\text
-\renewcommand{\text}[1]{\oldText{\color{black}{ #1 }}}
+\let\oldToC\tableofcontents
+\renewcommand{\text}[1]{\oldText{\color{black}{ }#1{ }}}
+\renewcommand{\tableofcontents}{\oldToC \clearpage \pagestyle{fancy}}
 %%%----------------------------------------------------------------------------

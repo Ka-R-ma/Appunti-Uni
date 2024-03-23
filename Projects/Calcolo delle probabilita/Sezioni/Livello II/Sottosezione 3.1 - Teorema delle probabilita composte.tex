@@ -1,14 +1,15 @@
 \documentclass{subfiles}
 \begin{document}
 \begin{Theorem}
-    Dati due eventi \(E \text{e} H, H \neq 0\), se la valutazione di probabilità \((\Prob{H}, \Prob{E}[H], \Prob{EH})\) su \(\Set{H, E \land H, E \Given H}\) è coerente,
-    si ha
+    Dati due eventi \(E \text{e} H, H \neq 0\), siano \((\Prob{H}, \Prob{E}[H], \Prob{EH})\) valutazioni di probabilità sugli eventi \(\Set{H, E \land H, E \Given H}\),
+    allora se
     \[
         \Prob{EH} = \Frac{\Prob{E}[H]}{\Prob{H}}
     \]
-\end{Theorem}\label{thm:3.1}
+    l'assegnazione risulta essere coerente.
+\end{Theorem}
 \begin{Corollary}
-    Se \(\Prob{H} \neq 0\) si ha
+    Se \(\Prob{H} \neq 0\), allora
     \[
         \Prob{E}[H] = \Frac{\Prob{EH}}{\Prob{H}}
     \]
