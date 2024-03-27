@@ -454,9 +454,9 @@
 
 \NewDocumentCommand{\Grammar}{m m >{\SplitList{,}}o}{
     \IfValueTF{#3}{
-        #1 \to #2 \ProcessList{#3}{\GrammarRule}
+        \ensuremath{#1 \to #2 \ProcessList{#3}{\GrammarRule}}
     }{
-        #1 \to #2
+        \ensuremath{#1 \to #2}
     }
 }
 
@@ -466,20 +466,20 @@
 
 \NewDocumentCommand{\Tuple}{m m m o}{
     \IfValueTF{#4}{
-        \left({#1}_{#2}, \ldots, {#1}_{#4}, {#1}_{#4 + 1}, \ldots, {#1}_{#3}\right)
+        \ensuremath{\left({#1}_{#2}, \ldots, {#1}_{#4}, {#1}_{#4 + 1}, \ldots, {#1}_{#3}\right)}
     }{
-        \left({#1}_{#2}, \ldots, {#1}_{#3}\right)
+        \ensuremath{\left({#1}_{#2}, \ldots, {#1}_{#3}\right)}
     }
 }
 
 \NewDocumentCommand{\List}{s m m m}{
-    {#2}_{#3}, \ldots, {#2}_{#4}
+    \ensuremath{{#2}_{#3}, \ldots, {#2}_{#4}}
 }
 %%-----------------------------------------------------------------------------
 
 %%---------------------------- Custom Environments ----------------------------
 %%%%-------------------------- Numbered Environments --------------------------
-\newtheoremstyle{Emphasised}{\abovedisplayshortskip}{\belowdisplayshortskip}{\itshape}{}{\bfseries}{.}{ }{\thmname{#1} \thmnumber{#2}}
+\newtheoremstyle{Emphasised}{\abovedisplayshortskip}{\belowdisplayshortskip}{\itshape}{}{\bfseries}{.}{ }{\thmname{#1}\thmnumber{ #2}}
 
 \theoremstyle{Emphasised}
 \newtheorem{Proposition}{Proposizione}
@@ -506,7 +506,7 @@
 \theoremstyle{Proof*}
 \newtheorem{Proof*}{Dimostrazione}
 
-\newtheoremstyle{Emphasised*}{\abovedisplayshortskip}{\belowdisplayshortskip}{}{}{\bfseries}{.}{ }{\thmname{#1} \thmnote{#3}}
+\newtheoremstyle{Emphasised*}{\abovedisplayshortskip}{\belowdisplayshortskip}{}{}{\bfseries}{.}{ }{\thmname{#1}\thmnote{ #3}}
 
 \theoremstyle{Emphasised*}
 \newtheorem{Algorithm*}{Algoritmo}
@@ -524,6 +524,8 @@
 \AtEndEnvironment{Corollary}{\label{Corol:\theCorollary}}
 \AtEndEnvironment{Lemma}{\label{Lemma:\theLemma}}
 \AtEndEnvironment{Proof}{\qed}
+\AtEndEnvironment{itemize}{\noindent}
+\AtEndEnvironment{enumerate}{\noindent}
 
 \counterwithin{figure}{section}
 \renewcommand\thesubfigure{\alph{subfigure}}
@@ -549,7 +551,7 @@
 }
 
 \lstdefinelanguage{PSEUDO}{
-    keywords = {if, then, else, for, do, while, true, false},
+    keywords = {if, then, else, for, do, while, true, false, and, AND, or, OR, not, NOT, xor, XOR},
     keywordstyle = \bfseries
 }
 %%%----------------------------------------------------------------------------

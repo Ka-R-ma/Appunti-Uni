@@ -1,0 +1,36 @@
+\documentclass{subfiles}
+\begin{document}
+Come detto si tratta di una delle funzioni utilizzate per la costruzione della tabella.
+Nello specifico, assunto una stringa \(\alpha \in N \times T\footnotemark[1]\), si ha che
+\[
+    FIRST(\alpha) = \Set{x \in T}[\alpha \GrammarDerivation x\beta]
+\]
+In altri termini, \(FIRST(\alpha)\) rappresenta l'insieme dei terminali tali che gli stessi compaiano come primo termine di una qualche derivazione di \(\alpha\).
+Inoltre se \(\alpha \GrammarDerivation \varepsilon\) allora \(\varepsilon \in FIRST(\alpha)\).
+
+\begin{Algorithm*}
+    Per quel che concerne l'algoritmo per l'implementazione di FIRST, questi è il seguente.
+    \begin{center}
+        \begin{lstlisting}[language = PSEUDO]
+            for all terminal __*\(x\)*__ and __*\(\varepsilon\)*__ do
+                __*FIRST(x) = \(\Set{x}\)*__;
+            for all non-terminal __*\(X\)*__ do
+                __*FIRST(X) = \(\varnothing\)*__;
+            while there are changes in any FIRST do
+                for each __*\( \Grammar{X}{\List{Y}{1}{k}}\)*__ do {
+                    i = 1;
+                    continue = true;
+                    while continue == true AND i <= k do {
+                        add __*FIRST(\(Y_{i}\)) \(\setminus \Set{\varepsilon}\)*__ to FIRST(X);
+                        if __*\(\varepsilon \notin FIRST(Y_{i})\)*__
+                            continue = false;
+                        i += 1;
+                    }
+                    if continue == true
+                        add __*\(\varepsilon\)*__ to FIRST(X);
+                 }
+        \end{lstlisting}
+    \end{center}
+\end{Algorithm*}
+\footnotetext[1]{Rispettivamente, insieme dei non-terminali e dei terminali.}
+\end{document}

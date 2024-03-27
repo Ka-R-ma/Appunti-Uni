@@ -1,0 +1,24 @@
+\documentclass{subfiles}
+\begin{document}
+
+Per varie ragioni, FIRST non è sufficiente alla realizzazione di un parser deterministico quale sono gli LL(1),
+per tale ragione è necessaria l'implementazione di FOLLOW.
+\begin{Algorithm*}
+    Per quel che concerne l'implementazione di FOLLOW, questa è riportata a seguito.
+    \begin{center}
+        \begin{lstlisting}
+            FOLLOW(AXIOM) = __*\(\Set{\text{\textdollar}}\)*__;
+            for each non-terminal __*\(X\)*__ AND __*\(X \neq AXIOM\)*__ do 
+                FOLLOW(X) = __*\(\varnothing\)*__;
+                while there are changes to any FOLLOW do 
+                    for each __*\(\Grammar{X}{\List{Y}{1}{k}}\)*__ do 
+                        for each __*\(Y_{i}\)*__ do {
+                            add __*FIRST(\(\List{Y}{i + 1}{k}\)) \(\setminus \Set{\varepsilon}\)*__ to FOLLOW(__*\(Y_{i}\)*__);
+                            if __*\(\varepsilon \in\) FIRST(\(\List{Y}{i + 1}{k}\))*__ then
+                                add FOLLOW(__*\(X\)*__) to FOLLOW(__*\(Y_{i}\)*__)
+                        }
+        \end{lstlisting}
+    \end{center}
+\end{Algorithm*}
+
+\end{document}

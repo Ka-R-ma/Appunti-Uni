@@ -9,16 +9,19 @@ per per tenere traccia della posizione della ``sotto-stringa'' esaminata. Con \l
     si supponga uno stato \((A \to \alpha . \beta, i)\). Ciò sta ad indicare che si è esaminata la sola sotto-stringa \(\alpha\).
 \end{Example*}
 
-\begin{Algorithm*}[di Earley]\noindent
-    \begin{lstlisting}[language = PSEUDO]
-        input = __*$x_{1} \ldots x_{n}$*__
-        __*$x_{n + 1}$*__ = __*\textdollar*__
-        for j = 0 to n do
-            foreach state in S[j] choose between: scanner, predictor, completed
-        if S[n + 1] == __*\textdollar*__
-            accept()
-        refuse()
-    \end{lstlisting}
+\begin{Algorithm*}[di Earley]
+    Si riporta di seguito lo pseudo codice per implementare Earley.
+    \begin{center}
+        \begin{lstlisting}[language = PSEUDO]
+            input = __*$x_{1} \ldots x_{n}$*__
+            __*$x_{n + 1}$*__ = __*\textdollar*__
+            for j = 0 to n do
+                foreach state in S[j] choose between: scanner, predictor, completed
+            if S[n + 1] == __*\textdollar*__
+                accept()
+            refuse()
+        \end{lstlisting}
+    \end{center}
 \end{Algorithm*}
 
 \subsubsection{Scanner}

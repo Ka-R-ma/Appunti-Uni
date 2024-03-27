@@ -1,0 +1,43 @@
+\documentclass{subfiles}
+\begin{document}
+\begin{Definition*}
+    sia \(G\) una grammatica, questa è detta essere LL(1) se e solo se \(\forall \Grammar{A}{\alpha}[\beta]\) si ha che:
+    \begin{itemize}
+        \item \(\alpha \text{e} \beta\) non derivano stringhe che iniziano con uno stesso terminale \(a\).
+              Cioè \(FIRST(\alpha) \neq FIRST(\beta)\).
+        \item al più uno dei due deriva \(\varepsilon\).
+        \item se \(\beta \GrammarDerivation \varepsilon\), allora \(\alpha\) non deriva stringhe che iniziano con terminali in \(FOLLOW(A)\). O viceversa.
+    \end{itemize}
+\end{Definition*}
+\begin{Algorithm*}[di parsing per LL(1)]
+    Dalla definizione segue la possibilità di realizzare un parser predittivo per le grammatiche LL(1), il cui pseudo-codice è di seguito riportato.
+    \begin{center}
+        \begin{lstlisting}
+            LL_1_parser(stack p, input i, LL_1_table M, axiom S):
+                error = false;
+                p.push(\textdollar);
+                p.push(S);
+                while ()__* p.top() \(\neq\) \textdollar*__ AND i.top() __* \textdollar*__ AND !error) do {
+                    if isTerminal(p.top()){
+                        if p.top() == i.top(){
+                            p.pop();
+                            i.next();
+                        }
+                        error = true;
+                    }
+                    if isEmpty(M[p.top(), i.top()])
+                        error = true;
+                    else{
+                        p.pop();
+                        for (j = n; j > 0; j--)
+                            p.push(__* \(X_{j}\) *__)
+                    }
+                }
+                if (!error)
+                    accept();
+                raise_error();
+        \end{lstlisting}
+    \end{center}
+\end{Algorithm*}
+
+\end{document}
