@@ -88,17 +88,17 @@
 
 \NewDocumentCommand{\Range}{s m m}{
     \IfBooleanTF{#1}{
-        \left[#2, \, #3\right]
+        \ensuremath{\left[#2, \, #3\right]}
     }{
-        \left(#2, \, #3\right)
+        \ensuremath{\left(#2, \, #3\right)}
     }
 }
 
 \NewDocumentCommand{\Set}{m o}{
     \IfValueTF{#2}{
-        \left\{#1 \Such #2\right\}
+        \ensuremath{\left\{#1 \Such #2\right\}}
     }{
-        \left\{#1\right\}
+        \ensuremath{ \left\{#1\right\}}
     }
 }
 
@@ -264,7 +264,7 @@
 
 \NewDocumentCommand{\Frac}{s m m}{
     \IfBooleanTF{#1}{
-        \nicefrac{#2}{#3}
+        \ensuremath{\nicefrac{#2}{#3}}
     }{
         \frac{#2}{#3}
     }
