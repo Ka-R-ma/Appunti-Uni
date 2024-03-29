@@ -36,10 +36,10 @@
 
 \makeatletter
 \g@addto@macro\normalsize{%
-    \setlength\abovedisplayskip{7.5 pt}
-    \setlength\belowdisplayskip{5 pt plus 2.5pt minus 2.5pt}
-    \setlength\abovedisplayshortskip{5pt}
-    \setlength\belowdisplayshortskip{5pt}
+    \setlength\abovedisplayskip{5 pt}
+    \setlength\belowdisplayskip{5 pt}
+    \setlength\abovedisplayshortskip{2.5pt}
+    \setlength\belowdisplayshortskip{2.5pt}
 }
 \makeatother
 
@@ -48,9 +48,9 @@
 \setcounter{secnumdepth}{5}
 \setcounter{tocdepth}{2}
 
-\titleformat{\section}{\normalfont\Large\bfseries}{-- {\thesection} --}{1em}{#1.}
-\titleformat{\subsection}{\normalfont\large\bfseries}{-- {\thesubsection} --}{1em}{#1.}
-\titleformat{\subsubsection}{\normalfont\normalsize\bfseries}{-- {\thesubsubsection} --}{1em}{#1.}
+\titleformat{\section}[hang]{\normalfont\Large\bfseries}{-- {\thesection} --}{1em}{#1.}
+\titleformat{\subsection}[hang]{\normalfont\large\bfseries}{-- {\thesubsection} --}{1em}{#1.}
+\titleformat{\subsubsection}[hang]{\normalfont\normalsize\bfseries}{-- {\thesubsubsection} --}{1em}{#1.}
 \titleformat{\paragraph}[hang]{\normalfont\normalsize\bfseries}{-- {\theparagraph} --}{1em}{#1.}
 %%-----------------------------------------------------------------------------
 
@@ -388,7 +388,7 @@
             \min \Set{#2}
         }
     }{
-        \min\Set{#2}{#3}
+        \min\Set{#2}[#3]
     }
 }
 
@@ -479,7 +479,7 @@
 
 %%---------------------------- Custom Environments ----------------------------
 %%%%-------------------------- Numbered Environments --------------------------
-\newtheoremstyle{Emphasised}{\abovedisplayshortskip}{\belowdisplayshortskip}{\itshape}{}{\bfseries}{.}{ }{\thmname{#1}\thmnumber{ #2}}
+\newtheoremstyle{Emphasised}{\abovedisplayshortskip}{0pt}{\itshape}{}{\bfseries}{.}{ }{\thmname{#1}\thmnumber{ #2}}
 
 \theoremstyle{Emphasised}
 \newtheorem{Proposition}{Proposizione}
@@ -488,25 +488,25 @@
 \newtheorem{Lemma}{Lemma}[Theorem]
 
 %%%%------------------------ Non Numbered Environments ------------------------
-\newtheoremstyle{Definition*}{\abovedisplayshortskip}{\belowdisplayshortskip}{}{}{\bfseries}{:}{ }{\thmname{#1}}
+\newtheoremstyle{Definition*}{\abovedisplayshortskip}{0pt}{}{}{\bfseries}{:}{ }{\thmname{#1}}
 
 \theoremstyle{Definition*}
 \newtheorem{Definition*}{Definizione}
 \newtheorem{Example*}{Esempio}
 \newtheorem{Axiom*}{Assioma}
 
-\newtheoremstyle{Remark*}{}{}{}{}{\bfseries}{.}{ }{\thmname{#1}}
+\newtheoremstyle{Remark*}{0pt}{0pt}{}{}{\bfseries}{.}{ }{\thmname{#1}}
 
 \theoremstyle{Remark*}
 \newtheorem{Remark*}{Osservazione}
 \newtheorem{Note*}{Nota}
 
-\newtheoremstyle{Proof*}{\abovedisplayshortskip}{\belowdisplayshortskip}{}{\parindent}{\itshape}{:}{ }{\thmname{#1}}
+\newtheoremstyle{Proof*}{0pt}{0pt}{}{\parindent}{\itshape}{:}{ }{\thmname{#1}}
 
 \theoremstyle{Proof*}
 \newtheorem{Proof*}{Dimostrazione}
 
-\newtheoremstyle{Emphasised*}{\abovedisplayshortskip}{\belowdisplayshortskip}{}{}{\bfseries}{.}{ }{\thmname{#1}\thmnote{ #3}}
+\newtheoremstyle{Emphasised*}{\abovedisplayshortskip}{0pt}{}{}{\bfseries}{.}{ }{\thmname{#1}\thmnote{ #3}}
 
 \theoremstyle{Emphasised*}
 \newtheorem{Algorithm*}{Algoritmo}
