@@ -48,10 +48,10 @@
 \setcounter{secnumdepth}{5}
 \setcounter{tocdepth}{2}
 
-\titleformat{\section}[hang]{\normalfont\Large\bfseries}{-- {\thesection} --}{1em}{#1.}
-\titleformat{\subsection}[hang]{\normalfont\large\bfseries}{-- {\thesubsection} --}{1em}{#1.}
-\titleformat{\subsubsection}[hang]{\normalfont\normalsize\bfseries}{-- {\thesubsubsection} --}{1em}{#1.}
-\titleformat{\paragraph}[hang]{\normalfont\normalsize\bfseries}{-- {\theparagraph} --}{1em}{#1.}
+\titleformat{\section}[hang]{\normalfont\Large\bfseries}{-- {\thesection} --}{5pt}{#1.}
+\titleformat{\subsection}[hang]{\normalfont\large\bfseries}{-- {\thesubsection} --}{5pt}{#1.}
+\titleformat{\subsubsection}[hang]{\normalfont\normalsize\bfseries}{-- {\thesubsubsection} --}{5pt}{#1.}
+\titleformat{\paragraph}[hang]{\normalfont\normalsize\bfseries}{-- {\theparagraph} --}{5pt}{#1.}
 %%-----------------------------------------------------------------------------
 
 %%------------------------------- Custom Macros -------------------------------
@@ -275,17 +275,17 @@
 }
 
 \NewDocumentCommand{\Derivative}{s m m o}{
-    \IfBoolean{#1}{
-        \IfValue{#4}{
-            \frac{\partial^{#4} \ #2}{\partial \, \! #3}
+    \IfBooleanTF{#1}{
+        \IfValueTF{#4}{
+            \frac{\Dd^{#4} \,\! #2}{\Dd \,\! #3}
         }{
-            \frac{\partial \ #2}{\partial \, \! #3}
+            \frac{\Dd \,\! #2}{\Dd \,\! #3}
         }
     }{
-        \IfValue{#4}{
-            \frac{\Dd^{#4} \ #2}{\Dd \, \! #3}
+        \IfValueTF{#4}{
+            \frac{\Dd^{#4}}{\Dd \,\! #3} {#2}
         }{
-            \frac{\Dd \ #2}{\Dd \, \! #3}
+            \frac{\Dd}{\Dd \,\! #3} {#2}
         }
     }
 }
@@ -511,6 +511,7 @@
 \theoremstyle{Emphasised*}
 \newtheorem{Algorithm*}{Algoritmo}
 \newtheorem{Theorem*}{Teorema}
+\newtheorem{Property*}{Proprietà}
 \newtheorem{Law*}{Legge}
 %%-----------------------------------------------------------------------------
 
