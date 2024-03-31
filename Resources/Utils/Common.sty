@@ -69,6 +69,8 @@
 \DeclareMathOperator{\Covariance}{Cov}
 \DeclareMathOperator{\BigO}{\mathcal{O}}
 \DeclareMathOperator{\GrammarDerivation}{\implies\hspace{-7.5pt}*}
+\DeclareMathOperator{\Borel}{\mathcal{B}}
+\DeclareMathOperator{\Littleo}{\mathit{o}}
 
 \NewDocumentCommand{\InternalProduct}{m m}{
     \left\langle #1, \ #2\right\rangle
@@ -100,6 +102,10 @@
     }{
         \ensuremath{ \left\{#1\right\}}
     }
+}
+
+\NewDocumentCommand{\Sequence}{m O{n \in \Natural}}{
+    \Set{#1}_{#2}
 }
 
 \NewDocumentCommand{\Int}{s m m o o}{
@@ -450,6 +456,10 @@
 
 \NewDocumentCommand{\ThetaOf}{m}{
     \Theta \left(#1\right)
+}
+
+\NewDocumentCommand{\LittleO}{m}{
+    \Littleo \left(#1\right)
 }
 
 \NewDocumentCommand{\Grammar}{m m >{\SplitList{,}}o}{
