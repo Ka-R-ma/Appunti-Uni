@@ -1,0 +1,16 @@
+\documentclass{subfiles}
+\begin{document}
+Il parser shif-reduce descritto precedentemente, potrebbe non essere sufficiente a riconoscere alcune grammatiche.
+Per tale ragione, in generale, si preferisce utilizzare i parser LR(k), con ``k'' numero di caratteri successivi di cui tenere traccia ad ogni passo.
+
+\begin{Note*}
+    Saranno trattati nel dettaglio i parser LR(0). ALtri parser LR (\textbf{eg:} SLR e/o LALR(1)) saranno solamente accennati.
+\end{Note*}
+
+\begin{Remark*}
+    Se una grammatica è ambigua, non è LR(k) per nessun k.
+\end{Remark*}
+
+\paragraph{Costruzione della tabella LR(0)}
+\subfile{../Livello IIII/Sottosottosottosezione 3.5.2.1 - Costruzione della tabella LR(0).tex}
+\end{document}

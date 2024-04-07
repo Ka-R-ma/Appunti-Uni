@@ -6,7 +6,7 @@
         \item \(\alpha \text{e} \beta\) non derivano stringhe che iniziano con uno stesso terminale \(a\).
               Cioè \(FIRST(\alpha) \neq FIRST(\beta)\).
         \item al più uno dei due deriva \(\varepsilon\).
-        \item se \(\beta \GrammarDerivation \varepsilon\), allora \(\alpha\) non deriva stringhe che iniziano con terminali in \(FOLLOW(A)\). O viceversa.
+        \item se \(\beta \Derivation \varepsilon\), allora \(\alpha\) non deriva stringhe che iniziano con terminali in \(FOLLOW(A)\). O viceversa.
     \end{itemize}
 \end{Definition*}
 \begin{Algorithm*}[di parsing per LL(1)]
@@ -39,5 +39,7 @@
         \end{lstlisting}
     \end{center}
 \end{Algorithm*}
+Per struttura delle grammatiche LL(1) e da un'analisi dell'algoritmo, si osserva che il parser LL(1) ha complessità \OrderOf{n},
+con \(n\) lunghezza dell'input.
 
 \end{document}
