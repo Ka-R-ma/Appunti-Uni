@@ -1,122 +1,97 @@
+\NeedsTeXFormat{LaTeX2e}
 \ProvidesPackage{Common}
 
-%% List of used packages
-%%%  Other
-\usepackage[usernames, x11names]{xcolor}
-\usepackage[hidelinks]{hyperref}
-\usepackage[italian]{babel}
-\usepackage{subfiles}
-%%% Packages for document customization
-\usepackage{fancyhdr}
-\usepackage[a4paper]{geometry}
-\usepackage[explicit, compact]{titlesec}
-%%% Packagees related to math
-\usepackage[fixamsmath, allowspaces]{mathtools}
-\usepackage{amssymb, amsthm, mathdots, mathrsfs, multicol, nicefrac}
-%%% Packages related to graphics
-\usepackage{tikz, forest, listings, lstautogobble, graphicx, wrapfig, caption, subcaption}
+\RequirePackage{../../../Resources/Utils/Style}
+\RequirePackage[fixamsmath, allowspaces]{mathtools}
+\RequirePackage{amsfonts}
+\RequirePackage{xfrac}
 
-%%-------------------------- Document Customization --------------------------
 
-\renewcommand{\sectionmark}[1]{\markboth{{#1}}{}}
-\renewcommand{\footrulewidth}{0.1pt}
-\rhead{\leftmark}
-\lhead{\bfseries Sezione \thesection}
-
-\fancyfoot[C]{-- {\thepage} --}
-\setlength\oddsidemargin{10pt}
-\setlength\topmargin{0pt}
-\setlength\headheight{15pt}
-\setlength\headsep{12.5pt}
-\setlength\textheight{643.5pt}
-\setlength\textwidth{433pt}
-\setlength\marginparwidth{0pt}
-\setlength\marginparpush{0pt}
-\setlength\headwidth{433pt}
-
-\makeatletter
-\g@addto@macro\normalsize{%
-    \setlength\abovedisplayskip{5 pt}
-    \setlength\belowdisplayskip{5 pt}
-    \setlength\abovedisplayshortskip{2.5pt}
-    \setlength\belowdisplayshortskip{2.5pt}
-}
-\makeatother
-
-\newcommand\sectionbreak{\clearpage}
-
-\setcounter{secnumdepth}{5}
-\setcounter{tocdepth}{2}
-
-\titleformat{\section}[hang]{\normalfont\Large\bfseries}{-- {\thesection} --}{5pt}{#1.}
-\titleformat{\subsection}[hang]{\normalfont\large\bfseries}{-- {\thesubsection} --}{5pt}{#1.}
-\titleformat{\subsubsection}[hang]{\normalfont\normalsize\bfseries}{-- {\thesubsubsection} --}{5pt}{#1.}
-\titleformat{\paragraph}[hang]{\normalfont\normalsize\bfseries}{-- {\theparagraph} --}{5pt}{#1.}
 %%-----------------------------------------------------------------------------
+%%------------------------ Redeclaring Existing Macros ------------------------
+%%-----------------------------------------------------------------------------
+%% None yet: possible TODO
 
+
+%%-----------------------------------------------------------------------------
 %%------------------------------- Custom Macros -------------------------------
-\DeclareMathOperator{\Such}{\, : \,}
-\DeclareMathOperator{\Given}{\, | \,}
-\DeclareMathOperator{\Dd}{d}
+%%-----------------------------------------------------------------------------
 \DeclareMathOperator{\Natural}{\mathbb{N}}
 \DeclareMathOperator{\Integer}{\mathbb{Z}}
 \DeclareMathOperator{\Rational}{\mathbb{Q}}
 \DeclareMathOperator{\Real}{\mathbb{R}}
-\DeclareMathOperator{\Complex}{\mathbb{C}}
-\DeclareMathOperator{\Quaternion}{\mathbb{H}}
-\DeclareMathOperator{\E}{\mathbb{E}}
+\DeclareMathOperator{\Comlex}{\mathbb{C}}
+\DeclareMathOperator{\ExpectedValue}{\mathbb{E}}
 \DeclareMathOperator{\Variance}{Var}
 \DeclareMathOperator{\Covariance}{Cov}
 \DeclareMathOperator{\BigO}{\mathcal{O}}
-\DeclareMathOperator{\GrammarDerivation}{\implies\hspace{-7.5pt}*}
-\DeclareMathOperator{\Borel}{\mathcal{B}}
-\DeclareMathOperator{\Littleo}{\mathit{o}}
+\DeclareMathOperator{\LilO}{\mathit{o}}
+\DeclareMathOperator{\Such}{\, : \,}
+\DeclareMathOperator{\Given}{\, : \,}
+\DeclareMathOperator{\Derivation}{\Rightarrow\hspace{-5pt}*}
+\DeclareMathOperator{\Dd}{d}
 
-\NewDocumentCommand{\InternalProduct}{m m}{
-    \left\langle #1, \ #2\right\rangle
+\ProvideDocumentCommand{\InnerProd}{m m}{
+    \left\langle{#1, #2}\right\rangle
 }
 
-\NewDocumentCommand{\DotProduct}{m m}{
-    {#1} {\bullet} {#2}
+\ProvideDocumentCommand{\Floor}{m}{
+    \left\lfloor #1 \right\rfloor
 }
 
-\NewDocumentCommand{\Floor}{m}{
-    \left\lfloor {#1} \right\rfloor
+\ProvideDocumentCommand{\Ceil}{m}{
+    \left\lceil #1 \right\rceil
 }
 
-\NewDocumentCommand{\Ceil}{m}{
-    \left\lceil {#1} \right\rceil
-}
-
-\NewDocumentCommand{\Range}{s m m}{
+\ProvideDocumentCommand{\Range}{s m m}{
     \IfBooleanTF{#1}{
-        \ensuremath{\left[#2, \, #3\right]}
+        \left[#2, #3\right]
     }{
-        \ensuremath{\left(#2, \, #3\right)}
+        \left(#2, #3\right)
     }
 }
 
-\NewDocumentCommand{\Set}{m o}{
+\ProvideDocumentCommand{\Set}{m o}{
     \IfValueTF{#2}{
-        \ensuremath{\left\{#1 \Such #2\right\}}
+        \left\{#1 \Such #2\right\}
     }{
-        \ensuremath{ \left\{#1\right\}}
+        \left\{#1\right\}
     }
 }
 
-\NewDocumentCommand{\Sequence}{m O{n \in \Natural}}{
+\ProvideDocumentCommand{\Tuple}{m m m o}{
+    \IfValueTF{#4}{
+        \ensuremath{\left({#1}_{#2}, \ldots, {#1}_{#4}, {#1}_{#4 + 1}, \ldots, {#1}_{#3}\right)}
+    }{
+        \ensuremath{\left({#1}_{#2}, \ldots, {#1}_{#3}\right)}
+    }
+}
+
+\ProvideDocumentCommand{\List}{m m m}{
+    \ensuremath{{#1}_{#2}, \ldots, {#1}_{#3}}
+}
+
+\ProvideDocumentCommand{\DotProd}{m m}{
+    #1 \cdot #2
+}
+
+\ProvideDocumentCommand{\CrossProd}{m m}{
+    #1 \times #2
+}
+
+\ProvideDocumentCommand{\Sequence}{m O{n \in \Natural}}{
     \Set{#1}_{#2}
 }
 
-\NewDocumentCommand{\Int}{s m m o o}{
+\ProvideDocumentCommand{\Int}{s m m o o}{
     \IfBooleanTF{#1}{
-        \int_{\IfValueTF{#4}{#4}{}}^{\IfValueTF{#5}{#5}{}}{#2 \, \partial \, \!#3}
+        \int\limits_{\IfValueTF{#4}{#4}{}}^{\IfValueTF{#5}{#5}{}}{#2 \Dd\!#3}
     }{
-        \int_{\IfValueTF{#4}{#4}{}}^{\IfValueTF{#5}{#5}{}}{#2 \, \Dd\!#3}
+        \int_{\IfValueTF{#4}{#4}{}}^{\IfValueTF{#5}{#5}{}}{#2 \Dd\!#3}
     }
 }
 
-\NewDocumentCommand{\Iint}{s m m o}{
+\ProvideDocumentCommand{\Iint}{s m m o}{
     \IfBooleanTF{#1}{
         \iint\limits_{\IfValueTF{#4}{#4}{}}{#2 \, \Dd\!#3}
     }{
@@ -124,7 +99,7 @@
     }
 }
 
-\NewDocumentCommand{\Iiint}{s m m o}{
+\ProvideDocumentCommand{\Iiint}{s m m o}{
     \IfBooleanTF{#1}{
         \iiint\limits_{\IfValueTF{#4}{#4}{}}{#2 \, \Dd\!#3}
     }{
@@ -132,7 +107,7 @@
     }
 }
 
-\NewDocumentCommand{\Oint}{s m m o}{
+\ProvideDocumentCommand{\Oint}{s m m o}{
     \IfBooleanTF{#1}{
         \oint\limits_{\IfValueTF{#4}{#4}{}}{#2 \, \Dd\!#3}
     }{
@@ -140,119 +115,71 @@
     }
 }
 
-\NewDocumentCommand{\Sum}{s m m o}{
-    \IfBooleanTF{#1}{
-        \IfValueTF{#4}{
-            \sum\limits_{#3}^{#4}{\left(#2\right)}
-        }{
-            \sum\limits_{#3}{\left(#2\right)}
-        }
+\ProvideDocumentCommand{\Sum}{m m o}{
+    \IfValueTF{#3}{
+        \sum\limits_{#2}^{#3}{#1}
     }{
-        \IfValueTF{#4}{
-            \sum\limits_{#3}^{#4}{#2}
-        }{
-            \sum\limits_{#3}{#2}
-        }
+        \sum\limits_{#2}^{#1}
     }
 }
 
-\NewDocumentCommand{\Prod}{s m m o}{
-    \IfBooleanTF{#1}{
-        \IfValueTF{#4}{
-            \prod\limits_{#3}^{#4}{\left(#2\right)}
-        }{
-            \prod\limits_{#3}{\left(#2\right)}
-        }
+\ProvideDocumentCommand{\Prod}{m m o}{
+    \IfValueTF{#3}{
+        \prod\limits_{#2}^{#3}{#1}
     }{
-        \IfValueTF{#4}{
-            \prod\limits_{#3}^{#4}{#2}
-        }{
-            \prod\limits_{#3}{#2}
-        }
+        \prod\limits_{#2}{#1}
     }
 }
 
-\NewDocumentCommand{\Coprod}{s m m o}{
-    \IfBooleanTF{#1}{
-        \IfValueTF{#4}{
-            \coprod\limits_{#3}^{#4}{\left(#2\right)}
-        }{
-            \coprod\limits_{#3}{\left(#2\right)}
-        }
+\ProvideDocumentCommand{\Coprod}{m m o}{
+    \IfValueTF{#3}{
+        \coprod\limits_{#2}^{#3}{#1}
     }{
-        \IfValueTF{#4}{
-            \coprod\limits_{#3}^{#4}{#2}
-        }{
-            \coprod\limits_{#3}{#2}
-        }
+        \coprod\limits_{#2}{#1}
     }
 }
 
-\NewDocumentCommand{\Bigcup}{s m m o}{
-    \IfBooleanTF{#1}{
-        \IfValueTF{#4}{
-            \bigcup\limits_{#3}^{#4}{\left(#2\right)}
-        }{
-            \bigcup\limits_{#3}{\left(#2\right)}
-        }
+\ProvideDocumentCommand{\Bigcup}{m m o}{
+    \IfValueTF{#3}{
+        \bigcup\limits_{#2}^{#3}{#1}
     }{
-        \IfValueTF{#4}{
-            \bigcup\limits_{#3}^{#4}{#2}
-        }{
-            \bigcup\limits_{#3}{#2}
-        }
+        \bigcup\limits_{#2}{#1}
     }
 }
 
-\NewDocumentCommand{\Bigcap}{s m m o}{
-    \IfBooleanTF{#1}{
-        \IfValueTF{#4}{
-            \bigcap\limits_{#3}^{#4}{\left(#2\right)}
-        }{
-            \bigcap\limits_{#3}{\left(#2\right)}
-        }
+\ProvideDocumentCommand{\Bigcap}{m m o}{
+    \IfValueTF{#3}{
+        \bigcap\limits_{#2}^{#3}{#1}
     }{
-        \IfValueTF{#4}{
-            \bigcap\limits_{#3}^{#4}{#2}
-        }{
-            \bigcap\limits_{#3}{#2}
-        }
+        \bigcap\limits_{#2}{#1}
     }
 }
 
-\NewDocumentCommand{\Bigvee}{s m m o}{
-    \IfBooleanTF{#1}{
-        \IfValueTF{#4}{
-            \bigvee\limits_{#3}^{#4}{\left(#2\right)}
-        }{
-            \bigvee\limits_{#3}{\left(#2\right)}
-        }
+\ProvideDocumentCommand{\Bigvee}{m m o}{
+    \IfValueTF{#3}{
+        \bigvee\limits_{#2}^{#3}{#1}
     }{
-        \IfValueTF{#4}{
-            \bigvee\limits_{#3}^{#4}{#2}
-        }{
-            \bigvee\limits_{#3}{#2}
-        }
+        \bigvee\limits_{#2}{#1}
     }
 }
 
-\NewDocumentCommand{\Bigwedge}{s m m o}{
-    \IfBooleanTF{#1}{
-        \IfValueTF{#4}{
-            \bigwedge\limits_{#3}^{#4}{\left(#2\right)}
-        }{
-            \bigwedge\limits_{#3}{\left(#2\right)}
-        }
+\ProvideDocumentCommand{\Bigwedge}{m m o}{
+    \IfValueTF{#3}{
+        \bigwedge\limits_{#2}^{#3}{#1}
     }{
-        \IfValueTF{#4}{
-            \bigwedge\limits_{#3}^{#4}{#2}
-        }{
-            \bigwedge\limits_{#3}{#2}
-        }
+        \bigwedge\limits_{#2}{#1}
     }
 }
 
-\NewDocumentCommand{\Lim}{s m m m}{
+\ProvideDocumentCommand{\Log}{s m o}{
+    \IfBooleanTF{#1}{
+        \ln{\left(#2\right)}
+    }{
+        \log_{\IfValueTF{#3}{#3}{}}{\left(#2\right)}
+    }
+}
+
+\ProvideDocumentCommand{\Lim}{s m m m}{
     \IfBooleanTF{#1}{
         \lim\limits_{#2 \to #3}{\left(#4\right)}
     }{
@@ -260,44 +187,36 @@
     }
 }
 
-\NewDocumentCommand{\Log}{s m o}{
-    \IfBooleanTF{#1}{
-        \ln_{\IfValueTF{#3}{#3}{}}{\left(#2\right)}
-    }{
-        \log_{\IfValueTF{#3}{#3}{}}{\left(#2\right)}
-    }
-}
 
-\NewDocumentCommand{\Frac}{s m m}{
+\ProvideDocumentCommand{\Frac}{s m m}{
     \IfBooleanTF{#1}{
-        \ensuremath{\nicefrac{#2}{#3}}
+        \sfrac{#2}{#3}
     }{
         \frac{#2}{#3}
     }
 }
 
-\NewDocumentCommand{\Eval}{m m o}{
-\left. {#1} \right\vert_{#2}^{\IfValueTF{#3}{#3}{}}
+\ProvideDocumentCommand{\Eval}{m m o}{
+\left. #1 \right\vert_{#2}^{\IfValueTF{#3}{#3}{}}
 }
 
-\NewDocumentCommand{\Derivative}{s m m o}{
+\ProvideDocumentCommand{\Derivative}{s m m o}{
     \IfBooleanTF{#1}{
         \IfValueTF{#4}{
-            \frac{\Dd^{#4} \,\! #2}{\Dd \,\! #3}
+            \Frac{\:\Dd^#4}{\Dd \!#3^#4}{#2}
         }{
-            \frac{\Dd \,\! #2}{\Dd \,\! #3}
+            \Frac{\:\:\Dd}{\Dd \!#3}{#2}
         }
     }{
         \IfValueTF{#4}{
-            \frac{\Dd^{#4}}{\Dd \,\! #3} {#2}
+            \Frac{\Dd^#4 \!#2}{\Dd \!#3^#4}
         }{
-            \frac{\Dd}{\Dd \,\! #3} {#2}
+            \Frac{\Dd \!#2}{\Dd \!#3}
         }
     }
 }
 
-
-\NewDocumentCommand{\Vector}{s m}{
+\ProvideDocumentCommand{\Vector}{s m}{
     \IfBooleanTF{#1}{
         \hat{#2}
     }{
@@ -305,7 +224,8 @@
     }
 }
 
-\NewDocumentCommand{\Gradient}{s m}{
+
+\ProvideDocumentCommand{\Gradient}{s m}{
     \IfBooleanTF{#1}{
         \nabla \, #2
     }{
@@ -313,7 +233,7 @@
     }
 }
 
-\NewDocumentCommand{\Laplacian}{s m}{
+\ProvideDocumentCommand{\Laplacian}{s m}{
     \IfBooleanTF{#1}{
         \nabla^{2} \, #2
     }{
@@ -321,7 +241,7 @@
     }
 }
 
-\NewDocumentCommand{\Sin}{s m}{
+\ProvideDocumentCommand{\Sin}{s m}{
     \IfBooleanTF{#1}{
         \sin #2
     }{
@@ -329,7 +249,7 @@
     }
 }
 
-\NewDocumentCommand{\Cos}{s m}{
+\ProvideDocumentCommand{\Cos}{s m}{
     \IfBooleanTF{#1}{
         \cos #2
     }{
@@ -337,7 +257,7 @@
     }
 }
 
-\NewDocumentCommand{\Tan}{s m}{
+\ProvideDocumentCommand{\Tan}{s m}{
     \IfBooleanTF{#1}{
         \tan #2
     }{
@@ -346,7 +266,7 @@
 }
 
 
-\NewDocumentCommand{\Asin}{s m}{
+\ProvideDocumentCommand{\Asin}{s m}{
     \IfBooleanTF{#1}{
         \arcsin #2
     }{
@@ -354,7 +274,7 @@
     }
 }
 
-\NewDocumentCommand{\Acos}{s m}{
+\ProvideDocumentCommand{\Acos}{s m}{
     \IfBooleanTF{#1}{
         \arccos #2
     }{
@@ -362,7 +282,7 @@
     }
 }
 
-\NewDocumentCommand{\Atan}{s m}{
+\ProvideDocumentCommand{\Atan}{s m}{
     \IfBooleanTF{#1}{
         \arctan #2
     }{
@@ -370,7 +290,7 @@
     }
 }
 
-\NewDocumentCommand{\Sec}{s m}{
+\ProvideDocumentCommand{\Sec}{s m}{
     \IfBooleanTF{#1}{
         \sec #2
     }{
@@ -378,7 +298,7 @@
     }
 }
 
-\NewDocumentCommand{\Csc}{s m}{
+\ProvideDocumentCommand{\Csc}{s m}{
     \IfBooleanTF{#1}{
         \csc #2
     }{
@@ -386,7 +306,7 @@
     }
 }
 
-\NewDocumentCommand{\Min}{s m o}{
+\ProvideDocumentCommand{\Min}{s m o}{
     \IfBooleanTF{#1}{
         \IfValueTF{#3}{
             \min\limits_{#3}\Set{#2}
@@ -398,7 +318,7 @@
     }
 }
 
-\NewDocumentCommand{\Max}{s m o}{
+\ProvideDocumentCommand{\Max}{s m o}{
     \IfBooleanTF{#1}{
         \IfValueTF{#3}{
             \max\limits_{#3}\Set{#2}
@@ -410,7 +330,32 @@
     }
 }
 
-\NewDocumentCommand{\Prob}{m o}{
+
+\ProvideDocumentCommand{\Abs}{m}{
+    \left\vert {#1} \right\vert
+}
+
+\ProvideDocumentCommand{\Norm}{m O{2}}{
+    \left\Vert {#1} \right\Vert_{#2}
+}
+
+\ProvideDocumentCommand{\OrderOf}{m}{
+    \ensuremath{\BigO \left(#1\right)}
+}
+
+\ProvideDocumentCommand{\OmegaOf}{m}{
+    \ensuremath{\Omega \left(#1\right)}
+}
+
+\ProvideDocumentCommand{\ThetaOf}{m}{
+    \ensuremath{\Theta \left(#1\right)}
+}
+
+\ProvideDocumentCommand{\LittleO}{m}{
+    \ensuremath{\Littleo \left(#1\right)}
+}
+
+\ProvideDocumentCommand{\Prob}{m o}{
     \IfValueTF{#2}{
         \Pr \left(#1 \Given #2\right)
     }{
@@ -418,15 +363,15 @@
     }
 }
 
-\NewDocumentCommand{\Expected}{s m}{
+\ProvideDocumentCommand{\Expected}{s m}{
     \IfBooleanTF{#1}{
-        \E \left[#2\right]
+        \ExpectedValue \left[#2\right]
     }{
-        \E \left(#2\right)
+        \ExpectedValue \left(#2\right)
     }
 }
 
-\NewDocumentCommand{\Var}{s m}{
+\ProvideDocumentCommand{\Var}{s m}{
     \IfBooleanTF{#1}{
         \Variance \left[#2\right]
     }{
@@ -434,35 +379,12 @@
     }
 }
 
-\NewDocumentCommand{\Cov}{m m}{
+\ProvideDocumentCommand{\Cov}{m m}{
     \Covariance \left(#1, \, #2\right)
 }
 
-\NewDocumentCommand{\Abs}{m}{
-    \left\vert {#1} \right\vert
-}
 
-\NewDocumentCommand{\Norm}{m O{2}}{
-    \left\Vert {#1} \right\Vert_{#2}
-}
-
-\NewDocumentCommand{\OrderOf}{m}{
-    \BigO \left(#1\right)
-}
-
-\NewDocumentCommand{\OmegaOf}{m}{
-    \Omega \left(#1\right)
-}
-
-\NewDocumentCommand{\ThetaOf}{m}{
-    \Theta \left(#1\right)
-}
-
-\NewDocumentCommand{\LittleO}{m}{
-    \Littleo \left(#1\right)
-}
-
-\NewDocumentCommand{\Grammar}{m m >{\SplitList{,}}o}{
+\ProvideDocumentCommand{\Grammar}{m m >{\SplitList{,}}o}{
     \IfValueTF{#3}{
         \ensuremath{#1 \to #2 \ProcessList{#3}{\GrammarRule}}
     }{
@@ -470,106 +392,7 @@
     }
 }
 
-\NewDocumentCommand{\GrammarRule}{m}{
+\ProvideDocumentCommand{\GrammarRule}{m}{
     \Given #1
 }
 
-\NewDocumentCommand{\Tuple}{m m m o}{
-    \IfValueTF{#4}{
-        \ensuremath{\left({#1}_{#2}, \ldots, {#1}_{#4}, {#1}_{#4 + 1}, \ldots, {#1}_{#3}\right)}
-    }{
-        \ensuremath{\left({#1}_{#2}, \ldots, {#1}_{#3}\right)}
-    }
-}
-
-\NewDocumentCommand{\List}{s m m m}{
-    \ensuremath{{#2}_{#3}, \ldots, {#2}_{#4}}
-}
-%%-----------------------------------------------------------------------------
-
-%%---------------------------- Custom Environments ----------------------------
-%%%%-------------------------- Numbered Environments --------------------------
-\newtheoremstyle{Emphasised}{\abovedisplayshortskip}{0pt}{\itshape}{}{\bfseries}{.}{ }{\thmname{#1}\thmnumber{ #2}}
-
-\theoremstyle{Emphasised}
-\newtheorem{Proposition}{Proposizione}
-\newtheorem{Theorem}{Teorema}[section]
-\newtheorem{Corollary}{Corollario}[Theorem]
-\newtheorem{Lemma}{Lemma}[Theorem]
-
-%%%%------------------------ Non Numbered Environments ------------------------
-\newtheoremstyle{Definition*}{\abovedisplayshortskip}{0pt}{}{}{\bfseries}{:}{ }{\thmname{#1}}
-
-\theoremstyle{Definition*}
-\newtheorem{Definition*}{Definizione}
-\newtheorem{Example*}{Esempio}
-\newtheorem{Axiom*}{Assioma}
-
-\newtheoremstyle{Remark*}{0pt}{0pt}{}{}{\bfseries}{.}{ }{\thmname{#1}}
-
-\theoremstyle{Remark*}
-\newtheorem{Remark*}{Osservazione}
-\newtheorem{Note*}{Nota}
-
-\newtheoremstyle{Proof*}{0pt}{0pt}{}{\parindent}{\itshape}{:}{ }{\thmname{#1}}
-
-\theoremstyle{Proof*}
-\newtheorem{Proof*}{Dimostrazione}
-
-\newtheoremstyle{Emphasised*}{\abovedisplayshortskip}{0pt}{}{}{\bfseries}{.}{ }{\thmname{#1}\thmnote{ #3}}
-
-\theoremstyle{Emphasised*}
-\newtheorem{Algorithm*}{Algoritmo}
-\newtheorem{Theorem*}{Teorema}
-\newtheorem{Property*}{Proprietà}
-\newtheorem{Law*}{Legge}
-%%-----------------------------------------------------------------------------
-
-%%---------------------- Adjusting Existing Environments ----------------------
-\AtBeginEnvironment{tabular}{\color{black}}
-\AtBeginEnvironment{minipage}{\color{black}}
-
-\AtEndEnvironment{equation}{\label{Eq:\theequation}}
-\AtEndEnvironment{Proposition}{\label{Prop:\theProposition}}
-\AtEndEnvironment{Theorem}{\label{Thm:\theTheorem}}
-\AtEndEnvironment{Corollary}{\label{Corol:\theCorollary}}
-\AtEndEnvironment{Lemma}{\label{Lemma:\theLemma}}
-\AtEndEnvironment{Proof}{\qed}
-\AtEndEnvironment{itemize}{\noindent}
-\AtEndEnvironment{enumerate}{\noindent}
-
-\counterwithin{figure}{section}
-\renewcommand\thesubfigure{\alph{subfigure}}
-%%-----------------------------------------------------------------------------
-
-%%------------------------------- Math settings -------------------------------
-\everydisplay{\color{SkyBlue4}}
-\everymath{\color{SkyBlue4}}
-%%-----------------------------------------------------------------------------
-
-%%-------------------------- Tikz & related settings --------------------------
-\usetikzlibrary{angles, arrows.meta, quotes, patterns, calc, automata, positioning, decorations.pathmorphing, 3d}
-\lstset{
-    autogobble = true,
-    frame = single,
-    frameround = tttt,
-    mathescape,
-    basicstyle = \scriptsize,
-    linewidth = 0.75\textwidth,
-    breaklines = true,
-    xleftmargin = \parindent,
-    escapeinside={__*}{*__}
-}
-
-\lstdefinelanguage{PSEUDO}{
-    keywords = {if, then, else, for, do, while, true, false, and, AND, or, OR, not, NOT, xor, XOR},
-    keywordstyle = \bfseries
-}
-%%%----------------------------------------------------------------------------
-
-%%---------------------------- Other customization ----------------------------
-\let\oldText\text
-\let\oldToC\tableofcontents
-\renewcommand{\text}[1]{\oldText{\color{black}{ }#1{ }}}
-\renewcommand{\tableofcontents}{\oldToC \clearpage \pagestyle{fancy}}
-%%%----------------------------------------------------------------------------
