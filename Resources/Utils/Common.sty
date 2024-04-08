@@ -10,7 +10,8 @@
 %%-----------------------------------------------------------------------------
 %%------------------------ Redeclaring Existing Macros ------------------------
 %%-----------------------------------------------------------------------------
-%% None yet: possible TODO
+\let\tempText\text
+\renewcommand{\text}[1]{{\color{black}\tempText{ #1 }}}
 
 
 %%-----------------------------------------------------------------------------
@@ -24,6 +25,7 @@
 \DeclareMathOperator{\ExpectedValue}{\mathbb{E}}
 \DeclareMathOperator{\Variance}{Var}
 \DeclareMathOperator{\Covariance}{Cov}
+\DeclareMathOperator{\Biass}{Bias}
 \DeclareMathOperator{\BigO}{\mathcal{O}}
 \DeclareMathOperator{\LilO}{\mathit{o}}
 \DeclareMathOperator{\Such}{\, : \,}
@@ -381,6 +383,10 @@
 
 \ProvideDocumentCommand{\Cov}{m m}{
     \Covariance \left(#1, \, #2\right)
+}
+
+\ProvideDocumentCommand{\Bias}{m}{
+    \Biass \left(#1\right)
 }
 
 
