@@ -1,0 +1,25 @@
+\documentclass{subfiles}
+\begin{document}
+La PCA è una tecnica con funzionalità duplice, essa permette infatti di scoprire strutture a livelle multidimensionale nei dati,
+e permette inoltre di ridurre la dimensionalità dei dati.
+
+Sostanzialmente, supposta $\Sigma = X^{T}X \in \Real^{n, m}$, invece di considerare tutta la matrice,
+si considera la versione data dai suoi autovalori. Di questi, siano $\List{\lambda}{1}{m}$, si considera quello che ha il maggior contenuto informativo,
+e fatto ciò, si procede a ridurre lungo la sua direzione.
+
+\begin{Example*}
+    sia supposto uno scenario come quello in \emph{Figura \ref{sub@fig:1.a}}.
+    \subfile{../../Figure/Tikz Figure/Figura 1 - Esempio PCA.tex}
+    Eseguendo su di esso il passaggio agli autovalori (\emph{Figura \ref{sub@fig:1.b}}),
+    da cui concludendo la PCA, si ottiene \emph{Figura \ref{fig:2}}.
+    \subfile{../../Figure/Tikz Figure/Figura 2 - Effetto della PCA.tex}
+\end{Example*}
+
+Ricordando che le osservazioni della matrice possono essere visti come vettori di uno spazio $n-dimensionale$, seguono le seguenti definizioni.
+\begin{Definition*}
+    le nuove coordinate dei vettori corrispondenti le osservazioni, sono definiti \emph{scores}.
+\end{Definition*}
+\begin{Definition*}
+    i pesi che definiscono le componenti principali sono dette \emph{loadings}.
+\end{Definition*}
+\end{document}

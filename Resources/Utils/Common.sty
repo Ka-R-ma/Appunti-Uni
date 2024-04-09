@@ -26,6 +26,8 @@
 \DeclareMathOperator{\Variance}{Var}
 \DeclareMathOperator{\Covariance}{Cov}
 \DeclareMathOperator{\Biass}{Bias}
+\DeclareMathOperator{\Diag}{Diag}
+\DeclareMathOperator{\Rank}{Rank}
 \DeclareMathOperator{\BigO}{\mathcal{O}}
 \DeclareMathOperator{\LilO}{\mathit{o}}
 \DeclareMathOperator{\Such}{\, : \,}
@@ -71,6 +73,10 @@
 
 \ProvideDocumentCommand{\List}{m m m}{
     \ensuremath{{#1}_{#2}, \ldots, {#1}_{#3}}
+}
+
+\ProvideDocumentCommand{\Diagonal}{m}{
+    \Diag \left({#1}\right)
 }
 
 \ProvideDocumentCommand{\DotProd}{m m}{
@@ -355,6 +361,10 @@
 
 \ProvideDocumentCommand{\LittleO}{m}{
     \ensuremath{\Littleo \left(#1\right)}
+}
+
+\ProvideDocumentCommand{\RankOf}{m}{
+    \ensuremath{\Rank \left(#1\right)}
 }
 
 \ProvideDocumentCommand{\Prob}{m o}{

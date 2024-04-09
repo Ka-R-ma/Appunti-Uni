@@ -30,7 +30,8 @@
 %%-----------------------------------------------------------------------------
 \everydisplay{\color{SkyBlue4}}
 \everymath{\color{SkyBlue4}}
-\DeclareMathSizes{11pt}{10pt}{7.5pt}{5pt}
+\DeclareMathSizes{11pt}{10pt}{5pt}{3.5pt}
+
 
 \makeatletter
 \g@addto@macro\normalsize{%
@@ -144,8 +145,8 @@
 \AtEndEnvironment{itemize}{\noindent}
 \AtEndEnvironment{enumerate}{\noindent}
 
-\counterwithin{figure}{section}
-\renewcommand\thesubfigure{\alph{subfigure}}
+\captionsetup[subfigure]{labelformat = simple, labelsep = colon}
+\renewcommand\thesubfigure{\thefigure.\alph{subfigure}}
 
 
 %%-----------------------------------------------------------------------------
@@ -177,3 +178,9 @@
     keywords = {if, then, else, for, do, while, true, false, and, AND, or, OR, not, NOT, xor, XOR},
     keywordstyle = \bfseries
 }
+
+
+%%-----------------------------------------------------------------------------
+%%------------------------------- Other Options -------------------------------
+%%-----------------------------------------------------------------------------
+\newcommand{\sectionbreak}{\clearpage}
