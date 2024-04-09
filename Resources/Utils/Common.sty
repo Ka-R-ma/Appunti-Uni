@@ -232,6 +232,10 @@
     }
 }
 
+\ProvideDocumentCommand{\VectorBold}{m}{
+    \textbf{#1}
+}
+
 
 \ProvideDocumentCommand{\Gradient}{s m}{
     \IfBooleanTF{#1}{
@@ -343,8 +347,8 @@
     \left\vert {#1} \right\vert
 }
 
-\ProvideDocumentCommand{\Norm}{m O{2}}{
-    \left\Vert {#1} \right\Vert_{#2}
+\ProvideDocumentCommand{\Norm}{m o}{
+    \left\Vert {#1} \right\Vert_{\IfValueTF{#2}{#2}{}}
 }
 
 \ProvideDocumentCommand{\OrderOf}{m}{
