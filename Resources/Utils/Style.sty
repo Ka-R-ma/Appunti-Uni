@@ -10,6 +10,7 @@
 \RequirePackage{fancyhdr}
 \RequirePackage[a4paper, left = 72pt, right = 72pt, top = 72pt, bottom = 72pt, twoside, includeall]{geometry}
 \RequirePackage[explicit, compact]{titlesec}
+\RequirePackage{titletoc}
 \RequirePackage{amssymb}
 \RequirePackage{amsthm}
 \RequirePackage{mathdots}
@@ -68,7 +69,7 @@
 \titleformat{\section}[hang]{\LARGE\bfseries}{-- {\thesection} -- }{5pt}{#1.}
 \titleformat{\subsection}[hang]{\Large\bfseries}{-- {\thesubsection} -- }{5pt}{#1.}
 \titleformat{\subsubsection}[hang]{\large\bfseries}{-- {\thesubsubsection} -- }{5pt}{#1.}
-\titleformat{\paragraph}[hang]{\normalsize\bfseries}{-- {\theparagraph} -- }{5pt}{#1.}
+\titleformat{\paragraph}[hang]{\small\bfseries}{-- {\theparagraph} -- }{5pt}{#1.}
 \titlespacing*{\section}{0pt}{2.5pt}{2.5pt}
 \titlespacing*{\subsection}{0pt}{2.5pt}{2.5pt}
 \titlespacing*{\subsubsection}{0pt}{2.5pt}{2.5pt}
@@ -76,11 +77,12 @@
 
 \setcounter{secnumdepth}{4}
 \setcounter{tocdepth}{2}
-
-\let\TOC\tableofcontents
-\renewcommand{\tableofcontents}{%
-    {\newgeometry{marginparwidth = 0pt, left = 1in, right = 1in, top = 1in, bottom = 1in, asymmetric} \thispagestyle{plain} \TOC \clearpage} \restoregeometry
-}
+%%-----------------------------------------------------------------------------
+%%-------------------------------- TOC Options --------------------------------
+%%-----------------------------------------------------------------------------
+\titlecontents{section}[1.25pt]{}{-- {\thecontentslabel} --\hspace{2.5pt}\large}{}{\titlerule*[0.75pc]{.}\contentspage}
+\titlecontents{subsection}[28.5pt]{}{-- {\thecontentslabel} --\hspace{2.5pt}\small}{}{\titlerule*[0.75pc]{.}\contentspage}
+% \titlecontents{subsubsection}[65.25pt]{}{-- {\thecontentslabel} --\hspace{2.5pt}\footnotesize}{}{\titlerule*[0.75pc]{.}\contentspage}
 
 %%-----------------------------------------------------------------------------
 %%---------------------------- Custom Environments ----------------------------
@@ -183,4 +185,23 @@
 %%-----------------------------------------------------------------------------
 %%------------------------------- Other Options -------------------------------
 %%-----------------------------------------------------------------------------
-\newcommand{\sectionbreak}{\clearpage}
+\RenewDocumentCommand{\maketitle}{m m m}{
+    \pagestyle{empty}
+    \newgeometry{marginparwidth = 0pt, left = 1.25in, right = 1.25in, top = 1in, bottom = 1in, asymmetric}
+    \vskip 40pt
+    \begin{center}
+        {\large\protect\textsl{\protect\MakeUppercase{#1}}}
+        {\vskip 7.5pt \normalsize\textsl{\protect\MakeUppercase{appunti a cura di: #2}}}
+        \vskip 6.75pt\noindent\rule{0.5\textwidth}{0.5pt}
+        \vskip 6.75pt
+            {\small\itshape{Università degli studi di Palermo}}
+        \vskip 1.25pt
+            {\small\itshape{a.a. #3}}
+        \vskip 3.75pt\noindent\rule{0.25\textwidth}{0.25pt}
+        \vskip 40pt
+        \tableofcontents
+    \end{center}
+
+    \restoregeometry
+    \pagestyle{fancy}
+}

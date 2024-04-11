@@ -5,7 +5,7 @@ Sebbene ne esistano altre, la tecnica che risulta di interesse è l'\emph{MSE}.
 Questi nel caso degli stimatori è definito come
 $$
     MSE(\Theta_{n}) =  \Expected*{(\Theta_{n} - \Theta)^{2}} %
-    = \underbrace{\Expected{\Theta_{n}^{2}}^{2} - \Expected{\Theta}^{2} - 2\Expected{\Theta_{n}}\Theta}_{\Bias{\Theta_{n}}} %
+    = \underbrace{\Expected{\Theta_{n}}^{2} + \Theta^{2} - 2\Expected{\Theta_{n}}\Theta}_{\Bias{\Theta_{n}}^{2}} %
     + \underbrace{\Expected{\Theta_{n}^{2}} - \Expected{\Theta_{n}}^{2}}_{\Var{\Theta_{n}}}
 $$
 \begin{Remark*}
