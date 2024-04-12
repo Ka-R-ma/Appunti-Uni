@@ -83,7 +83,7 @@
 %%-----------------------------------------------------------------------------
 \ProvideDocumentEnvironment{MarginNote}{+b}{
     \marginpar{
-        \setstretch{0.7}\footnotesize{\textbf{Nota: }#1}
+        \setstretch{0.7}\footnotesize{#1}
     }
 }{}
 
@@ -111,7 +111,6 @@
 
 \theoremstyle{Remark*}
 \newtheorem{Remark*}{Osservazione}
-\newtheorem{Note*}{Nota}
 
 \newtheoremstyle{Proof*}{0pt}{0pt}{}{\parindent}{\itshape}{:}{ }{\thmname{#1}}
 
@@ -140,10 +139,10 @@
 \AtEndEnvironment{Proof}{\qed}
 \AtEndEnvironment{itemize}{\noindent}
 \AtEndEnvironment{enumerate}{\noindent}
+\AtEndEnvironment{Definition}{}
 
 \captionsetup[subfigure]{labelformat = simple, labelsep = colon}
 \renewcommand\thesubfigure{\thefigure.\alph{subfigure}}
-
 
 %%-----------------------------------------------------------------------------
 %%-------------------------- Tikz & related settings --------------------------

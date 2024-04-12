@@ -1,25 +1,19 @@
 \documentclass{subfiles}
 \begin{document}
-La necessità di semplificare la scrittura di codice sorgente, porta alla nascita dei primi linguaggi di programmazione.
-Ciò preclude quindi un ``meccanismo'' che permetta di descrivere il come e il cosa, si possa fare con un dato linguaggio.
-E, segue banalmente, che tale meccanismo può essere definito solo con un linguaggio esistente.
-Per questa e altre ragioni, nascono i compilatori e gli interpreti.
+Con lo svilupparsi dei linguaggi di programmazione, si sono sviluppati parallelamente gli \emph{interpreti \emph{e i} compilatori}.
+Questi ultimi, la cui struttura principale è mostrata in \emph{Figura \ref{fig:1}},
+\subfile{../../Figure/Tikz Figure/Figure 1 - Struttura dei compilatori.tex}
+permettono di descrivere il come e il cosa si possa fare con il linguaggio che essi definiscono.
+Nello specifico, un compilatore converte il codice sorgente in un codice macchina \emph\textbf{equivalente},
+in aggiunta al segnalare eventuali errori.
+Per quel che riguarda gli interpreti, questi convertono istruzione per istruzione il sorgente e lo eseguono immediatamente.
+Tra i linguaggi di questo tipo: \emph{python, perl, ecc.}
 
-\begin{Note*}
-    sebbene non di interesse ai fini del corso, a seguito si fa una breve digressione sugli interpreti.
-\end{Note*}
-A partire dal codice sorgente, un interprete converte, istruzione per istruzione, il sorgente che è immediatamente eseguito.
-Linguaggi di questo tipo sono \emph{python, perl, ecc}.
-\\ \\
-Parlando ora dei compilatori, questi convertono il source-code in un codice macchina \emph{\textbf{equivalente}}.
-Ulteriore compito dei compilatori è quello di segnalare eventuali errori.
+\begin{Remark*}
+    La struttura di \emph{Figura \ref{fig:1}}, è limitata alle fasi di interesse del corso; a seguire la fase di analisi sintattica,
+    vi sono delle ulteriori fasi che non risultano di interesse.
+\end{Remark*}
 
-\begin{Note*}
-    esistono linguaggi (eg. JAVA) che fanno uso di compilatori ibridi: ossia compilatori che implementano sia la compilazione,
-    sia l'interpretazione del sorgente.
-\end{Note*}
-
-\subsection{Struttura di un compilatore}
-\subfile{../Livello II/Sottosezione 1.1 - Struttura di un compilatore.tex}
-\clearpage
+\subsection{Richiami alle RegEx e alle grammatiche}
+\subfile{../Livello II/Sottosezione 1.1 - Richiami alle espressioni regolari e alle grammatiche.tex}
 \end{document}
