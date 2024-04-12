@@ -35,11 +35,12 @@
 
 
 \makeatletter
-\g@addto@macro\normalsize{%
-    \setlength\abovedisplayskip{6.75 pt}
-    \setlength\belowdisplayskip{6.75 pt}
-    \setlength\abovedisplayshortskip{2.5pt}
-    \setlength\belowdisplayshortskip{2.5pt}
+\AtBeginDocument{
+    \setlength{\jot}{5pt}
+    \setlength{\abovedisplayskip}{10pt}
+    \setlength{\belowdisplayskip}{10pt}
+    \setlength{\abovedisplayshortskip}{5pt}
+    \setlength{\belowdisplayshortskip}{5pt}
 }
 \makeatother
 
@@ -83,14 +84,14 @@
 %%-----------------------------------------------------------------------------
 \ProvideDocumentEnvironment{MarginNote}{+b}{
     \marginpar{
-        \setstretch{0.7}\footnotesize{#1}
+        \setstretch{0.7}\footnotesize{\textit{#1}}
     }
 }{}
 
 %%-----------------------------------------------------------------------------
 %%%%-------------------------- Numbered Environments --------------------------
 %%-----------------------------------------------------------------------------
-\newtheoremstyle{Emphasised}{\abovedisplayshortskip}{0pt}{\itshape}{}{\bfseries}{.}{ }{\thmname{#1}\thmnumber{ #2}}
+\newtheoremstyle{Emphasised}{7.5pt}{7.5pt}{\itshape}{}{\bfseries}{.}{ }{\thmname{#1}\thmnumber{ #2}}
 
 \theoremstyle{Emphasised}
 \newtheorem{Proposition}{Proposizione}
@@ -100,7 +101,7 @@
 %%-----------------------------------------------------------------------------
 %%%%------------------------ Non-Numbered Environments ------------------------
 %%-----------------------------------------------------------------------------
-\newtheoremstyle{Definition*}{\abovedisplayshortskip}{0pt}{}{}{\bfseries}{:}{ }{\thmname{#1}}
+\newtheoremstyle{Definition*}{7.5pt}{7.5pt}{}{}{\bfseries}{:}{ }{\thmname{#1}}
 
 \theoremstyle{Definition*}
 \newtheorem{Definition*}{Definizione}
@@ -117,7 +118,7 @@
 \theoremstyle{Proof*}
 \newtheorem{Proof*}{Dimostrazione}
 
-\newtheoremstyle{Emphasised*}{\abovedisplayshortskip}{0pt}{}{}{\bfseries}{.}{ }{\thmname{#1}\thmnote{ #3}}
+\newtheoremstyle{Emphasised*}{7.5pt}{7.5pt}{}{}{\bfseries}{.}{ }{\thmname{#1}\thmnote{ #3}}
 
 \theoremstyle{Emphasised*}
 \newtheorem{Algorithm*}{Algoritmo}

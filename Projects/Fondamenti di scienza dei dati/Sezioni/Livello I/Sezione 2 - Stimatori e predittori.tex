@@ -12,27 +12,29 @@ Di questi, supposto $\Theta_{n} \text{uno stimatore,} \Theta$ il valore da stima
 \begin{itemize}
     \item \emph{gli stimatori polarizzati:} ossia stimatori tali che
           $$
-              \Expected{\Theta_{n}} - \Theta \neq 0
+              \Expected{\Theta_{n}} - \Theta \neq 0.
           $$
           Cioè, lo stimatore commette un certo errore nell'approssimare $\Theta$;
 
     \item \emph{gli stimatori non-polarizzati:} si tratta di stimatori tali che
           $$
-              \Expected{\Theta_{n}} - \Theta = 0
+              \Expected{\Theta_{n}} - \Theta = 0.
           $$
-          \begin{Remark*}
-              Se si verifica che
-              $$
-                  \Lim{n}{\infty}{\Expected{\Theta_{n}}} = \Theta
-              $$
-              si dirà che $\Theta_{n}$ è uno stimatore asintoticamente non-polarizzato.
-          \end{Remark*}
+          Ossia, nell'approssimare $\Theta$ non si commette alcun errore.
 \end{itemize}
+\begin{Remark*}
+    Se si verifica che
+    $$
+        \Lim{n}{\infty}{\Expected{\Theta_{n}}} = \Theta
+    $$
+    si dirà che $\Theta_{n}$ è uno stimatore asintoticamente non-polarizzato.
+\end{Remark*}
 Ulteriori caratteristiche degli stimatori sono la correttezza e la coerenza, nello specifico
 $$\begin{aligned}
         \Theta_{n} \text{corretto} & \iff \Expected{\Theta_{n}} = \Theta        \\
         \Theta_{n} \text{coerente} & \iff \Lim{n}{\infty}{\Var{\Theta_{n}}} = 0
     \end{aligned}$$
+ovviamente un buon stimatore sarà sia corretto che coerente.
 \begin{Definition*}
     un predittore è un algoritmo della forma
     $$
@@ -41,6 +43,7 @@ $$\begin{aligned}
     che permette di stimare la funzione $f$ sulla base dei dati di addestramento $x$.
 \end{Definition*}
 Segue dalla definizione che, affinché $y$ sia buona, l'errore $\varepsilon$ deve essere minimo.
+\clearpage
 
 \subsection{MSE e bias-variance decomposition}
 \subfile{../Livello II/Sottosezione 2.1 - MSE e BVD.tex}
