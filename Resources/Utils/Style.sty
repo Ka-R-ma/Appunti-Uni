@@ -77,12 +77,6 @@
 
 \setcounter{secnumdepth}{4}
 \setcounter{tocdepth}{2}
-%%-----------------------------------------------------------------------------
-%%-------------------------------- TOC Options --------------------------------
-%%-----------------------------------------------------------------------------
-\titlecontents{section}[1.25pt]{}{-- {\thecontentslabel} --\hspace{2.5pt}\large}{}{\titlerule*[0.75pc]{.}\contentspage}
-\titlecontents{subsection}[28.5pt]{}{-- {\thecontentslabel} --\hspace{2.5pt}\small}{}{\titlerule*[0.75pc]{.}\contentspage}
-% \titlecontents{subsubsection}[65.25pt]{}{-- {\thecontentslabel} --\hspace{2.5pt}\footnotesize}{}{\titlerule*[0.75pc]{.}\contentspage}
 
 %%-----------------------------------------------------------------------------
 %%---------------------------- Custom Environments ----------------------------
@@ -198,8 +192,9 @@
         \vskip 1.25pt
             {\small\itshape{a.a. #3}}
         \vskip 3.75pt\noindent\rule{0.25\textwidth}{0.25pt}
-        \vskip 40pt
+        \clearpage
         \tableofcontents
+        \clearpage
     \end{center}
 
     \restoregeometry
