@@ -1,12 +1,67 @@
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesPackage{Style}
+\ProvidesClass{ClassNotes}
+
+%--------------------------------------------------------------------------------------------------
+%------------------------------------ Delaring class options --------------------------------------
+%--------------------------------------------------------------------------------------------------
+
+%% Language
+\DeclareOption{english}{
+    \newcommand{\notes@lang}{english}
+    \newcommand{\notes@theoremname}{Theorem}
+    \newcommand{\notes@propositionname}{Proposition}
+    \newcommand{\notes@corollaryname}{Corollary}
+    \newcommand{\notes@lemmaname}{Lemma}
+    \newcommand{\notes@definitionname}{Definition}
+    \newcommand{\notes@examplename}{Example}
+    \newcommand{\notes@axiomname}{Axiom}
+    \newcommand{\notes@remarkname}{Remark}
+    \newcommand{\notes@proofname}{Proof}
+    \newcommand{\notes@propertyname}{Property}
+    \newcommand{\notes@lawname}{Law}
+}
+
+\DeclareOption{italian}{
+    \newcommand{\notes@lang}{italian}
+    \newcommand{\notes@theoremname}{Teorema}
+    \newcommand{\notes@propositionname}{Proposizione}
+    \newcommand{\notes@corollaryname}{Corollario}
+    \newcommand{\notes@lemmaname}{Lemma}
+    \newcommand{\notes@definitionname}{Definizione}
+    \newcommand{\notes@examplename}{Esempio}
+    \newcommand{\notes@axiomname}{Assioma}
+    \newcommand{\notes@remarkname}{Osservazione}
+    \newcommand{\notes@proofname}{Dimostrazione}
+    \newcommand{\notes@propertyname}{Propietà}
+    \newcommand{\notes@lawname}{Legge}
+}
+
+%% Sides
+\DeclareOption{oneside}{\newcommand{\notes@sides}{oneside}}
+\DeclareOption{twoside}{\newcommand{\notes@sides}{twoside}}
+
+%% Columns
+\DeclareOption{onecolumn}{\newcommand{\notes@columns}{onecolumn}}
+\DeclareOption{twocolumn}{\newcommand{\notes@columns}{twocolumn}}
+
+%% Text size
+\DeclareOption{10pt}{\newcommand{\notes@textsize}{10pt}}
+\DeclareOption{11pt}{\newcommand{\notes@textsize}{11pt}}
+\DeclareOption{12pt}{\newcommand{\notes@textsize}{12pt}}
+
+\ProcessOptions
+\LoadClass[a4paper,
+    \ifdefined\notes@textsize \notes@textsize\else 11pt\fi,
+    \ifdefined\notes@columns \notes@columns\else onecolumn\fi,
+    \ifdefined\notes@sides \notes@sides\else oneside\fi]{article}
 
 %%-----------------------------------------------------------------------------
 %%------------------------------- Packages List -------------------------------
 %%-----------------------------------------------------------------------------
 \RequirePackage[usernames, x11names]{xcolor}
+\RequirePackage[\ifdefined\notes@lang \notes@lang\else italian\fi]{babel}
+\RequirePackage{../../../Resources/Utils/Common}
 \RequirePackage[hidelinks]{hyperref}
-\RequirePackage[italian]{babel}
 \RequirePackage{fancyhdr}
 \RequirePackage[a4paper, left = 72pt, right = 72pt, top = 72pt, bottom = 72pt, twoside, includeall]{geometry}
 \RequirePackage[explicit, compact]{titlesec}
@@ -26,58 +81,6 @@
 \RequirePackage{setspace}
 \RequirePackage{subfiles}
 
-%%-----------------------------------------------------------------------------
-%%------------------------------- Math settings -------------------------------
-%%-----------------------------------------------------------------------------
-\everydisplay{\color{SkyBlue4}}
-\everymath{\color{SkyBlue4}}
-\DeclareMathSizes{11pt}{10pt}{5pt}{3.5pt}
-
-
-\makeatletter
-\AtBeginDocument{
-    \setlength{\jot}{5pt}
-    \setlength{\abovedisplayskip}{10pt}
-    \setlength{\belowdisplayskip}{10pt}
-    \setlength{\abovedisplayshortskip}{5pt}
-    \setlength{\belowdisplayshortskip}{5pt}
-}
-\makeatother
-
-%%-----------------------------------------------------------------------------
-%%-------------------------------- Page Option --------------------------------
-%%-----------------------------------------------------------------------------
-\pagestyle{fancy}
-\renewcommand{\sectionmark}[1]{\markboth{#1}{}}
-\fancyhead[LO]{\textbf{Sezione \thesection:} \leftmark}
-\fancyhead[RE]{\textbf{Sezione \thesection:} \leftmark}
-\fancyhead[LE, RO]{}
-\fancyfoot[C]{-- {\thepage} --}
-
-\setlength{\oddsidemargin}{10pt}
-\setlength{\evensidemargin}{75pt}
-\setlength{\textwidth}{371pt}
-\setlength{\topmargin}{15pt}
-\setlength{\headheight}{15pt}
-\setlength{\headsep}{15pt}
-\setlength{\marginparpush}{10pt}
-\setlength{\marginparwidth}{65pt}
-\setlength{\marginparsep}{11pt}
-\renewcommand{\headrulewidth}{0.25pt}
-\renewcommand{\footrulewidth}{0.25pt}
-\renewcommand{\headwidth}{447.25pt}
-
-\titleformat{\section}[hang]{\LARGE\bfseries}{-- {\thesection} -- }{5pt}{#1.}
-\titleformat{\subsection}[hang]{\Large\bfseries}{-- {\thesubsection} -- }{5pt}{#1.}
-\titleformat{\subsubsection}[hang]{\large\bfseries}{-- {\thesubsubsection} -- }{5pt}{#1.}
-\titleformat{\paragraph}[hang]{\small\bfseries}{-- {\theparagraph} -- }{5pt}{#1.}
-\titlespacing*{\section}{0pt}{2.5pt}{2.5pt}
-\titlespacing*{\subsection}{0pt}{2.5pt}{2.5pt}
-\titlespacing*{\subsubsection}{0pt}{2.5pt}{2.5pt}
-\titlespacing*{\paragraph}{0pt}{2.5pt}{2.5pt}
-
-\setcounter{secnumdepth}{4}
-\setcounter{tocdepth}{2}
 
 %%-----------------------------------------------------------------------------
 %%---------------------------- Custom Environments ----------------------------
@@ -160,7 +163,7 @@
     backgrounds,
     fit,
     petri,
-babel
+    babel
 }
 \lstset{
     autogobble = true,
@@ -198,9 +201,63 @@ babel
         \vskip 3.75pt\noindent\rule{0.25\textwidth}{0.25pt}
         \clearpage
         \tableofcontents
-        \clearpage
     \end{center}
+    \clearpage
+    \setcounter{page}{1}
 
     \restoregeometry
     \pagestyle{fancy}
 }
+
+%%-----------------------------------------------------------------------------
+%%------------------------------- Math settings -------------------------------
+%%-----------------------------------------------------------------------------
+\everydisplay{\ifmmode \color{SkyBlue4} \fi}
+\everymath{\color{SkyBlue4}}
+\DeclareMathSizes{11pt}{10pt}{5pt}{3.5pt}
+
+
+\makeatletter
+\AtBeginDocument{
+    \setlength{\jot}{5pt}
+    \setlength{\abovedisplayskip}{10pt}
+    \setlength{\belowdisplayskip}{10pt}
+    \setlength{\abovedisplayshortskip}{5pt}
+    \setlength{\belowdisplayshortskip}{5pt}
+}
+\makeatother
+
+%%-----------------------------------------------------------------------------
+%%-------------------------------- Page Option --------------------------------
+%%-----------------------------------------------------------------------------
+\pagestyle{fancy}
+\renewcommand{\sectionmark}[1]{\markboth{#1}{}}
+\fancyhead[LO]{\textbf{Sezione \thesection:} \leftmark}
+\fancyhead[RE]{\textbf{Sezione \thesection:} \leftmark}
+\fancyhead[LE, RO]{}
+\fancyfoot[C]{-- {\thepage} --}
+
+\setlength{\oddsidemargin}{10pt}
+\setlength{\evensidemargin}{75pt}
+\setlength{\textwidth}{371pt}
+\setlength{\topmargin}{15pt}
+\setlength{\headheight}{15pt}
+\setlength{\headsep}{15pt}
+\setlength{\marginparpush}{10pt}
+\setlength{\marginparwidth}{65pt}
+\setlength{\marginparsep}{11pt}
+\renewcommand{\headrulewidth}{0.25pt}
+\renewcommand{\footrulewidth}{0.25pt}
+\renewcommand{\headwidth}{447.25pt}
+
+\titleformat{\section}[hang]{\LARGE\bfseries}{-- {\thesection} -- }{5pt}{#1.}
+\titleformat{\subsection}[hang]{\Large\bfseries}{-- {\thesubsection} -- }{5pt}{#1.}
+\titleformat{\subsubsection}[hang]{\large\bfseries}{-- {\thesubsubsection} -- }{5pt}{#1.}
+\titleformat{\paragraph}[hang]{\small\bfseries}{-- {\theparagraph} -- }{5pt}{#1.}
+\titlespacing*{\section}{0pt}{2.5pt}{2.5pt}
+\titlespacing*{\subsection}{0pt}{2.5pt}{2.5pt}
+\titlespacing*{\subsubsection}{0pt}{2.5pt}{2.5pt}
+\titlespacing*{\paragraph}{0pt}{2.5pt}{2.5pt}
+
+\setcounter{secnumdepth}{4}
+\setcounter{tocdepth}{2}
