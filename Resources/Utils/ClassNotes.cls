@@ -97,37 +97,36 @@
 \newtheoremstyle{Emphasised}{7.5pt}{7.5pt}{\itshape}{}{\bfseries}{.}{ }{\thmname{#1}\thmnumber{ #2}}
 
 \theoremstyle{Emphasised}
-\newtheorem{Proposition}{Proposizione}
-\newtheorem{Theorem}{Teorema}[section]
-\newtheorem{Corollary}{Corollario}[Theorem]
-\newtheorem{Lemma}{Lemma}[Theorem]
+\newtheorem{Proposition}{\notes@propositionname}
+\newtheorem{Theorem}{\notes@theoremname}[section]
+\newtheorem{Corollary}{\notes@corollaryname}[Theorem]
+\newtheorem{Lemma}{\notes@lemmaname}[Theorem]
 %%-----------------------------------------------------------------------------
 %%%%------------------------ Non-Numbered Environments ------------------------
 %%-----------------------------------------------------------------------------
 \newtheoremstyle{Definition*}{7.5pt}{7.5pt}{}{}{\bfseries}{:}{ }{\thmname{#1}}
 
 \theoremstyle{Definition*}
-\newtheorem{Definition*}{Definizione}
-\newtheorem{Example*}{Esempio}
-\newtheorem{Axiom*}{Assioma}
+\newtheorem{Definition*}{\notes@definitionname}
+\newtheorem{Example*}{\notes@examplename}
+\newtheorem{Axiom*}{\notes@axiomname}
 
 \newtheoremstyle{Remark*}{0pt}{0pt}{}{}{\bfseries}{.}{ }{\thmname{#1}}
 
 \theoremstyle{Remark*}
-\newtheorem{Remark*}{Osservazione}
+\newtheorem{Remark*}{\notes@remarkname}
 
 \newtheoremstyle{Proof*}{0pt}{0pt}{}{\parindent}{\itshape}{:}{ }{\thmname{#1}}
 
 \theoremstyle{Proof*}
-\newtheorem{Proof*}{Dimostrazione}
+\newtheorem{Proof*}{\notes@proofname}
 
 \newtheoremstyle{Emphasised*}{7.5pt}{7.5pt}{}{}{\bfseries}{.}{ }{\thmname{#1}\thmnote{ #3}}
 
 \theoremstyle{Emphasised*}
-\newtheorem{Algorithm*}{Algoritmo}
-\newtheorem{Theorem*}{Teorema}
-\newtheorem{Property*}{Proprietà}
-\newtheorem{Law*}{Legge}
+\newtheorem{Theorem*}{\notes@theoremname}
+\newtheorem{Property*}{\notes@propertyname}
+\newtheorem{Law*}{\notes@lawname}
 
 %%-----------------------------------------------------------------------------
 %%---------------------- Adjusting Existing Environments ----------------------
@@ -166,15 +165,17 @@
     babel
 }
 \lstset{
+    tabsize = 4,
     autogobble = true,
     frame = single,
     frameround = tttt,
     mathescape,
     basicstyle = \scriptsize,
-    linewidth = 0.75\textwidth,
+    linewidth = 0.55\textwidth,
     breaklines = true,
     xleftmargin = \parindent,
-    escapeinside={__*}{*__}
+    escapeinside={__*}{*__},
+    frameshape = {YNNYNN}{nn}{nn}{NNYNNY}
 }
 
 \lstdefinelanguage{PSEUDO}{
