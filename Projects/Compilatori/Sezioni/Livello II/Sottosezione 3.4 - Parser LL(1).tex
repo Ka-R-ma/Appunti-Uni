@@ -6,26 +6,22 @@ effettuando derivazioni sinistre sulla base dei k simboli successivi.
 Considerando il parser in se, questi deve la propria efficacia alla costruzione di una matrice/tabella, strutturata come segue:
 \begin{itemize}
     \item ogni carattere non-terminale rappresenta una riga della tabella, i terminali le colonne;
-    \item a partire dall'assioma, per ogni regola del tipo \(\Grammar{X}{\gamma}\) tale per cui \(\gamma \Derivation tB\),
-          è inserita in posizione \((X, t)\);
+    \item a partire dall'assioma, per ogni regola del tipo $\Grammar{X}{\gamma}$ tale per cui $\gamma \Derivation tB$,
+          è inserita in posizione $(X, t)$;
 
-    \item ogni regola del tipo \(\Grammar{X}{\gamma}\) tale che \(\gamma \Derivation \varepsilon\),
-          è inserita in \((X, t), \forall t \Such S \Derivation \beta X t a\).
+    \item ogni regola del tipo $\Grammar{X}{\gamma}$ tale che $\gamma \Derivation \varepsilon$,
+          è inserita in $(X, t), \forall t \Such S \Derivation \beta X t a$.
 \end{itemize}
-
-\begin{Note*}
-    le ultime due ``regole'' sono implementate tramite le funzioni \lstinline{FIRST} e \lstinline{FOLLOW}, descritte nel seguito.
-\end{Note*}
 
 \subsubsection{FIRST}
 \subfile{../Livello III/Sottosottosezione 3.4.1 - First.tex}
-
+\clearpage
 \subsubsection{FOLLOW}
 \subfile{../Livello III/Sottosottosezione 3.4.2 - Follow.tex}
-\clearpage
-\subsubsection{Costruzione della tabella}
-\subfile{../Livello III/Sottosottosezione 3.4.3 - Costruzione della tabella.tex}
 
 \subsubsection{Grmmatiche LL(1) e loro parsing}
-\subfile{../Livello III/Sottosottosezione 3.4.4 - Grammatiche LL(1) e loro parsing.tex}
+\subfile{../Livello III/Sottosottosezione 3.4.3 - Grammatiche LL(1) e loro parsing.tex}
+
+\subsubsection{Costruzione della tabella}
+\subfile{../Livello III/Sottosottosezione 3.4.4 - Costruzione della tabella.tex}
 \end{document}

@@ -171,7 +171,7 @@
     frameround = tttt,
     mathescape,
     basicstyle = \scriptsize,
-    linewidth = 0.55\textwidth,
+    linewidth = \textwidth,
     breaklines = true,
     xleftmargin = \parindent,
     escapeinside={__*}{*__},

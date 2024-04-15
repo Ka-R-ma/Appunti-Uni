@@ -9,11 +9,11 @@
 Lavorando con le immagini potrebbe essere necessario dover modificare le stesse in qualche modo: accentuando i dettagli o evidenziandone i contorni; ma come fare ciò?
 La risposta: tramite l'applicazione di \emph{filtri}, suddivisi in \emph{convolutivi} e non.
 Prima di parlare di tali filtri è però opportuno dare una definizione di convoluzione\footnotemark[2].
-Sia \(I\) un'immagine e sia \(K\) una matrice NxM, detta kernel\footnotemark[3], i cui valori fungono da pesi per l'operazione.
+Sia $I$ un'immagine e sia $K$ una matrice NxM, detta kernel\footnotemark[3], i cui valori fungono da pesi per l'operazione.
 Per assicurare che non vi sia perdita di informazione il kernel è normalizzato.
-Il processo di convoluzione sovrappone \(K\) ad \(I\), effettua un prodotto punto-punto tra gli elementi del kernel e quelli sottostanti ad esso nell'immagine,
-e di questi ne calcola la somma \(t\). Successivamente in una nuova immagine, sia questa \(I'\), nelle coordinate puntate dall'elemento centrale del kernel,
-si aggiunge un pixel il cui livello di grigio è esattamente \(t\).
+Il processo di convoluzione sovrappone $K$ ad $I$, effettua un prodotto punto-punto tra gli elementi del kernel e quelli sottostanti ad esso nell'immagine,
+e di questi ne calcola la somma $t$. Successivamente in una nuova immagine, sia questa $I'$, nelle coordinate puntate dall'elemento centrale del kernel,
+si aggiunge un pixel il cui livello di grigio è esattamente $t$.
 
 \subsection{Filtro di convoluzione blur}
 \subfile{../Livello II/Sottosezione 3.1 - Filtro di convoluzione blur.tex}

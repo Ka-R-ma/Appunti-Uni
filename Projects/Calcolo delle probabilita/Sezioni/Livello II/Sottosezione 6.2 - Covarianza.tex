@@ -1,22 +1,22 @@
 \documentclass{subfiles}
 \begin{document}
-Siano \(X, Y\) due numeri aleatori. La covarianza misura il grado di variabilità reciproca tra i due.
-Ossia quanto \(X\) varia in funzione di \(Y\) e viceversa.
+Siano $X, Y$ due numeri aleatori. La covarianza misura il grado di variabilità reciproca tra i due.
+Ossia quanto $X$ varia in funzione di $Y$ e viceversa.
 Segue dunque dalla definizione di varianza
-\[\begin{aligned}
+$$\begin{aligned}
         \Var{X + Y} & = \Expected*{(X + y) - (\mu_{X} + \mu_{Y})}                      \\
                     & = \Var{X} + \Var{Y} + 2\Expected*{(X - \mu_{X}) + (Y - \mu_{Y})} \\
                     & = \Var{X} + \Var{Y} + 2 \Cov{X}{Y}
-    \end{aligned}\]
+    \end{aligned}$$
 \begin{Remark*}
     Dalla definizione di valore atteso, segue
-    \[\begin{aligned}
+    $$\begin{aligned}
             \Cov{X}{Y} & = 2\Expected*{(X - \mu_{X}) + (Y - \mu_{Y})} \\
                        & =\Expected{XY} - \Expected{X}\Expected{Y}
-        \end{aligned}\]
+        \end{aligned}$$
 \end{Remark*}
 \begin{Note*}
-    Se \(\Cov{X}{Y} = 0\) allora si dirà che \(X, Y\) sono incorrelati.
+    Se $\Cov{X}{Y} = 0$ allora si dirà che $X, Y$ sono incorrelati.
 \end{Note*}
 
 \subsubsection{Coefficiente di correlazione}

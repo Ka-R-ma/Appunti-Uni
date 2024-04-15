@@ -1,32 +1,32 @@
 \documentclass{subfiles}
 \begin{document}
-Sia \(\Sequence{X_{n}}\) una successione di numeri aleatori,
+Sia $\Sequence{X_{n}}$ una successione di numeri aleatori,
 la \emph{convergenza} cerca di stabilire se tale successione possa convergere, in termini probabilistici,
-ad un qualche numero aleatorio \(X\) con una qualche distribuzione di probabilità.
-Cioè, considerato \(B \subset \Real\), (in genere si considera la classe Borel \(\Borel \subset \Real\)), si deve verificare
-\[
+ad un qualche numero aleatorio $X$ con una qualche distribuzione di probabilità.
+Cioè, considerato $B \subset \Real$, (in genere si considera la classe Borel $\Borel \subset \Real$), si deve verificare
+$$
     \Lim{n}{\infty}{\Prob{X_{n} \in B}} = \Prob{X \in B}, \forall B \subset \Borel
-\]
+$$
 Inoltre, dato il legame tra funzione di ripartizione e numeri aleatori,
-se \(\Sequence{F_{n}}\) è una successione di funzioni di ripartizione di una successione di numeri aleatori \(\Sequence{X_{n}}\), allora
-\[
+se $\Sequence{F_{n}}$ è una successione di funzioni di ripartizione di una successione di numeri aleatori $\Sequence{X_{n}}$, allora
+$$
     \Lim{n}{\infty}{\Prob{X_{n} \in B}} = \Prob{X \in B}, \forall B \subset \Borel   \iff \Lim{n}{\infty}{F_{n}(x)} = F(x), \forall B \subset \Borel, x \in \Real
-\]
-con \(F(x)\) funzione di ripartizione del numero aleatori con distribuzione limite.
+$$
+con $F(x)$ funzione di ripartizione del numero aleatori con distribuzione limite.
 \begin{Definition*}
-    una successione di funzioni di ripartizione \(\Sequence{F_{n}}\) convergere a una distribuzione limite se
-    \[
+    una successione di funzioni di ripartizione $\Sequence{F_{n}}$ convergere a una distribuzione limite se
+    $$
         \exists F_{X}(x) \Such \Lim{n}{\infty}{F_{n}(x)} = F_{X}(x), \text{per ogni punto di} F_{X}
-    \]
-    Si scriverà \(F_{n} \to F_{X}\)
+    $$
+    Si scriverà $F_{n} \to F_{X}$
 \end{Definition*}
 
 \begin{Theorem*}[di convergenza in distribuzione e funzione caratteristica]
-    Sia \(\varphi\) funzione caratteristica di \(F_{X}\), allora la successione di funzioni di ripartizione \(\Sequence{F_{n}}\) converge ad \(F_{X}\)
-    se e solo se la successione \(\Sequence{\varphi_{n}}\) di funzioni caratteristiche corrispondenti tendono a \(\varphi\). Cioè
-    \[
+    Sia $\varphi$ funzione caratteristica di $F_{X}$, allora la successione di funzioni di ripartizione $\Sequence{F_{n}}$ converge ad $F_{X}$
+    se e solo se la successione $\Sequence{\varphi_{n}}$ di funzioni caratteristiche corrispondenti tendono a $\varphi$. Cioè
+    $$
         F_{n} \to F_{X} \iff \varphi_{n} \to \varphi
-    \]
+    $$
 \end{Theorem*}
 \begin{Note*}
     Questo risultato, permette la dimostrazione del teorema centrale del limite.

@@ -1,6 +1,6 @@
 \documentclass{subfiles}
 \begin{document}
-Come mostrato in \emph{Figura \ref{fig:1.1}}, l'analisi lessicale è la prima fase della compilazione.
+Come mostrato in \emph{Figura \ref{fig:1}}, l'analisi lessicale è la prima fase della compilazione.
 I suoi compiti sono sintetizzati a seguire.
 \begin{enumerate}
     \item Il sorgente è scansionato e da questi si compongono i \emph{lessemi}: sequenze di caratteri con un determinato significato.
@@ -20,7 +20,6 @@ Per quel che riguarda lo scanner questi ha essenzialmente due compiti:
     \item costruire la symbol table;
     \item semplificare il sorgente.
 \end{itemize}
-
 Prima che ciò possa essere fatto però, è necessario, a meno che non sia stata eseguita una fase di precompilazione, che:
 \begin{itemize}
     \item vengano rimossi i commenti: come ovvio sono utili al solo programmatore, dunque, per alleggeri l'eseguibile, si procede alla loro rimozione;
@@ -29,17 +28,11 @@ Prima che ciò possa essere fatto però, è necessario, a meno che non sia stata
     \item si deve tenere traccia del numero di linea: ciò è utile per la segnalazione di eventuali errori.
 \end{itemize}
 
-\begin{Note*}
-    sebbene in \emph{Figura \ref{fig:1.1}} sia mostrata come fase precedente l'analisi sintattica, più correttamente,
-    l'analisi lessicale è da intendere come una sub-routine di quella sintattica.
-\end{Note*}
-\begin{Note*}
-    per quel che riguarda l'implementazione della symbol table, ciò è generalmente realizzato con una hash table.
-\end{Note*}
-\begin{Note*}
-    per rappresentare la struttura dei token, si fa uso delle espressioni regolari.
-    Poiché si suppongono conoscenze pregresse, non saranno trattate.
-\end{Note*}
+\begin{MarginNote}
+    Sebbene in \emph{Figura \ref{fig:1}} sia mostrata come fase precedente l'analisi sintattica, più correttamente,
+    l'analisi lessicale è da intendere come una sua sub-routine.
+\end{MarginNote}
+L'implementazione della symbol table, sebbene realizzabile diversamente, in generale è realizzata tramite hash-table.
 
 \subsection{Gestione degli input}
 \subfile{../Livello II/Sottosezione 2.1 - Gestione degli input.tex}
