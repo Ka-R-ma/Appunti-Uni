@@ -2,9 +2,9 @@
 \begin{document}
 \begin{figure}[h!]
     \centering
-    \begin{subfigure}[b]{0.6\textwidth}
-        \begin{lstlisting}
-                FOLLOW(AXIOM) = __*$\Set{\text{\textdollar}}$*__;
+    \begin{subfigure}[b]{0.7125\textwidth}
+        \begin{lstlisting}[language = PSEUDO]
+                FOLLOW(AXIOM) = __*$\Set{\text{\$}}$*__;
                 for each non-terminal __*$X$*__ AND __*$X \neq AXIOM$*__ do 
                     FOLLOW(X) = __*$\varnothing$*__;
                     while there are changes to any FOLLOW do 

@@ -1,12 +1,12 @@
 \documentclass{subfiles}
 \begin{document}
-Come detto Earley accetta qualsiasi CFG, più nello specifico: data $x_{1} \ldots x_{n}$ una stringa,
+Come detto Earley accetta qualsiasi CFG, più nello specifico: data $\List{x}{1}{n}$ una stringa,
 scandendo la stessa da sinistra a destra, per ogni $x_{i}$ si costruiscono stati $S_{j}$, stati del tipo \lstinline{(dotted_rule, address)}.
 Qui \lstinline{dotted_rule} sta ad indicare una produzione della grammatica alla cui destra è posto un punto,
 per tenere traccia della posizione della ``sotto-stringa'' esaminata. Con \lstinline{address} si indica invece la posizione del punto.
 
 \begin{Example*}
-    si supponga uno stato $(A \to \alpha . \beta, i)$. Ciò sta ad indicare che si è esaminata la sola sotto-stringa $\alpha$.
+    si supponga uno stato $(\Grammar{A}{\alpha . \beta}, i)$. Ciò sta ad indicare che si è esaminata la sola sotto-stringa $\alpha$.
 \end{Example*}
 
 \noindent Si riporta di seguito lo pseudo codice per implementare Earley.

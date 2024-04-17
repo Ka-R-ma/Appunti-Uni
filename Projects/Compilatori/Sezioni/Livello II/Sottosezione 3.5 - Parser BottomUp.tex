@@ -3,7 +3,7 @@
 Un parser ascendente (o bottom-up), è un parser che a partire dalla stringa di input, tenta di risalire all'assioma.
 La definizione di ``bottom-up'', deriva dal fatto che la costruzione dell'albero sintattico procede dalle foglia verso la radice.
 
-\begin{Note*}
+\begin{Remark*}
     Tutti i parser bottom-up procedono cercando  derivazioni right-most della grammatica.
 
     \begin{Example*}
@@ -17,7 +17,6 @@ La definizione di ``bottom-up'', deriva dal fatto che la costruzione dell'albero
         Osservando la stringa in input si nota che
         $$\begin{aligned}
                   & int + (int + int + int) \\
-                = & T + (int + int + int)   \\
                 = & E + (int + int + int)   \\
                 = & E + (E + int + int)     \\
                 = & E + (E + T + int)       \\
@@ -29,11 +28,14 @@ La definizione di ``bottom-up'', deriva dal fatto che la costruzione dell'albero
             \end{aligned}$$
         per cui si conclude, essendo risaliti all'assioma, che la stringa è derivabile.
     \end{Example*}
-\end{Note*}
+\end{Remark*}
 
 \subsubsection{Parser shift-reduce}
 \subfile{../Livello III/Sottosottosezione 3.5.1 - Parser shiftReduce.tex}
 
 \subsubsection{Grammatiche LR e parsing LR(k)}
 \subfile{../Livello III/Sottosottosezione 3.5.2 - Grammatiche LR e parsing LR(k).tex}
+
+\subsubsection{Altri parser SR}
+\subfile{../Livello III/Sottosottosezione 3.5.3 - Altri parser SR.tex}
 \end{document}
