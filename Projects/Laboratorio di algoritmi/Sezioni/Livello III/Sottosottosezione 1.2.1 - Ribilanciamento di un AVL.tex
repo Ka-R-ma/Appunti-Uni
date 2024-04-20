@@ -1,0 +1,15 @@
+\documentclass{subfiles}
+\begin{document}
+Alla base del processo di bilanciamento vi sono le operazioni di rotazione a sinistra e a destra.
+Per comprendere l'operazione di rotazione, si consideri \emph{Figura \ref{sub@Fig:1.a}}, come si osserva, \(u\) sbilancia l'albero avendo due figli di altezza \(a + 1\);
+in questo caso è necessario effettuare una rotazione a destra (\emph{Figura \ref{sub@Fig:1.b}}) ossia si rende \(u\) la nuova radice,
+e si rende \(T_{2}\) figlio sinistro di \(v\) bilanciando cosi l'albero. L'operazione appena descritta prende il nome di rotazione destra-destra,
+a questa si aggiungono la rotazione sinistra-sinistra (simmetrica alla rotazione destra-destra) e le rotazioni sinistra-destra, destra-sinistra tra loro simmetriche.
+
+\subfile{../../Figure/Tikz Figure/Figure 1 - Operazioni di rotazione degli AVL.tex}
+\begin{Remark*}
+    Nel caso di rotazioni sinistra-sinistra (destra-destra equivalentemente) si dimostra sufficiente un'unica operazioni di rotazione elementare.
+\end{Remark*}
+%%TODO: Continua con il descrivere rotazione sx-dx e/o viceversa. Completare la sezione.
+
+\end{document}
