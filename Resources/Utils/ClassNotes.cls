@@ -51,7 +51,7 @@
 
 \ProcessOptions
 \LoadClass[a4paper,
-    \ifdefined\notes@textsize \notes@textsize\else 11pt\fi,
+    \ifdefined\notes@textsize \notes@textsize\else 10pt\fi,
     \ifdefined\notes@columns \notes@columns\else onecolumn\fi,
     \ifdefined\notes@sides \notes@sides\else oneside\fi]{article}
 
@@ -77,8 +77,8 @@
 \RequirePackage{graphicx}
 \RequirePackage{wrapfig}
 \RequirePackage{caption}
+\RequirePackage{caption}
 \RequirePackage{subcaption}
-\RequirePackage{setspace}
 \RequirePackage{subfiles}
 
 
@@ -87,7 +87,7 @@
 %%-----------------------------------------------------------------------------
 \ProvideDocumentEnvironment{MarginNote}{+b}{
     \marginpar{
-        \setstretch{0.7}\footnotesize{\textit{#1}}
+        \footnotesize{\textit{#1}}
     }
 }{}
 
@@ -131,9 +131,8 @@
 %%-----------------------------------------------------------------------------
 %%---------------------- Adjusting Existing Environments ----------------------
 %%-----------------------------------------------------------------------------
-\AtBeginEnvironment{tabular}{\color{black}}
-\AtBeginEnvironment{minipage}{\color{black}}
-
+\AtBeginEnvironment{tabular}{\everymath{\color{black}}}
+\AtBeginEnvironment{minipage}{\everymath{\color{black}}}
 \AtEndEnvironment{equation}{\label{Eq:\theequation}}
 \AtEndEnvironment{Proposition}{\label{Prop:\theProposition}}
 \AtEndEnvironment{Theorem}{\label{Thm:\theTheorem}}
@@ -146,7 +145,6 @@
 
 \captionsetup[subfigure]{labelformat = simple, labelsep = colon}
 \renewcommand\thesubfigure{\thefigure.\alph{subfigure}}
-
 %%-----------------------------------------------------------------------------
 %%-------------------------- Tikz & related settings --------------------------
 %%-----------------------------------------------------------------------------
@@ -215,7 +213,7 @@
 %%-----------------------------------------------------------------------------
 \everydisplay{\ifmmode \color{SkyBlue4} \fi}
 \everymath{\color{SkyBlue4}}
-\DeclareMathSizes{11pt}{10pt}{5pt}{3.5pt}
+\DeclareMathSizes{\ifdefined\notes@textsize \notes@textsize\else 10pt\fi}{10pt}{6.5pt}{5pt}
 
 
 \makeatletter
@@ -247,9 +245,11 @@
 \setlength{\marginparpush}{10pt}
 \setlength{\marginparwidth}{65pt}
 \setlength{\marginparsep}{11pt}
+\setlength{\footskip}{17.5pt}
 \renewcommand{\headrulewidth}{0.25pt}
 \renewcommand{\footrulewidth}{0.25pt}
 \renewcommand{\headwidth}{447.25pt}
+
 
 \titleformat{\section}[hang]{\LARGE\bfseries}{-- {\thesection} -- }{5pt}{#1.}
 \titleformat{\subsection}[hang]{\Large\bfseries}{-- {\thesubsection} -- }{5pt}{#1.}

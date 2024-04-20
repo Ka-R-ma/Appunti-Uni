@@ -64,14 +64,14 @@
 
 \ProvideDocumentCommand{\Tuple}{m m m o}{
     \IfValueTF{#4}{
-        \ensuremath{\left({#1}_{#2}, \ldots, {#1}_{#4}, {#1}_{#4 + 1}, \ldots, {#1}_{#3}\right)}
+        \left({#1}_{#2}, \ldots, {#1}_{#4}, {#1}_{#4 + 1}, \ldots, {#1}_{#3}\right)
     }{
-        \ensuremath{\left({#1}_{#2}, \ldots, {#1}_{#3}\right)}
+        \left({#1}_{#2}, \ldots, {#1}_{#3}\right)
     }
 }
 
 \ProvideDocumentCommand{\List}{m m m}{
-    \ensuremath{{#1}_{#2}, \ldots, {#1}_{#3}}
+    {#1}_{#2}, \ldots, {#1}_{#3}
 }
 
 \ProvideDocumentCommand{\Diagonal}{m}{
@@ -351,23 +351,23 @@
 }
 
 \ProvideDocumentCommand{\OrderOf}{m}{
-    \ensuremath{\BigO \left(#1\right)}
+    \BigO \left(#1\right)
 }
 
 \ProvideDocumentCommand{\OmegaOf}{m}{
-    \ensuremath{\Omega \left(#1\right)}
+    \Omega \left(#1\right)
 }
 
 \ProvideDocumentCommand{\ThetaOf}{m}{
-    \ensuremath{\Theta \left(#1\right)}
+    \Theta \left(#1\right)
 }
 
 \ProvideDocumentCommand{\LittleO}{m}{
-    \ensuremath{\Littleo \left(#1\right)}
+    \Littleo \left(#1\right)
 }
 
 \ProvideDocumentCommand{\RankOf}{m}{
-    \ensuremath{\Rank \left(#1\right)}
+    \Rank \left(#1\right)
 }
 
 \ProvideDocumentCommand{\Prob}{m o}{
@@ -405,12 +405,12 @@
 
 \ProvideDocumentCommand{\Grammar}{m m >{\SplitList{,}}o}{
     \IfValueTF{#3}{
-        \ensuremath{#1 \to #2 \ProcessList{#3}{\Grammar@Rule}}
+        #1 \to #2 \ProcessList{#3}{\Grammar@Rule}
     }{
-        \ensuremath{#1 \to #2}
+        #1 \to #2
     }
 }
 
-\ProvideDocumentCommand{\Grammar@Rule}{m}{
+\NewDocumentCommand{\Grammar@Rule}{m}{
     \Given #1
 }
