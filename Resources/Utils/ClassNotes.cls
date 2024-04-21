@@ -54,18 +54,16 @@
     \ifdefined\notes@textsize \notes@textsize\else 10pt\fi,
     \ifdefined\notes@columns \notes@columns\else onecolumn\fi,
     \ifdefined\notes@sides \notes@sides\else oneside\fi]{article}
-
 %%-----------------------------------------------------------------------------
 %%------------------------------- Packages List -------------------------------
 %%-----------------------------------------------------------------------------
 \RequirePackage[usernames, x11names]{xcolor}
-\RequirePackage[\ifdefined\notes@lang \notes@lang\else italian\fi]{babel}
+\RequirePackage[\notes@lang]{babel}
 \RequirePackage{../../../Resources/Utils/Common}
 \RequirePackage[hidelinks]{hyperref}
 \RequirePackage{fancyhdr}
-\RequirePackage[a4paper, left = 72pt, right = 72pt, top = 72pt, bottom = 72pt, twoside, includeall]{geometry}
+\RequirePackage[a4paper, left = 72pt, right = 72pt, top = 72pt, bottom = 72pt, includeall]{geometry}
 \RequirePackage[explicit, compact]{titlesec}
-\RequirePackage{titletoc}
 \RequirePackage{amssymb}
 \RequirePackage{amsthm}
 \RequirePackage{mathdots}
@@ -76,7 +74,6 @@
 \RequirePackage{lstautogobble}
 \RequirePackage{graphicx}
 \RequirePackage{wrapfig}
-\RequirePackage{caption}
 \RequirePackage{caption}
 \RequirePackage{subcaption}
 \RequirePackage{subfiles}
@@ -101,6 +98,7 @@
 \newtheorem{Theorem}{\notes@theoremname}[section]
 \newtheorem{Corollary}{\notes@corollaryname}[Theorem]
 \newtheorem{Lemma}{\notes@lemmaname}[Theorem]
+
 %%-----------------------------------------------------------------------------
 %%%%------------------------ Non-Numbered Environments ------------------------
 %%-----------------------------------------------------------------------------
@@ -145,6 +143,7 @@
 
 \captionsetup[subfigure]{labelformat = simple, labelsep = colon}
 \renewcommand\thesubfigure{\thefigure.\alph{subfigure}}
+
 %%-----------------------------------------------------------------------------
 %%-------------------------- Tikz & related settings --------------------------
 %%-----------------------------------------------------------------------------
@@ -213,8 +212,7 @@
 %%-----------------------------------------------------------------------------
 \everydisplay{\ifmmode \color{SkyBlue4} \fi}
 \everymath{\color{SkyBlue4}}
-\DeclareMathSizes{\ifdefined\notes@textsize \notes@textsize\else 10pt\fi}{10pt}{6.5pt}{5pt}
-
+\DeclareMathSizes{\ifdefined\notes@textsize \notes@textsize\else 10pt\fi}{\ifdefined\notes@textsize \notes@textsize\else 10pt\fi}{6.5pt}{5pt}
 
 \makeatletter
 \AtBeginDocument{
@@ -254,7 +252,7 @@
 \titleformat{\section}[hang]{\LARGE\bfseries}{-- {\thesection} -- }{5pt}{#1.}
 \titleformat{\subsection}[hang]{\Large\bfseries}{-- {\thesubsection} -- }{5pt}{#1.}
 \titleformat{\subsubsection}[hang]{\large\bfseries}{-- {\thesubsubsection} -- }{5pt}{#1.}
-\titleformat{\paragraph}[hang]{\small\bfseries}{-- {\theparagraph} -- }{5pt}{#1.}
+\titleformat{\paragraph}[hang]{\normalsize\bfseries}{-- {\theparagraph} -- }{5pt}{#1.}
 \titlespacing*{\section}{0pt}{2.5pt}{2.5pt}
 \titlespacing*{\subsection}{0pt}{2.5pt}{2.5pt}
 \titlespacing*{\subsubsection}{0pt}{2.5pt}{2.5pt}
