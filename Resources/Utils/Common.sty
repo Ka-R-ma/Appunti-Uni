@@ -405,12 +405,14 @@
 
 \ProvideDocumentCommand{\Grammar}{m m >{\SplitList{,}}o}{
     \IfValueTF{#3}{
-        #1 \to #2 \ProcessList{#3}{\Grammar@Rule}
+        #1 \Grammar@Arrow #2 \ProcessList{#3}{\Grammar@Rule}
     }{
-        #1 \to #2
+        #1 \Grammar@Arrow #2
     }
 }
 
-\NewDocumentCommand{\Grammar@Rule}{m}{
+\newcommand{\Grammar@Rule}[1]{
     \Given #1
 }
+
+\def\Grammar@Arrow{\raisebox{.5pt}{{ }\tikz{\draw[->, >={Latex[round]}] (0pt, 5pt) -- (12.5pt, 5pt);}{ }}}
