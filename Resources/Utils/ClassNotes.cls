@@ -76,6 +76,8 @@
 \RequirePackage{wrapfig}
 \RequirePackage{caption}
 \RequirePackage{subcaption}
+\usepackage[notext]{kpfonts}
+\usepackage[T1]{fontenc}
 \RequirePackage{subfiles}
 
 
@@ -212,7 +214,7 @@
 %%-----------------------------------------------------------------------------
 \everydisplay{\ifmmode \color{SkyBlue4} \fi}
 \everymath{\color{SkyBlue4}}
-\DeclareMathSizes{\ifdefined\notes@textsize \notes@textsize\else 10pt\fi}{\ifdefined\notes@textsize \notes@textsize\else 10pt\fi}{6.5pt}{5pt}
+\DeclareMathSizes{\ifdefined\notes@textsize \notes@textsize\else 10pt\fi}{\ifdefined\notes@textsize \notes@textsize\else 10pt\fi}{5pt}{5pt}
 
 \makeatletter
 \AtBeginDocument{
