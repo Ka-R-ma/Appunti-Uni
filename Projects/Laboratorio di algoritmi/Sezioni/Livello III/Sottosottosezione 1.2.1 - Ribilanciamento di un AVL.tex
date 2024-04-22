@@ -1,15 +1,22 @@
 \documentclass{subfiles}
 \begin{document}
 Alla base del processo di bilanciamento vi sono le operazioni di rotazione a sinistra e a destra.
-Per comprendere l'operazione di rotazione, si consideri \emph{Figura \ref{sub@Fig:1.a}}, come si osserva, \(u\) sbilancia l'albero avendo due figli di altezza \(a + 1\);
-in questo caso è necessario effettuare una rotazione a destra (\emph{Figura \ref{sub@Fig:1.b}}) ossia si rende \(u\) la nuova radice,
-e si rende \(T_{2}\) figlio sinistro di \(v\) bilanciando cosi l'albero. L'operazione appena descritta prende il nome di rotazione destra-destra,
+Per comprendere tali operazioni, si faccia riferimento a \emph{Figura \ref{sub@Fig:1.a}}.
+Si supponga di aggiungere ad \(u\) un nodo, portando così a uno sbilanciamento dell'albero.
+In questo caso si dimostra sufficiente una singola rotazione a destra, a seguito della quale l'albero risulta bilanciato.
+L'operazione appena descritta prende il nome di rotazione destra-destra,
 a questa si aggiungono la rotazione sinistra-sinistra (simmetrica alla rotazione destra-destra) e le rotazioni sinistra-destra, destra-sinistra tra loro simmetriche.
 
 \subfile{../../Figure/Tikz Figure/Figure 1 - Operazioni di rotazione degli AVL.tex}
 \begin{Remark*}
     Nel caso di rotazioni sinistra-sinistra (destra-destra equivalentemente) si dimostra sufficiente un'unica operazioni di rotazione elementare.
 \end{Remark*}
-%%TODO: Continua con il descrivere rotazione sx-dx e/o viceversa. Completare la sezione.
 
+Sia ora considerato il caso di una rotazione sinistra-destra (nel caso destra-sinistra si procede invertendo l'ordine delle operazioni),
+per farlo si faccia riferimento a figura \emph{Figura \ref{sub@Fig:2.a}}.
+Si supponga che ad \(y\) si aggiunga un nodo, sbilanciando in tal modo l'albero.
+Come mostrato in \emph{Figura \ref{sub@Fig:2.b}}, una sola rotazione a sinistra non è sufficiente a bilanciare l'albero;
+\subfile{../../Figure/Tikz Figure/Figure 2 - Operazione di rotazione sinistra-destra.tex}
+a questa è infatti necessario aggiungere una rotazione a destra \emph{Figura \ref{sub@Fig:2.c}},
+portando ad un AVL bilanciato come mostrato in \emph{Figura \ref{sub@Fig:2.d}}.
 \end{document}
