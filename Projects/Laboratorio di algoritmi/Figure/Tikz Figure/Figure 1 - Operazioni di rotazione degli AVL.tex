@@ -1,21 +1,72 @@
-\documentclass{subfiles}
+\documentclass{subfiles}             %TODO: possibly optimize the code
 \begin{document}
 \begin{figure}[h!]
     \centering
     \begin{subfigure}[b]{0.475\textwidth}
         \centering
-        \begin{tikzpicture}
-            %TODO: albero binario con radice `v', sotto-albero sinistro radicato in `u' con sotto-alberi di T1, T2, di altezza k + 1; 
-            % sotto-albero destro di profondità a - 1 
+        \begin{tikzpicture}[
+                treeNode/.style={circle, minimum size=15pt, shade, top color=black!12.5, bottom color=white, draw=black},
+                subTree/.style={isosceles triangle, shape border rotate = 90, draw=black, minimum size=22.5pt},
+                every label/.style={SkyBlue4, label distance=5pt, font=\bfseries, scale=1.25},
+                legend/.style={rectangle, draw=black, scale = 0.70}
+            ]
+
+            \node [treeNode] (root) at (0pt, 0pt) [label=center:{v}] {};
+            \node [treeNode] (leftSubTree) at ($(root) - (18.75pt, 18.75pt)$) [label=center:{u}] {};
+            \node [subTree] (rightSubTree) at ($(root) + (18.75pt, -32pt)$) [label=center:{\(T_{3}\)}] {};
+
+            \node [subTree] (leftSubTreeLeft) at ($(leftSubTree) - (18.75pt, 32pt)$) [label=center:{\(T_{1}\)}] {};
+            \node [subTree] (leftSubTreeRight) at ($(leftSubTree) + (18.75pt, -32pt)$) [label=center:{\(T_{2}\)}] {};
+
+            \path (leftSubTree)
+            edge (leftSubTreeLeft.north)
+            edge (leftSubTreeRight.north);
+
+            \path (root)
+            edge (leftSubTree.north)
+            edge (rightSubTree.north);
+
+            \node (legend) [legend] at ($(root) - (90pt, 0pt)$) {\(\begin{aligned}
+                     & \text{Altezze}                   \\
+                     & v = h + 1                        \\
+                     & u = h                            \\
+                     & T_{i} = h - 1, i = \Set{1, 2, 3}
+                \end{aligned}\)};
+
         \end{tikzpicture}
         \caption{}
         \label{Fig:1.a}
     \end{subfigure}
-    \hspace{-100pt}
     \begin{subfigure}[b]{0.475\textwidth}
         \centering
-        \begin{tikzpicture}
-            %TODO: albero rappresentante rotazione destra di quanto descritto sopra.
+        \begin{tikzpicture}[
+                treeNode/.style={circle, minimum size=15pt, shade, top color=black!12.5, bottom color=white, draw=black},
+                subTree/.style={isosceles triangle, shape border rotate = 90, draw=black, minimum size=22.5pt},
+                every label/.style={SkyBlue4, label distance=5pt, font=\bfseries, scale=1.25},
+                legend/.style={rectangle, draw=black, scale = 0.70}
+            ]
+            \node (root) [treeNode] at (0pt, 0pt) [label=center:{u}] {};
+            \node (leftSubTree) [subTree] at ($(root) - (18.75pt, 32pt)$) [label=center:{\(T_{1}\)}] {};
+            \node (rightSubTree) [treeNode] at ($(root) + (18.75pt, -18.75pt)$) [label=center:{v}] {};
+
+            \node [subTree] (rightSubTreeLeft) at ($(rightSubTree) - (18.75pt, 32pt)$) [label=center:{\(T_{2}\)}] {};
+            \node [subTree] (rightSubTreeRight) at ($(rightSubTree) + (18.75pt, -32pt)$) [label=center:{\(T_{3}\)}] {};
+
+            \path (root)
+            edge (leftSubTree.north)
+            edge (rightSubTree.north);
+
+            \path (rightSubTree)
+            edge (rightSubTreeLeft.north)
+            edge (rightSubTreeRight.north);
+
+            \node (legend) [legend] at ($(root) - (70pt, 0pt)$) {\(\begin{aligned}
+                     & \text{Altezze}       \\
+                     & y = h + 1            \\
+                     & v, T_{1} = h         \\
+                     & T_{2}, T_{3} = h - 1
+                \end{aligned}\)};
+
         \end{tikzpicture}
         \caption{}
         \label{Fig:1.b}

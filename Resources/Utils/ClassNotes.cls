@@ -76,6 +76,7 @@
 \RequirePackage{wrapfig}
 \RequirePackage{caption}
 \RequirePackage{subcaption}
+\RequirePackage{nicefrac}
 \usepackage[notext]{kpfonts}
 \usepackage[T1]{fontenc}
 \RequirePackage{subfiles}
@@ -161,7 +162,8 @@
     backgrounds,
     fit,
     petri,
-    babel
+    babel,
+    trees
 }
 \lstset{
     tabsize = 4,
