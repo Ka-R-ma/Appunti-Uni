@@ -6,11 +6,11 @@ effettuando derivazioni sinistre sulla base dei k simboli successivi.
 Considerando il parser in se, questi deve la propria efficacia alla costruzione di una matrice/tabella, strutturata come segue:
 \begin{itemize}
     \item ogni carattere non-terminale rappresenta una riga della tabella, i terminali le colonne;
-    \item a partire dall'assioma, per ogni regola del tipo $\Grammar{X}{\gamma}$ tale per cui $\gamma \Derivation tB$,
-          è inserita in posizione $(X, t)$;
+    \item a partire dall'assioma, ogni regola del tipo \(\Grammar{X}{\gamma}\) tale per cui \(\gamma \Derivation tB\),
+          è inserita in posizione \((X, t)\);
 
-    \item ogni regola del tipo $\Grammar{X}{\gamma}$ tale che $\gamma \Derivation \varepsilon$,
-          è inserita in $(X, t), \forall t \Such S \Derivation \beta X t a$.
+    \item ogni regola del tipo \(\Grammar{X}{\gamma}\) tale che \(\gamma \Derivation \varepsilon\),
+          è inserita in \((X, t), \forall t \Such S \Derivation \beta X t a\).
 \end{itemize}
 
 \subsubsection{FIRST}

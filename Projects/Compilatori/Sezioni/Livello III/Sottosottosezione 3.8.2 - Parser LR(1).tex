@@ -8,10 +8,10 @@ I parser LR(1) sono un'estensione dei parser LR(0); nello specifico permettono d
 
 Circa la costruzione della tabella di parsing, questa è analoga alla costruzione dell'LR(0) con le seguenti differenze:
 \begin{itemize}
-    \item gli item sono della forma $(\Grammar{A}{\alpha . \beta}, t)$,
-          con $\Grammar{A}{\alpha . \beta}$ item LR(0) e $t$ simbolo (o sequenza di simboli nel caso di LR(k)) di lookahead;
+    \item gli item sono della forma \((\Grammar{A}{\alpha . \beta}, t)\),
+          con \(\Grammar{A}{\alpha . \beta}\) item LR(0) e \(t\) simbolo (o sequenza di simboli nel caso di LR(k)) di lookahead;
 
-    \item le operazioni di reduce $\Grammar{X}{\gamma}$ si effettuano se e solo se $\exists (\Grammar{X}{\gamma.}, t)$.
+    \item le operazioni di reduce \(\Grammar{X}{\gamma}\) si effettuano se e solo se \(\exists (\Grammar{X}{\gamma.}, t)\).
 \end{itemize}
 
 Parlando ora di LALR, questi è un'ottimizzazione di LR(1), ottimizzazione che segue da un'osservazione: se si ignorano i simboli di lookahead,

@@ -8,14 +8,14 @@ La definizione di ``bottom-up'', deriva dal fatto che la costruzione dell'albero
 
     \begin{Example*}
         sia supposta la seguente grammatica
-        $$\begin{aligned}
+        \[\begin{aligned}
                  & \Grammar{E}{E}[E + T] \\
                  & \Grammar{T}{int}[(E)]
-            \end{aligned}$$
-        e si supponga di dover analizzare $int  + (int + int + int)$.
+            \end{aligned}\]
+        e si supponga di dover analizzare \(int  + (int + int + int)\).
         Di interesse risulta verificare che tale stringa sia generabile con la grammatica di cui sopra.
         Osservando la stringa in input si nota che
-        $$\begin{aligned}
+        \[\begin{aligned}
                   & int + (int + int + int) \\
                 = & E + (int + int + int)   \\
                 = & E + (E + int + int)     \\
@@ -25,17 +25,10 @@ La definizione di ``bottom-up'', deriva dal fatto che la costruzione dell'albero
                 = & E + (E)                 \\
                 = & E + T                   \\
                 = & E
-            \end{aligned}$$
+            \end{aligned}\]
         per cui si conclude, essendo risaliti all'assioma, che la stringa è derivabile.
     \end{Example*}
 \end{Remark*}
 
-\subsubsection{Parser shift-reduce}
-\subfile{../Livello III/Sottosottosezione 3.5.1 - Parser shiftReduce.tex}
 
-\subsubsection{Grammatiche LR e parsing LR(k)}
-\subfile{../Livello III/Sottosottosezione 3.5.2 - Grammatiche LR e parsing LR(k).tex}
-
-\subsubsection{Altri parser SR}
-\subfile{../Livello III/Sottosottosezione 3.5.3 - Altri parser SR.tex}
 \end{document}

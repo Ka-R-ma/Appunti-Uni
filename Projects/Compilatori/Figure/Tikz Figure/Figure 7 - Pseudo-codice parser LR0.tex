@@ -10,7 +10,7 @@
                     if action[S, a] == shift __*$S'$*__ then {
                         stack.push(a); stack.push(S'); ip = ip.next();
                     } else if action[S, a] == reduce __*$\Grammar{A}{B}$*__ then {
-                        stack.pop(); // pop di 2 |B| simboli
+                        stack.pop(); // pop di 2*|B| simboli
                         __*$S' = stack.top()$*__;
                         stack.push(a); stack.push(goto[S', A]);
                     } if action[S', A] == accept then accept()
