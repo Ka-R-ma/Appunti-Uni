@@ -8,41 +8,41 @@ A seconda del tipo di machine learning adoperato (si veda \emph{Sezione \ref{sec
 \begin{Definition*}
     uno stimatore, dal punto di vista statistico, è una funzione che, in funzione dei dati, permette di stimare una quantità/funzione interessante dei dati.
 \end{Definition*}
-Di questi, supposto $\Theta_{n} \text{uno stimatore,} \Theta$ il valore da stimare, si distinguono
+Di questi, supposto \(\Theta_{n} \text{uno stimatore,} \Theta\) il valore da stimare, si distinguono
 \begin{itemize}
     \item \emph{gli stimatori polarizzati:} ossia stimatori tali che
-          $$
+          \[
               \Expected{\Theta_{n}} - \Theta \neq 0.
-          $$
-          Cioè, lo stimatore commette un certo errore nell'approssimare $\Theta$;
+          \]
+          Cioè, lo stimatore commette un certo errore nell'approssimare \(\Theta\);
 
     \item \emph{gli stimatori non-polarizzati:} si tratta di stimatori tali che
-          $$
+          \[
               \Expected{\Theta_{n}} - \Theta = 0.
-          $$
-          Ossia, nell'approssimare $\Theta$ non si commette alcun errore.
+          \]
+          Ossia, nell'approssimare\(\Theta\)non si commette alcun errore.
 \end{itemize}
 \begin{Remark*}
     Se si verifica che
-    $$
+    \[
         \Lim{n}{\infty}{\Expected{\Theta_{n}}} = \Theta
-    $$
-    si dirà che $\Theta_{n}$ è uno stimatore asintoticamente non-polarizzato.
+    \]
+    si dirà che \(\Theta_{n}\) è uno stimatore asintoticamente non-polarizzato.
 \end{Remark*}
 Ulteriori caratteristiche degli stimatori sono la correttezza e la coerenza, nello specifico
-$$\begin{aligned}
+\[\begin{aligned}
         \Theta_{n} \text{corretto} & \iff \Expected{\Theta_{n}} = \Theta        \\
         \Theta_{n} \text{coerente} & \iff \Lim{n}{\infty}{\Var{\Theta_{n}}} = 0
-    \end{aligned}$$
-ovviamente un buon stimatore sarà sia corretto che coerente.
+    \end{aligned}\]
+Ovviamente un buon stimatore sarà sia corretto che coerente.
 \begin{Definition*}
     un predittore è un algoritmo della forma
-    $$
-        y = f(y) + \varepsilon
-    $$
-    che permette di stimare la funzione $f$ sulla base dei dati di addestramento $x$.
+    \[
+        y = f(x) + \varepsilon
+    \]
+    che permette di stimare la funzione \(f\) sulla base dei dati di addestramento \(x\).
 \end{Definition*}
-Segue dalla definizione che, affinché $y$ sia buona, l'errore $\varepsilon$ deve essere minimo.
+Segue dalla definizione che, affinché \(y\) sia buona, l'errore \(\varepsilon\) deve essere minimo.
 \clearpage
 
 \subsection{MSE e bias-variance decomposition}
