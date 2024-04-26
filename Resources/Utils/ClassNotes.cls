@@ -180,7 +180,7 @@
 }
 
 \lstdefinelanguage{PSEUDO}{
-    keywords = {if, then, else, for, do, while, true, false, and, AND, or, OR, not, NOT, xor, XOR},
+    keywords = {if, then, else, for, do, while, true, false, to, and, AND, or, OR, not, NOT, xor, XOR},
     keywordstyle = \bfseries
 }
 
