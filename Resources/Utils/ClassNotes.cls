@@ -134,6 +134,7 @@
 %%-----------------------------------------------------------------------------
 \AtBeginEnvironment{tabular}{\everymath{\color{black}}}
 \AtBeginEnvironment{minipage}{\everymath{\color{black}}}
+\AtBeginEnvironment{lstlisting}{\everymath{\color{black}}}
 \AtEndEnvironment{equation}{\label{Eq:\theequation}}
 \AtEndEnvironment{Proposition}{\label{Prop:\theProposition}}
 \AtEndEnvironment{Theorem}{\label{Thm:\theTheorem}}
@@ -163,8 +164,10 @@
     fit,
     petri,
     babel,
-    trees
+    trees,
+    graphs
 }
+
 \lstset{
     tabsize = 4,
     autogobble = true,
@@ -176,11 +179,13 @@
     breaklines = true,
     xleftmargin = \parindent,
     escapeinside={__*}{*__},
-    frameshape = {YNNYNN}{nn}{nn}{NNYNNY}
+    frameshape = {YNNYNN}{nn}{nn}{NNYNNY},
+    aboveskip = 0pt,
+    belowskip = 0pt
 }
 
 \lstdefinelanguage{PSEUDO}{
-    keywords = {if, then, else, for, do, while, true, false, to, and, AND, or, OR, not, NOT, xor, XOR},
+    keywords = {function, procedure, if, then, else, for, do, while, true, false, to, and, AND, or, OR, not, NOT, xor, XOR},
     keywordstyle = \bfseries
 }
 
