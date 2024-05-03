@@ -49,6 +49,8 @@
 \DeclareOption{11pt}{\newcommand{\notes@textsize}{11pt}}
 \DeclareOption{12pt}{\newcommand{\notes@textsize}{12pt}}
 
+\DeclareOption{isWIP}{\newcommand{\notes@iswip}{isWIP}}
+
 \ProcessOptions
 \LoadClass[a4paper,
     \ifdefined\notes@textsize \notes@textsize\else 10pt\fi,
@@ -195,7 +197,7 @@
 %%-----------------------------------------------------------------------------
 \RenewDocumentCommand{\maketitle}{m m m}{
     \pagestyle{empty}
-    \newgeometry{marginparwidth = 0pt, left = 1.25in, right = 1.25in, top = 1in, bottom = 1in, asymmetric}
+    \newgeometry{marginparwidth = 0pt, left = 1.25in, right = 1.25in, top = 1in, bottom = 1in}
     \vskip 40pt
     \begin{center}
         {\large\protect\textsl{\protect\MakeUppercase{#1}}}
@@ -206,6 +208,7 @@
         \vskip 1.25pt
             {\small\itshape{a.a. #3}}
         \vskip 3.75pt\noindent\rule{0.25\textwidth}{0.25pt}
+        \ifdefined\notes@iswip {\vskip 5pt \noindent\textbf{Documento in WIP}} \fi
         \clearpage
         \tableofcontents
     \end{center}
