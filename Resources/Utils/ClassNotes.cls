@@ -79,6 +79,7 @@
 \RequirePackage{caption}
 \RequirePackage{subcaption}
 \RequirePackage{nicefrac}
+\RequirePackage{framed}
 \usepackage[notext]{kpfonts}
 \usepackage[T1]{fontenc}
 \RequirePackage{subfiles}
