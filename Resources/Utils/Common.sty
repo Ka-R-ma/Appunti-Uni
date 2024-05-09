@@ -1,0 +1,420 @@
+%%TODO: revrite ex-novo
+
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{Common}
+
+\RequirePackage[fixamsmath, allowspaces]{mathtools}
+\RequirePackage{amsfonts}
+\RequirePackage{xfrac}
+
+
+%%-----------------------------------------------------------------------------
+%%------------------------ Redeclaring Existing Macros ------------------------
+%%-----------------------------------------------------------------------------
+\let\tempText\text
+\renewcommand{\text}[1]{{\color{black}\tempText{ #1 }}}
+
+
+%%-----------------------------------------------------------------------------
+%%------------------------------- Custom Macros -------------------------------
+%%-----------------------------------------------------------------------------
+\DeclareMathOperator{\Natural}{\mathbb{N}}
+\DeclareMathOperator{\Integer}{\mathbb{Z}}
+\DeclareMathOperator{\Rational}{\mathbb{Q}}
+\DeclareMathOperator{\Real}{\mathbb{R}}
+\DeclareMathOperator{\Comlex}{\mathbb{C}}
+\DeclareMathOperator{\ExpectedValue}{\mathbb{E}}
+\DeclareMathOperator{\Variance}{Var}
+\DeclareMathOperator{\Covariance}{Cov}
+\DeclareMathOperator{\Biass}{Bias}
+\DeclareMathOperator{\Diag}{Diag}
+\DeclareMathOperator{\Rank}{Rank}
+\DeclareMathOperator{\BigO}{\mathcal{O}}
+\DeclareMathOperator{\LilO}{\mathit{o}}
+\DeclareMathOperator{\Such}{\, : \,}
+\DeclareMathOperator{\Given}{\, \vert \,}
+\DeclareMathOperator{\Derivation}{\Rightarrow\hspace{-5pt}*}
+\DeclareMathOperator{\Dd}{d}
+
+\ProvideDocumentCommand{\InnerProd}{m m}{
+    \left\langle{#1, #2}\right\rangle
+}
+
+\ProvideDocumentCommand{\Floor}{m}{
+    \left\lfloor #1 \right\rfloor
+}
+
+\ProvideDocumentCommand{\Ceil}{m}{
+    \left\lceil #1 \right\rceil
+}
+
+\ProvideDocumentCommand{\Range}{s m m}{
+    \IfBooleanTF{#1}{
+        \left[#2, #3\right]
+    }{
+        \left(#2, #3\right)
+    }
+}
+
+\ProvideDocumentCommand{\Set}{m o}{
+    \IfValueTF{#2}{
+        \left\{#1 \Such #2\right\}
+    }{
+        \left\{#1\right\}
+    }
+}
+
+\ProvideDocumentCommand{\Tuple}{m m m o}{
+    \IfValueTF{#4}{
+        \left({#1}_{#2}, \ldots, {#1}_{#4}, {#1}_{#4 + 1}, \ldots, {#1}_{#3}\right)
+    }{
+        \left({#1}_{#2}, \ldots, {#1}_{#3}\right)
+    }
+}
+
+\ProvideDocumentCommand{\List}{m m m}{
+    {#1}_{#2}, \ldots, {#1}_{#3}
+}
+
+\ProvideDocumentCommand{\Diagonal}{m}{
+    \Diag \left({#1}\right)
+}
+
+\ProvideDocumentCommand{\DotProd}{m m}{
+    #1 \cdot #2
+}
+
+\ProvideDocumentCommand{\CrossProd}{m m}{
+    #1 \times #2
+}
+
+\ProvideDocumentCommand{\Sequence}{m O{n \in \Natural}}{
+    \Set{#1}_{#2}
+}
+
+\ProvideDocumentCommand{\Int}{s m m o o}{
+    \IfBooleanTF{#1}{
+        \int\limits_{\IfValueTF{#4}{#4}{}}^{\IfValueTF{#5}{#5}{}}{#2 \Dd\!#3}
+    }{
+        \int_{\IfValueTF{#4}{#4}{}}^{\IfValueTF{#5}{#5}{}}{#2 \Dd\!#3}
+    }
+}
+
+\ProvideDocumentCommand{\Iint}{s m m o}{
+    \IfBooleanTF{#1}{
+        \iint\limits_{\IfValueTF{#4}{#4}{}}{#2 \, \Dd\!#3}
+    }{
+        \iint_{\IfValueTF{#4}{#4}{}}{#2 \, \Dd\!#3}
+    }
+}
+
+\ProvideDocumentCommand{\Iiint}{s m m o}{
+    \IfBooleanTF{#1}{
+        \iiint\limits_{\IfValueTF{#4}{#4}{}}{#2 \, \Dd\!#3}
+    }{
+        \iiint_{\IfValueTF{#4}{#4}{}}{#2 \, \Dd\!#3}
+    }
+}
+
+\ProvideDocumentCommand{\Oint}{s m m o}{
+    \IfBooleanTF{#1}{
+        \oint\limits_{\IfValueTF{#4}{#4}{}}{#2 \, \Dd\!#3}
+    }{
+        \oint_{\IfValueTF{#4}{#4}{}}{#2 \, \Dd\!#3}
+    }
+}
+
+\ProvideDocumentCommand{\Sum}{m m o}{
+    \IfValueTF{#3}{
+        \sum\limits_{#2}^{#3}{#1}
+    }{
+        \sum\limits_{#2}{#1}
+    }
+}
+
+\ProvideDocumentCommand{\Prod}{m m o}{
+    \IfValueTF{#3}{
+        \prod\limits_{#2}^{#3}{#1}
+    }{
+        \prod\limits_{#2}{#1}
+    }
+}
+
+\ProvideDocumentCommand{\Coprod}{m m o}{
+    \IfValueTF{#3}{
+        \coprod\limits_{#2}^{#3}{#1}
+    }{
+        \coprod\limits_{#2}{#1}
+    }
+}
+
+\ProvideDocumentCommand{\Bigcup}{m m o}{
+    \IfValueTF{#3}{
+        \bigcup\limits_{#2}^{#3}{#1}
+    }{
+        \bigcup\limits_{#2}{#1}
+    }
+}
+
+\ProvideDocumentCommand{\Bigcap}{m m o}{
+    \IfValueTF{#3}{
+        \bigcap\limits_{#2}^{#3}{#1}
+    }{
+        \bigcap\limits_{#2}{#1}
+    }
+}
+
+\ProvideDocumentCommand{\Bigvee}{m m o}{
+    \IfValueTF{#3}{
+        \bigvee\limits_{#2}^{#3}{#1}
+    }{
+        \bigvee\limits_{#2}{#1}
+    }
+}
+
+\ProvideDocumentCommand{\Bigwedge}{m m o}{
+    \IfValueTF{#3}{
+        \bigwedge\limits_{#2}^{#3}{#1}
+    }{
+        \bigwedge\limits_{#2}{#1}
+    }
+}
+
+\ProvideDocumentCommand{\Log}{s m o}{
+    \IfBooleanTF{#1}{
+        \ln{\left(#2\right)}
+    }{
+        \log_{\IfValueTF{#3}{#3}{}}{\left(#2\right)}
+    }
+}
+
+\ProvideDocumentCommand{\Lim}{s m m m}{
+    \IfBooleanTF{#1}{
+        \lim\limits_{#2 \to #3}{\left(#4\right)}
+    }{
+        \lim\limits_{#2 \to #3}{#4}
+    }
+}
+
+
+\ProvideDocumentCommand{\Frac}{s m m}{
+    \IfBooleanTF{#1}{
+        \sfrac{#2}{#3}
+    }{
+        \frac{#2}{#3}
+    }
+}
+
+\ProvideDocumentCommand{\Eval}{m m o}{
+\left. #1 \right\vert_{#2}^{\IfValueTF{#3}{#3}{}}
+}
+
+\ProvideDocumentCommand{\Derivative}{s m m o}{
+    \IfBooleanTF{#1}{
+        \IfValueTF{#4}{
+            \Frac{\:\Dd^#4}{\Dd \!#3^#4}{#2}
+        }{
+            \Frac{\:\:\Dd}{\Dd \!#3}{#2}
+        }
+    }{
+        \IfValueTF{#4}{
+            \Frac{\Dd^#4 \!#2}{\Dd \!#3^#4}
+        }{
+            \Frac{\Dd \!#2}{\Dd \!#3}
+        }
+    }
+}
+
+\ProvideDocumentCommand{\Vector}{s m}{
+    \IfBooleanTF{#1}{
+        \hat{#2}
+    }{
+        \overset{\rightarrow}{\textbf{#2}}
+    }
+}
+
+\ProvideDocumentCommand{\VectorBold}{m}{
+    \textbf{#1}
+}
+
+
+\ProvideDocumentCommand{\Gradient}{s m}{
+    \IfBooleanTF{#1}{
+        \nabla \, #2
+    }{
+        \nabla \left(#2\right)
+    }
+}
+
+\ProvideDocumentCommand{\Laplacian}{s m}{
+    \IfBooleanTF{#1}{
+        \nabla^{2} \, #2
+    }{
+        \nabla^{2} \left(#2\right)
+    }
+}
+
+\ProvideDocumentCommand{\Sin}{s m}{
+    \IfBooleanTF{#1}{
+        \sin #2
+    }{
+        \sin \left(#2\right)
+    }
+}
+
+\ProvideDocumentCommand{\Cos}{s m}{
+    \IfBooleanTF{#1}{
+        \cos #2
+    }{
+        \cos \left(#2\right)
+    }
+}
+
+\ProvideDocumentCommand{\Tan}{s m}{
+    \IfBooleanTF{#1}{
+        \tan #2
+    }{
+        \tan \left(#2\right)
+    }
+}
+
+
+\ProvideDocumentCommand{\Asin}{s m}{
+    \IfBooleanTF{#1}{
+        \arcsin #2
+    }{
+        \arcsin \left(#2\right)
+    }
+}
+
+\ProvideDocumentCommand{\Acos}{s m}{
+    \IfBooleanTF{#1}{
+        \arccos #2
+    }{
+        \arccos \left(#2\right)
+    }
+}
+
+\ProvideDocumentCommand{\Atan}{s m}{
+    \IfBooleanTF{#1}{
+        \arctan #2
+    }{
+        \arctan \left(#2\right)
+    }
+}
+
+\ProvideDocumentCommand{\Sec}{s m}{
+    \IfBooleanTF{#1}{
+        \sec #2
+    }{
+        \sec \left(#2\right)
+    }
+}
+
+\ProvideDocumentCommand{\Csc}{s m}{
+    \IfBooleanTF{#1}{
+        \csc #2
+    }{
+        \csc \left(#2\right)
+    }
+}
+
+\ProvideDocumentCommand{\Min}{s m o}{
+    \IfBooleanTF{#1}{
+        \IfValueTF{#3}{
+            \min\limits_{#3}\Set{#2}
+        }{
+            \min \Set{#2}
+        }
+    }{
+        \min\Set{#2}[#3]
+    }
+}
+
+\ProvideDocumentCommand{\Max}{s m o}{
+    \IfBooleanTF{#1}{
+        \IfValueTF{#3}{
+            \max\limits_{#3}\Set{#2}
+        }{
+            \max \Set{#2}
+        }
+    }{
+        \max\Set{#2}{#3}
+    }
+}
+
+
+\ProvideDocumentCommand{\Abs}{m}{
+    \left\vert {#1} \right\vert
+}
+
+\ProvideDocumentCommand{\Norm}{m o}{
+    \left\Vert {#1} \right\Vert_{\IfValueTF{#2}{#2}{}}
+}
+
+\ProvideDocumentCommand{\OrderOf}{m}{
+    \BigO \left(#1\right)
+}
+
+\ProvideDocumentCommand{\OmegaOf}{m}{
+    \Omega \left(#1\right)
+}
+
+\ProvideDocumentCommand{\ThetaOf}{m}{
+    \Theta \left(#1\right)
+}
+
+\ProvideDocumentCommand{\LittleO}{m}{
+    \texttt{o} \left(#1\right)
+}
+
+\ProvideDocumentCommand{\RankOf}{m}{
+    \Rank \left(#1\right)
+}
+
+\ProvideDocumentCommand{\Prob}{m o}{
+    \IfValueTF{#2}{
+        \Pr \left(#1 \Given #2\right)
+    }{
+        \Pr \left(#1\right)
+    }
+}
+
+\ProvideDocumentCommand{\Expected}{s m}{
+    \IfBooleanTF{#1}{
+        \ExpectedValue \left[#2\right]
+    }{
+        \ExpectedValue \left(#2\right)
+    }
+}
+
+\ProvideDocumentCommand{\Var}{s m}{
+    \IfBooleanTF{#1}{
+        \Variance \left[#2\right]
+    }{
+        \Variance \left(#2\right)
+    }
+}
+
+\ProvideDocumentCommand{\Cov}{m m}{
+    \Covariance \left(#1, \, #2\right)
+}
+
+\ProvideDocumentCommand{\Bias}{m}{
+    \Biass \left(#1\right)
+}
+
+
+\ProvideDocumentCommand{\Grammar}{m m >{\SplitList{,}}o}{
+    \IfValueTF{#3}{
+        #1 \Grammar@Arrow #2 \ProcessList{#3}{\Grammar@Rule}
+    }{
+        #1 \Grammar@Arrow #2
+    }
+}
+
+\newcommand{\Grammar@Rule}[1]{
+    \Given #1
+}
+
+\def\Grammar@Arrow{\raisebox{.5pt}{{ }\tikz{\draw[->, >={Latex[round]}] (0pt, 5pt) -- (12.5pt, 5pt);}{ }}}
