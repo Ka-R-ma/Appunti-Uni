@@ -63,7 +63,6 @@
 %%                       Note: it isn't supposed to be loaded by the end user.
 \DeclareOption{isTemplate}{\newcommand{\notes@isTemplate}{isTemplate}}
 
-
 \ProcessOptions
 \LoadClass[a4paper,
     \ifdefined\notes@textsize{\notes@textsize}\else{10pt}\fi
@@ -81,7 +80,10 @@
 
 %% common: a custom package, containig some useful shortcuts (eg: simplified integral declaration, etc.),
 %% in addition to some other commands.
-\RequirePackage{\ifdef{\notes@isTemplate}{../../Resources/Utils/Common}{../../../Resources/Utils/Common}}
+\RequirePackage[
+    \ifdef{\notes@customsnocompactmath}{nocompactmath}{},
+    \ifdef{\notes@allowcoloredmath}{coloredmath}{}
+]{\ifdef{\notes@isTemplate}{../../Resources/Utils/Common}{../../../Resources/Utils/Common}}
 
 %% hyperref: enhance the refence to figures, etc.
 \RequirePackage[hidelinks]{hyperref}

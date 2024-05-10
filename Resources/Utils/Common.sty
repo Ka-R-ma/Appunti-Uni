@@ -1,5 +1,3 @@
-%%TODO: revrite ex-novo
-
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesPackage{Common}
 
@@ -9,11 +7,14 @@
 
 
 %%-----------------------------------------------------------------------------
-%%------------------------ Redeclaring Existing Macros ------------------------
+%%------------------------- Declaring package options -------------------------
 %%-----------------------------------------------------------------------------
-\let\tempText\text
-\renewcommand{\text}[1]{{\color{black}\tempText{ #1 }}}
 
+%% coloredmath: since loading the `allowcoloredmath' will set `\text' color to `SkyBlue4', 
+%% this option will set the color back to black.
+\DeclareOption{coloredmath}{\newcommand{\custom@coloredmath}{}}
+
+\ProcessOptions
 
 %%-----------------------------------------------------------------------------
 %%------------------------------- Custom Macros -------------------------------
@@ -35,6 +36,15 @@
 \DeclareMathOperator{\Given}{\, \vert \,}
 \DeclareMathOperator{\Derivation}{\Rightarrow\hspace{-5pt}*}
 \DeclareMathOperator{\Dd}{d}
+
+%% \Text: overrides text adding a space before and after it
+\ProvideDocumentCommand{\Text}{m}{
+    \ifdef{\custom@coloredmath}{
+        \ \text{\color{black}#1} \
+    }{
+        \ \text{#1} \
+    }
+}
 
 \ProvideDocumentCommand{\InnerProd}{m m}{
     \left\langle{#1, #2}\right\rangle
@@ -407,14 +417,12 @@
 
 \ProvideDocumentCommand{\Grammar}{m m >{\SplitList{,}}o}{
     \IfValueTF{#3}{
-        #1 \Grammar@Arrow #2 \ProcessList{#3}{\Grammar@Rule}
+        #1 \longrightarrow #2 \ProcessList{#3}{\Grammar@Rule}
     }{
-        #1 \Grammar@Arrow #2
+        #1 \longrightarrow #2
     }
 }
 
 \newcommand{\Grammar@Rule}[1]{
     \Given #1
 }
-
-\def\Grammar@Arrow{\raisebox{.5pt}{{ }\tikz{\draw[->, >={Latex[round]}] (0pt, 5pt) -- (12.5pt, 5pt);}{ }}}
