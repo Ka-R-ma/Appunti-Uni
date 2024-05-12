@@ -129,6 +129,76 @@
 %% and subsequently importing them. 
 \RequirePackage{subfiles}
 
+
+%%-----------------------------------------------------------------------------
+%%---------------------------- Custom Environments ----------------------------
+%%-----------------------------------------------------------------------------
+
+%% Numbered Environments 
+\newtheoremstyle{Emphasised}{7.5pt}{7.5pt}{\itshape}{}{\bfseries}{.}{ }{\thmname{#1}\thmnumber{ #2}}
+
+\theoremstyle{Emphasised}
+\newtheorem{Theorem}{\notes@theoremname}[section]
+\newtheorem{Corollary}{\notes@corollaryname}[Theorem]
+\newtheorem{Lemma}{\notes@lemmaname}[Theorem]
+
+%% Non-Numbered Environments 
+\newtheoremstyle{Definition*}{7.5pt}{7.5pt}{}{}{\bfseries}{:}{ }{\thmname{#1}}
+
+\theoremstyle{Definition*}
+\newtheorem{Definition*}{\notes@definitionname}
+\newtheorem{Example*}{\notes@examplename}
+\newtheorem{Exercise}{\notes@exercisename}
+\newtheorem{Axiom*}{\notes@axiomname}
+
+
+\newtheoremstyle{Remark*}{0pt}{0pt}{}{}{\bfseries}{.}{ }{\thmname{#1}}
+
+\theoremstyle{Remark*}
+\newtheorem{Remark*}{\notes@remarkname}
+\newtheorem{Solution}{\notes@solutionname}
+
+\newtheoremstyle{Proof*}{0pt}{0pt}{}{\parindent}{\itshape}{:}{ }{\thmname{#1}}
+
+\theoremstyle{Proof*}
+\newtheorem{Proof*}{\notes@proofname}
+
+\newtheoremstyle{Emphasised*}{7.5pt}{7.5pt}{}{}{\bfseries}{.}{ }{\thmname{#1}\thmnote{ #3}}
+
+\theoremstyle{Emphasised*}
+\newtheorem{Theorem*}{\notes@theoremname}
+\newtheorem{Property*}{\notes@propertyname}
+\newtheorem{Law*}{\notes@lawname}
+
+%% Adjusting Existing Environments 
+\AtBeginEnvironment{tabular}{\ifdef{\notes@allowcoloredmath}{\everymath{\color{black}}}{}}
+\AtBeginEnvironment{minipage}{\ifdef{\notes@allowcoloredmath}{\everymath{\color{black}}}{}}
+\AtBeginEnvironment{lstlisting}{\ifdef{\notes@allowcoloredmath}{\everymath{\color{black}}}{}}
+\AtEndEnvironment{equation}{\label{Eq:\theequation}}
+\AtEndEnvironment{Proposition}{\label{Prop:\theProposition}}
+\AtEndEnvironment{Theorem}{\label{Thm:\theTheorem}}
+\AtEndEnvironment{Corollary}{\label{Corol:\theCorollary}}
+\AtEndEnvironment{Lemma}{\label{Lemma:\theLemma}}
+\AtEndEnvironment{Proof}{\qed}
+\AtEndEnvironment{itemize}{\noindent}
+\AtEndEnvironment{enumerate}{\noindent}
+\AtEndEnvironment{Definition}{}
+
+\captionsetup[subfigure]{labelformat = simple, labelsep = colon}
+\renewcommand\thesubfigure{\thefigure.\alph{subfigure}}
+
+%% marginNote: customization of marginpar
+\ProvideDocumentCommand{\MarginNote}{m}{
+    \marginpar{
+        \footnotesize{\textit{#1}}
+    }
+}
+
+%% eg: exempli grazie, for inline text example
+\ProvideDocumentCommand{\Eg}{m}{
+    \!\textbf{eg:}{ \emph{#1}}
+}
+
 %%-----------------------------------------------------------------------------
 %%--------------------------- Document Customization --------------------------
 %%-----------------------------------------------------------------------------
@@ -289,68 +359,4 @@
 
     \restoregeometry
     \pagestyle{fancy}
-}
-
-%%-----------------------------------------------------------------------------
-%%---------------------------- Custom Environments ----------------------------
-%%-----------------------------------------------------------------------------
-
-%% Numbered Environments 
-\newtheoremstyle{Emphasised}{7.5pt}{7.5pt}{\itshape}{}{\bfseries}{.}{ }{\thmname{#1}\thmnumber{ #2}}
-
-\theoremstyle{Emphasised}
-\newtheorem{Theorem}{\notes@theoremname}[section]
-\newtheorem{Corollary}{\notes@corollaryname}[Theorem]
-\newtheorem{Lemma}{\notes@lemmaname}[Theorem]
-
-%% Non-Numbered Environments 
-\newtheoremstyle{Definition*}{7.5pt}{7.5pt}{}{}{\bfseries}{:}{ }{\thmname{#1}}
-
-\theoremstyle{Definition*}
-\newtheorem{Definition*}{\notes@definitionname}
-\newtheorem{Example*}{\notes@examplename}
-\newtheorem{Exercise}{\notes@exercisename}
-\newtheorem{Axiom*}{\notes@axiomname}
-
-
-\newtheoremstyle{Remark*}{0pt}{0pt}{}{}{\bfseries}{.}{ }{\thmname{#1}}
-
-\theoremstyle{Remark*}
-\newtheorem{Remark*}{\notes@remarkname}
-\newtheorem{Solution}{\notes@solutionname}
-
-\newtheoremstyle{Proof*}{0pt}{0pt}{}{\parindent}{\itshape}{:}{ }{\thmname{#1}}
-
-\theoremstyle{Proof*}
-\newtheorem{Proof*}{\notes@proofname}
-
-\newtheoremstyle{Emphasised*}{7.5pt}{7.5pt}{}{}{\bfseries}{.}{ }{\thmname{#1}\thmnote{ #3}}
-
-\theoremstyle{Emphasised*}
-\newtheorem{Theorem*}{\notes@theoremname}
-\newtheorem{Property*}{\notes@propertyname}
-\newtheorem{Law*}{\notes@lawname}
-
-%% Adjusting Existing Environments 
-\AtBeginEnvironment{tabular}{\ifdef{\notes@allowcoloredmath}{\everymath{\color{black}}}{}}
-\AtBeginEnvironment{minipage}{\ifdef{\notes@allowcoloredmath}{\everymath{\color{black}}}{}}
-\AtBeginEnvironment{lstlisting}{\ifdef{\notes@allowcoloredmath}{\everymath{\color{black}}}{}}
-\AtEndEnvironment{equation}{\label{Eq:\theequation}}
-\AtEndEnvironment{Proposition}{\label{Prop:\theProposition}}
-\AtEndEnvironment{Theorem}{\label{Thm:\theTheorem}}
-\AtEndEnvironment{Corollary}{\label{Corol:\theCorollary}}
-\AtEndEnvironment{Lemma}{\label{Lemma:\theLemma}}
-\AtEndEnvironment{Proof}{\qed}
-\AtEndEnvironment{itemize}{\noindent}
-\AtEndEnvironment{enumerate}{\noindent}
-\AtEndEnvironment{Definition}{}
-
-\captionsetup[subfigure]{labelformat = simple, labelsep = colon}
-\renewcommand\thesubfigure{\thefigure.\alph{subfigure}}
-
-%% marginNote: customization of marginpar
-\ProvideDocumentCommand{\MarginNote}{m}{
-    \marginpar{
-        \footnotesize{\textit{#1}}
-    }
 }
