@@ -187,10 +187,19 @@
 \captionsetup[subfigure]{labelformat = simple, labelsep = colon}
 \renewcommand\thesubfigure{\thefigure.\alph{subfigure}}
 
-%% marginNote: customization of marginpar
-\ProvideDocumentCommand{\MarginNote}{m}{
-    \marginpar{
-        \footnotesize{\textit{#1}}
+%% notes@marginote: support macro to define MarginNote
+\newcommand{\notes@marginnotes}[1]{
+    {\footnotesize \marginpar{#1}}
+}
+
+%% marginnote: sets a margin text scaling the text to footnotesize, iff option ``disablemarginnotes' is unset.
+\ifundef{\notes@disablemarginnotes}{
+    \ProvideDocumentCommand{\MarginNote}{m}{
+        \notes@marginnotes{#1}
+    }
+}{
+    \ProvideDocumentCommand{\MarginNote}{m}{
+        \ClassError{Opion not allowed}{Command MarginNote can't be use if option disablemarginnotes is set.}{}
     }
 }
 
