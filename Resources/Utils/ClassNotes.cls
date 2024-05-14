@@ -199,7 +199,7 @@
     }
 }{
     \ProvideDocumentCommand{\MarginNote}{m}{
-        \ClassError{Opion not allowed}{Command MarginNote can't be use if option disablemarginnotes is set.}{}
+        \ClassError{option not allowed}{Command MarginNote can't be use if option disablemarginnotes is set.}{}
     }
 }
 
