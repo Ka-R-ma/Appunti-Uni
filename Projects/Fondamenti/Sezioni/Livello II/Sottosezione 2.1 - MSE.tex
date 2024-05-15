@@ -1,0 +1,11 @@
+\documentclass{subfiles}
+\begin{document}
+Dato uno stimatore, sia questi \(\Theta_{n}\), è necessario misurare la ``bonta'' dello stesso,
+e, in generale, per farlo si utilizza il \emph{mean square error (MSE)}.
+Questi, definito come
+\[\begin{aligned}
+        MSE & = \Expected*{(\Theta_{n} - \Theta)^{2}}    \\
+            & = \Bias{\Theta_{n}}^{2} + \Var{\Theta_{n}} \\
+    \end{aligned}\]
+ove \(\Bias{\Theta_{n}}^{2} = \Expected{\Theta_{n}}^{2} + \Theta^{2} - 2 \Expected{\Theta_{n}}\Theta\).
+\end{document}

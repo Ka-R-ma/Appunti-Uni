@@ -180,9 +180,9 @@
 \AtEndEnvironment{Corollary}{\label{Corol:\theCorollary}}
 \AtEndEnvironment{Lemma}{\label{Lemma:\theLemma}}
 \AtEndEnvironment{Proof}{\qed}
-\AtEndEnvironment{itemize}{\noindent}
-\AtEndEnvironment{enumerate}{\noindent}
-\AtEndEnvironment{Definition}{}
+\AfterEndEnvironment{itemize}{\noindent}
+\AfterEndEnvironment{enumerate}{\noindent}
+\AfterEndEnvironment{Definition*}{\noindent}
 
 \captionsetup[subfigure]{labelformat = simple, labelsep = colon}
 \renewcommand\thesubfigure{\thefigure.\alph{subfigure}}

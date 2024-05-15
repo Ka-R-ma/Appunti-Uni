@@ -1,0 +1,20 @@
+\documentclass{subfiles}
+\begin{document}
+Tipologia di addestramento in cui, sulla base dei dati di addestramento, si cerca di determinare la ``classe'' classe di appartenenza di nuovi dati.
+In tale ``categoria'' rientrano algoritmi come
+\begin{itemize}
+    \item la \emph{regressione} con cui ai dati di input si assegna un valore numerico;
+    \item la \emph{classificazione} grazie al quale i dati sono divisi sulla base della classe di appartenenza stimata.
+\end{itemize}
+
+\begin{Remark*}
+    Tutto il processo di generalizzazione è di tipo statistico è basato sulla \emph{teoria di apprendimento statistico\footnotemark[2]}.
+\end{Remark*}
+
+Poiché la scelta della classe è determinata dalle conoscenze apprese, è opportuno che i seguenti errori risultino minimizzati.
+\begin{itemize}
+    \item \emph{Training error}, errore relativo ai dati di addestramento;
+    \item \emph{test \emph{o} generalization error}, errore con cui si stima quanto correttamente il modello sia in grado di generalizzare.
+          Nel particolare, fornendo al modello dati mai visti precedentemente, si verifica se questi sono correttamente categorizzati.
+\end{itemize}
+\end{document}
