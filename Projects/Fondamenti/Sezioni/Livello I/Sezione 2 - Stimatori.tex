@@ -5,25 +5,25 @@
     che fornisce la migliore approssimazione di una quantità/proprietà a cui si è interessati.
 \end{Definition*}
 
-Assunto che \(\Theta_{n}\) sia uno stimatore, \(\Theta\) il valore vero, si distinguono due casi
+Assunto che \(\Theta_{n}\) sia uno stimatore, \(\theta\) il valore vero, si distinguono due casi
 \begin{itemize}
     \item \(\Theta_{n}\) è polarizzato, cioè
           \[
-              \Expected{\Theta_{n}} - \Theta \ne 0
+              \Expected{\Theta_{n}} - \theta \ne 0
           \]
           Da cui si deduce che lo stimatore commette un certo errore nell'approssimazione.
 
     \item \(\Theta_{n}\) non è polarizzato, da cui
           \[
-              \Expected{\Theta_{n}} - \Theta = 0
+              \Expected{\Theta_{n}} - \theta = 0
           \]
           Si può inoltre dire che \(\Theta_{n}\) è asintoticamente non polarizzato se
           \[
-              \Lim{n}{\infty}{\Expected{\Theta_{n}}} = \Theta
+              \Lim{n}{\infty}{\Expected{\Theta_{n}}} = \theta
           \]
           o equivalentemente
           \[
-              \Lim{n}{\infty}{\Expected{\Theta_{n}}} - \Theta = 0
+              \Lim{n}{\infty}{\Expected{\Theta_{n}}} - \theta = 0
           \]
 \end{itemize}
 
