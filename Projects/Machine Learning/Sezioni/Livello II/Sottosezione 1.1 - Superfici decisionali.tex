@@ -1,0 +1,14 @@
+\documentclass{subfiles}
+\begin{document}
+Si parta dal considerare il caso bidimensionale.
+Sia \(X = \Tuple{x}{1}{n}^{T}\) un vettore di features, e siano \(\omega_{1}, \omega_{2}\) le due possibili classi.
+Allora se rappresentato \(X\) su di un piano, è possibile identificare due regioni, siano queste \(R_{1}, R_{2}\), tali che
+\[X \in \begin{cases}
+        R_{1} \iff \Prob{\omega_{1}}[X] > \Prob{\omega_{2}}[X], \\
+        R_{2} \iff \Prob{\omega_{2}}[X] > \Prob{\omega_{1}}[X].
+    \end{cases}\]
+Si definisce superficie decisionale una funzione \(g(x)\) tale che \(\Prob{\omega_{1}}[X] - \Prob{\omega_{2}}[X] = 0\).
+
+Più in generale, supposto \(X = \Tuple{x}{1}{n}^{T}\) un vettore di features e \(\omega = \Tuple{\omega}{1}{m}\) possibili classi,
+una superficie decisionale è una funzione \(g_{ij}(x)\) tale che \(\Prob{\omega_{i}}[X] - \Prob{\omega_{i}}[X] = 0\), \(\forall i, j \in \Set{1, \ldots, m}, i \ne j\).
+\end{document}

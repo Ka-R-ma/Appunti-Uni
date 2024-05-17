@@ -1,0 +1,13 @@
+\documentclass{subfiles}
+\begin{document}
+Sia supposto \(X = \Tuple{x}{1}{n}^{T}\) un vettore di features, con \(x_{i}\) stocasticamente indipendente da \(x_{j}, \forall i \ne j\).
+Sia inoltre \(\Prob{X}\) nota, unicamente dipendente da un qualche parametro ignoto \(\theta\); cioè
+\[
+    \Prob{X} = \Prob{X}[\theta]  = \Prod{\Prob{x_{i}}[\theta]}{i = 1}[n]
+\]
+Si definisce \(\Prob{X}[\theta]\) verosimiglianza di \(\theta \Text{ad} X\).
+Segue banalmente
+\[
+    \theta_{ML} = \arg \Max*{\Prod{\Prob{x_{i}}[\theta]}{i = 1}[n]}[\theta]
+\]
+\end{document}

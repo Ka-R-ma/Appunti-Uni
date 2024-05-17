@@ -1,0 +1,14 @@
+\documentclass{subfiles}
+\begin{document}
+Il criterio di massimizza verosimiglianza non sempre è applicabile, si procede in questi casi ad applicare il criterio di massima probabilità a posteriori.
+Per esso, noto \(X = \Tuple{x}{1}{n}^{T}\) vettore di features, si deve calcolare \(\theta_{MAP}\) tale da massimizzare \(\Prob{\theta}[X]\).
+Dal \emph{teorema di Bayes} si ha
+\[
+    \Prob{\theta}[X] = \Frac{\Prob{\theta}\Prob{X}[\theta]}{\Prob{X}}
+\]
+da cui segue che
+\[\begin{aligned}
+        \theta_{MAP} & = \arg \Max*{\Prob{\theta}[X]}[\theta]                               \\
+                     & = \arg \Max*{\Frac{\Prob{\theta}\Prob{X}[\theta]}{\Prob{X}}}[\theta]
+    \end{aligned}\]
+\end{document}

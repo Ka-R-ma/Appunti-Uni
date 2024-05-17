@@ -180,8 +180,6 @@
 \AtEndEnvironment{Corollary}{\label{Corol:\theCorollary}}
 \AtEndEnvironment{Lemma}{\label{Lemma:\theLemma}}
 \AtEndEnvironment{Proof}{\qed}
-\AfterEndEnvironment{itemize}{\noindent}
-\AfterEndEnvironment{enumerate}{\noindent}
 \AfterEndEnvironment{Definition*}{\noindent}
 
 \captionsetup[subfigure]{labelformat = simple, labelsep = colon}

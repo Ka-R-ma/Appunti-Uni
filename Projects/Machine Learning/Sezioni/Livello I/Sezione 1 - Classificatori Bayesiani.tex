@@ -1,0 +1,28 @@
+\documentclass{subfiles}
+\begin{document}
+Sia \(X = \Tuple{x}{1}{n}^{T}\) un vettore di features.
+Siano \(\omega = \Tuple{\omega}{1}{m}\) classi distinte e sia \(\Prob{\omega_{i}}[X]\) la probabilità che \(\omega_{i}\) sia la classe di appartenenza di \(X\).
+Quel che si fa con i classificatori bayesiani, è massimizzare tale probabilità.
+Per far ciò si definisce la funzione di rischio
+\[
+    r = r_{1} \Prob{\omega_{1}} + \cdots + r_{n} \Prob{\omega_{n}}
+\]
+ove
+\[
+    r_{i} = \Sum{\lambda_{ij} \Int{\Prob{X}[\omega_{i}]}{X}[R_{j}]}{j = 1}[m]
+\]
+con \(R_{j}\) j-esima \emph{superficie decisionale} (si veda la sezione a seguire),
+\(\lambda_{ij}\) penalità per aver assegnato \(X\) a \(\omega_{i}\) quando la classe corretta è \(\omega_{j}\).
+
+\subsection{Superfici decisionali}
+\subfile{../Livello II/Sottosezione 1.1 - Superfici decisionali.tex}
+
+\subsection{Stima della densità di probabilità}
+\subfile{../Livello II/Sottosezione 1.2 - Stima della densita di probabilita.tex}
+
+\subsection{Classificatori naive}
+\subfile{../Livello II/Sottosezione 1.3 - Classificatori naive.tex}
+
+\subsection{Reti Bayesiane}
+\subfile{../Livello II/Sottosezione 1.4 - Reti di bayes.tex}
+\end{document}

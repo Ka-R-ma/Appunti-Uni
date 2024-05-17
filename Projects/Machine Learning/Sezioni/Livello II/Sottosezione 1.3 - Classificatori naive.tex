@@ -1,0 +1,11 @@
+\documentclass{subfiles}
+\begin{document}
+Siano \(X \in \Real^{n}\) un vettore di features, \(\omega = \Tuple{\omega}{1}{m}\), e si supponga di dover stabilire \(\Prob{X}[\omega_{i}]\),
+per \(i \in \Set{1, \ldots, m}\). In generale, affinché si possa avere una buona stima della funzione di densita sarebbero necessari \(n^{m}\) punti.
+Se si assume però che \(x_{i} \Text{e} x_{j}\) sono stocasticamente indipendenti per ogni \(i, j \in \Set{1, \ldots, n}, i \ne j\), allora
+\[
+    \Prob{X}[\omega_{i}] = \Prod{\Prob{x_{j}}[\omega_{i}]}{j = 1}[n]
+\]
+caso in cui \(n \cdot m\) punti risultano sufficienti.
+Si dimostra che anche nei casi in cui tale indipendenza non sia rispettata, un classificare bayesiano da risultati soddisfacenti.
+\end{document}
