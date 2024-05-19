@@ -1,0 +1,21 @@
+\documentclass{subfiles}
+\begin{document}
+\begin{figure*}[h!]
+    \centering
+    \begin{tikzpicture}[> ={Latex},
+        state/.style={draw, circle, minimum size = 7.5pt},
+        every label/.style={scale = 0.75}]
+        \node [state] (S) at (0, 0) {S};
+        \node [state] (R) at (3, 0) {R};
+
+        \path [->] (S)
+        edge [loop left] node [anchor=south, label={\(p_{SS} = 0.7\)}] {} (S)
+        edge [bend left] node [anchor=north, label={\(p_{SR} = 0.3\)}] {} (R);
+
+        \path [->] (R)
+        edge [loop right] node [anchor=south, label={\(p_{RR} = 0.4\)}] {} (R)
+        edge [bend left] node [anchor=north, label={\(p_{SR} = 0.6\)}] {} (S);
+
+    \end{tikzpicture}
+\end{figure*}
+\end{document}

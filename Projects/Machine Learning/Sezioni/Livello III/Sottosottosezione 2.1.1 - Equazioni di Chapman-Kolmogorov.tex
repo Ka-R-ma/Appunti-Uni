@@ -1,0 +1,31 @@
+\documentclass{subfiles}
+\begin{document}
+Vantaggio principale dei modelli basati sulle catene di Markov, è che, attraverso quelle che sono note come \emph{equazioni di Chapman-Kolmogorov},
+è possibile determinare lo stato in cui si troverà in futuro (si veda l'esempio a seguire).
+Nello specifico, partendo dal definire le \emph{probabilità transitorie ad un passo} come
+\[
+    p_{ij}(k) = \Prob{X_{k + 1} = j}[X_{k} = i]
+\]
+ove con \(X_{k}\) si intendo lo stato del classificatore allo stato \(k\), e tali che
+\[
+    \Sum{p_{ij}(k)}{j = 1}[N] = 1, \forall i, k \in \Set{1, \ldots, M}.
+\]
+Sfruttando la legge della probabilità totale, l'equazione di Chapman-Kolmogorov permette di definire la probabilità transitoria a \(n\) passi,
+come
+\begin{equation}
+    p_{ij}(k) = \Sum{p_{ir}(k, u) p_{rj}(u, k + n)}{r = 1}[R], \qquad n \le u \le k + n
+\end{equation}
+ove \(p_{ij}(k, u) = \Prob{X_{u} = j}[X_{k} = i]\).
+\clearpage
+\begin{Example*}
+    si supponga un modello meteorologico, come quello a seguire.
+    \subfile{../../Tikz/Figure *.2 - Esempio di applicazione dell'equazione di Chapman-Kolmogorov.tex}
+
+    \noindent Si supponga di voler calcolare la probabilità che tra due giorni piova, supposto che oggi vi sia il sole.
+    Dall'\emph{Equazione \eqref{Eq:2}} segue
+    \[
+        p_{SR}(d_{0}, d_{2}) = p_{SS}(d_{0}, d_{1}) p_{SR}(d_{1}, d_{2}) + p_{SR}(d_{0}, d_{1}) p_{RR}(d_{1}, d_{2}) = \cdots = 0.33
+    \]
+    ove \(d_{i}, i = 0, 1, 2\) indica il numero di giorni da quello attuale.
+\end{Example*}
+\end{document}

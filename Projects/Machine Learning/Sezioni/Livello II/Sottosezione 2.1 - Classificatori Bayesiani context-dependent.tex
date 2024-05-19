@@ -1,0 +1,26 @@
+\documentclass{subfiles}
+\begin{document}
+Sia supposto \(X = \Tuple{x}{1}{n}\) un vettore di features e siano \(\omega = \Tuple{\omega}{1}{m}\) classi.
+Per quanto detto sinora \(X \Text{è assegnato ad} \omega_{i} \iff \Prob{\omega_{i}}[X] > \Prob{\omega_{j}}[X], \forall i \ne j\).
+Come detto però, ciò è limitato ai casi in cui vi è una sorta di indipendenza tra le classi.
+Considerando il caso in cui invece tale indipendenza viene meno, sia
+\[
+    \Omega_{i} = \Sequence{\omega_{i_{j}}}[j \in \Set{1, \ldots, n}]
+\]
+Da ciò la regola di classificazione Bayesiana può essere riscritta come
+\[
+    X \to \Omega_{i} \iff \Prob{\Omega_{i}}[X] > \Prob{\Omega_{j}}[X], \forall i \ne j
+\]
+Ora, affinche il modello possa essere definito context-dependent, è necessario che esso tenga traccia degli stati precedenti del classificatore;
+per farlo, tra le altre possibilità, vi sono le catene di Markov, per le quali
+\begin{equation}
+    \Prob{\omega_{i_{k}}}[\omega_{i_{k - 1}}, \ldots, \omega_{i_{1}}] = \Prob{\omega_{i_{k}}}[\omega_{i_{k - 1}}]
+\end{equation}
+cioè la dipendenza è ristretta all'ultimo stato della classe.
+\begin{Definition*}
+    un processo statistico tale da soddisfare l'\emph{Equazione \eqref{Eq:1}} è detto \emph{processo di Markov}.
+\end{Definition*}
+
+\subsubsection{Equazioni di Chapman-Kolmogorov}
+\subfile{../Livello III/Sottosottosezione 2.1.1 - Equazioni di Chapman-Kolmogorov.tex}
+\end{document}
