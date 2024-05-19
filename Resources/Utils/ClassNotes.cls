@@ -316,7 +316,8 @@
     petri,
     babel,
     trees,
-    graphs
+    graphs,
+    matrix
 }
 
 \lstset{
