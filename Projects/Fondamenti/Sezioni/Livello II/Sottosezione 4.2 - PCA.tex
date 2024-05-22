@@ -1,0 +1,18 @@
+\documentclass{subfiles}
+\begin{document}
+La \emph{principal component analysis} o più semplicemente PCA, è una tecnica che permette di rilevare strutture (bi-, tridimensionali),
+all'interno dei dati, fornendo informazione su eventuali colinearità.
+Considerando la PCA in se: sia \(B\) una matrice rappresentante un dataset, per la geometria esiste sempre \(B^{T}\).
+Se ad ogni colonna di \(B\) se ne sottrae la corrispettiva media, si può definire
+\[
+    C = \Frac{B^{T} B}{n - 1}
+\]
+contenente, per ogni \(i, j\) la covarianza tra gli elementi di colonna \(i \Text{e quelli di colonna} j\).
+Da ciò, la diagonale di \(C\) si comporra unicamente delle varianze.
+
+Si dimostra che con tale costruzione, gli autovettori di \(C\) sono ortogonali, autovalori che prendono il nome di \emph{componenti principali}.
+Si conclude da ciò che se alcuni vettori descrivono bene la varianza della matrice, è possibile utilizzare i relativi autovettori per rappresentare l'intero sistema.
+\begin{Remark*}
+    Il calcolo delle componenti principali può essere realizzato dunque con la SVD, questo perche essa fornisce un approccio numericamente robusto.
+\end{Remark*}
+\end{document}

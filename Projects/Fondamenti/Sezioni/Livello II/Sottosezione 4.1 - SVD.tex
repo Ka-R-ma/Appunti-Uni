@@ -1,0 +1,49 @@
+\documentclass{subfiles}
+\begin{document}
+Sia \(X\) una matrice che rappresenti un dataset. Sia supposto che il numero di osservazioni in \(X\) sia sufficientemente elevato.
+Allora
+\[
+    \exists U, \Sigma, V \Such X = \CrossProd{U}{\CrossProd{\Sigma}{V^{T}}}
+\]
+con \(U \in \Real^{n,n}, \Sigma \in \Real^{n, m}, V \in \Real^{m, m}\).
+\begin{Remark*}
+    Si distinguono due tipologie di SVD: la \emph{full} con la quale \(U, \Sigma, V\) hanno le dimensioni sopra riportate;
+    la \emph{economy} nella quale \(U \in \Real^{n, m}, \Sigma, V \in \Real^{m ,m}\).
+\end{Remark*}
+
+Se considerato un punto di vista numerico, la SVD di una qualche matrice \(X\) può essere vista come una combinazione lineare di opportuni vettori.
+Cioè
+\[
+    X = \Sum{\sigma_{j}u_{j}v_{j}^{T}}{j = 1}[k]
+\]
+con \(u_{j} \in U, v_{j} \in V, \sigma_{j} \in \Sigma\). Si ha inoltre che \(\sigma_{i} \ge \sigma_{j}, \forall i, j \Such i < j\).
+
+Geometricamente si ha invece che
+\begin{itemize}
+    \item gli elementi della diagonale di \(\Sigma\), risultano essere le radici quadrate degli autovalori di \(X^{T} X \Text{e} X X^{T}\);
+    \item \(U\) è la matrice data dagli autovettori di \(X^{T} X\), mentre \(V\) è composta dagli autovettori di \(X X^{T}\).
+\end{itemize}
+
+Dalla definizione si è detto che la SVD esiste comunque scelta la matrice \(X\). La dimostrazione di ciò è sostenuta dal seguente teorema.
+\begin{Theorem*}
+    Sia \(C = X^{T}X \in \Real^{m,m}\), allora \(C\) è diagonale, simmetrica e definita positiva.
+    \begin{Proof*}
+        da dimostrazione segue banale dal \emph{Teorema di decomposizione spettrale}.
+        Per esso si ha che \(C = V T V^{T}\), con \(T = \Diagonal{\List{\lambda}{1}{m}} \text{e} r = \RankOf{X}\).
+        Posto allora \(\sigma_{i} = \sqrt{\lambda_{i}}\), segue che
+        \[\Sigma = \begin{pmatrix}
+                \Diagonal{\List{\sigma}{1}{r}} & 0_{r, (m - r)}   \\
+                0_{r, (m - r)}                 & 0_{m - r, m - r} \\
+            \end{pmatrix}\]
+        e ponendo inoltre
+        \[
+            u_{i} = \Frac{X}{\sigma_{i}}v_{i}
+        \]
+        che si dimostrano ortogonali, segue, completando a base
+        \[U = \begin{bmatrix}
+                u_{1} & \cdots & u_{r} & u_{r + 1} & \cdots & u_{n}
+            \end{bmatrix}\]
+    \end{Proof*}
+\end{Theorem*}
+\clearpage
+\end{document}
