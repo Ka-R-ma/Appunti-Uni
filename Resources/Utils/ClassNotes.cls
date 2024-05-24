@@ -315,10 +315,12 @@
     fit,
     petri,
     babel,
-    trees,
     graphs,
-    matrix
+    matrix,
+    graphdrawing
 }
+
+\usegdlibrary{trees}
 
 \lstset{
     tabsize = 4,

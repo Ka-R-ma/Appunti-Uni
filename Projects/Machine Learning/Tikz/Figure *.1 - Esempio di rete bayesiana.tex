@@ -3,11 +3,11 @@
 \begin{figure*}[h!]
     \centering
     \begin{tikzpicture}
-        \graph  [math nodes, grow down, branch right] {
-        c_{i} -> {
-        x_{1} -> {x_{3};};
-        x_{2} -> {x_{3};};
-        x_{4};
+        \graph [math nodes, grow down, branch right, tree layout] {
+        c_i -> {
+        x_1 -> {x_3},
+        x_2 -> {x_3},
+        x_4
         }
         };
     \end{tikzpicture}
