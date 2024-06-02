@@ -33,7 +33,6 @@
 \DeclareMathOperator{\BigO}{\mathcal{O}}
 \DeclareMathOperator{\LilO}{\mathit{o}}
 \DeclareMathOperator{\Such}{\, : \,}
-\DeclareMathOperator{\Given}{\, \vert \,}
 \DeclareMathOperator{\Derivation}{\Rightarrow\hspace{-5pt}*}
 \DeclareMathOperator{\Dd}{d}
 
@@ -216,7 +215,7 @@
 }
 
 \ProvideDocumentCommand{\Eval}{m m o}{
-\left. #1 \right\vert_{#2}^{\IfValueTF{#3}{#3}{}}
+\left. \middle|{#1}^{\IfValueTF{#3}{#3}{}} \right.
 }
 
 \ProvideDocumentCommand{\Derivative}{s m m o}{
@@ -353,7 +352,6 @@
     }
 }
 
-
 \ProvideDocumentCommand{\Abs}{m}{
     \left\vert {#1} \right\vert
 }
@@ -384,7 +382,7 @@
 
 \ProvideDocumentCommand{\Prob}{m o}{
     \IfValueTF{#2}{
-        \Pr \left(#1 \Given #2\right)
+        \Pr \left(#1 \middle| #2\right)
     }{
         \Pr \left(#1\right)
     }
@@ -424,5 +422,5 @@
 }
 
 \newcommand{\Grammar@Rule}[1]{
-    \Given #1
+    \left. \middle|#1 \right.
 }

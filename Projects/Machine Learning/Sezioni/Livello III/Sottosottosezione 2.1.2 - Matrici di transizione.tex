@@ -1,0 +1,35 @@
+\documentclass{subfiles}
+\begin{document}
+Sia considerata \emph{Equazione \ref{Eq:2}}, si osserva che questa rappresenta il prodotto riga-colonna di una qualche matrice.
+Sia definita allora
+\[
+    H(k, k + n) = \begin{bmatrix}
+        p_{ij}(k, k + n)
+    \end{bmatrix}
+\]
+come la matrice di transizione a n passi.
+Con tale formulazione, l'equazione di Chapman-Kolmogorov, può essere riscritta equivalentemente come
+\[
+    H(k, k + n) = H(k, u)H(u, k + n)
+\]
+da cui scegliendo opportunamente \(u\) è possibile definire
+\begin{itemize}
+    \item \emph{l'equazione di Chapman-Kolmogorov in avanti} se si pone \(u = k + n - 1\), da cui
+          \[\begin{aligned}
+                  H(k, k + n) & = H(k, k + n - 1)H(H + n - 1, k + n) \\
+                              & = H(k, k + n - 1)P(k + n - 1)
+              \end{aligned}\]
+          oppure;
+    \item \emph{l'equazione di Chapman-Kolmogorov all'indietro} se si pone \(u = k + 1\), da cui
+          \[\begin{aligned}
+                  H(k, k + n) & = H(k, k + 1)H(H + 1, k + n) \\
+                              & = P(k)H(k + 1, k + n)
+              \end{aligned}\]
+          con \(P\) \emph{matrice di transizione}.
+\end{itemize}
+Inoltre, se \(P(k) = P\), ossia
+\[
+    p_{ij}(k) = \Prob{X_{k + 1} = j}[X_{k} = i] = \Prob{X_{k} = j}[X_{k - 1} = i]
+\]
+allora il processo di Markov sarà detto \emph{omogeneo}.
+\end{document}

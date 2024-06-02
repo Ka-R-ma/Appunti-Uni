@@ -1,0 +1,20 @@
+\documentclass{subfiles}
+\begin{document}
+Una quantità spesso utile quando si lavora con le catene di Markov, è quella relativa la probabilità di trovare la catena in un certo stato.
+Sia allora definita
+\[\begin{aligned}
+        \pi_{i}(k) & = \Prob{X_{k} = i}                                             \\
+                   & = \Sum{\Prob{X_{k} = i, X_{k - 1} = j}\Prob{X_{k - 1} = j}}{j} \\
+                   & = \Sum{p_{ij}(k)\pi_{j(k - 1)}}{j}                             \\
+    \end{aligned}\]
+Volendo inoltre definire la probabilità dipendente dal tempo, questa diventa
+\[
+    \pi_{j}^{n} = \Prob{X_{n} = j}
+\]
+Posti \(\pi(k) = \begin{pmatrix} \pi_{0}(k) & \pi_{1}(k) & \cdots \end{pmatrix}\) e \(\pi^{n}(k) = \begin{pmatrix} \pi_{0}^{n}(k) & \pi_{1}^{n}(k) & \cdots \end{pmatrix}\),
+se
+\[
+    \Lim{n}{\infty}{\pi^{n}(k)} = \pi(k)
+\]
+si definisce \(\pi(k)\) \emph{distribuzione limite}.
+\end{document}

@@ -1,0 +1,24 @@
+\documentclass{subfiles}
+\begin{document}
+Per quanto detto sinora, è noto che
+\[\begin{aligned}
+        \Prob{\Omega_{i}} & = \Prob{\omega_{i_{1}}, \cdots, \omega_{i_{n}}}                                                                   \\
+                          & = \Prob{\omega_{i_{n}}}[\omega_{i_{n - 1}}, \cdots, \omega_{i_{1}}]
+        \Prob{\omega_{i_{n - 1}}}[\omega_{i_{n - 2}}, \cdots, \omega_{i_{1}}] \cdots \Prob{\omega_{i_{2}}}[\omega_{i_{1}}]  \Prob{\omega_{i}} \\
+                          & = \left( \Prod{\Prob{\omega_{i_{k}}}[\omega_{i_{k - 1}}]}{k = 2}[n] \right) \Prob{\omega_{i_{1}}}
+    \end{aligned}\]
+
+Se si considera ora \(X\) vettore di feature, le cui componenti \(x_{i}, i \in \Set{1, \ldots, n}\), sono tra loro stocasticamente indipendenti,
+allora la funzione di densità di probabilita di ogni classe è indipendenti dalle altre. Si ha quindi
+\[
+    \Prob{X}[\Omega_{i}] = \Prod{\Prob{X_{k}}[\omega_{i_{k}}]}{k = 1}[n]
+\]
+che nel caso di modelli basati su catene di Markov diventa
+\[
+    \Prob{X}[\Omega_{i}] \Prob{\Omega_{i}} = \Prob{\omega_{i_{1}}} \Prod{ \Prob{\omega_{i_{k}}}[\omega_{i_{k - 1}}]  \Prob{x_{k}}[\omega_{i_{k}}]}{k = 2}[n]
+\]
+che dovendo essere massimizzata, risulta tale se e solo se ciascun termine è massimizzato.
+\begin{Remark*}
+    In termini computazionali, assunte \(N\) misurazioni e \(M\) classi distinte, l'operazione di massimizzazione di cui sopra richiederebbe tempo \(\OrderOf{NM^{N}}\).
+\end{Remark*}
+\end{document}

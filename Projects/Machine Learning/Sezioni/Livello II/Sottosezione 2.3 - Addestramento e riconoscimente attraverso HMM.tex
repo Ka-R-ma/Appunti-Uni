@@ -1,0 +1,23 @@
+\documentclass{subfiles}
+\begin{document}
+Sia considerato un modello i cui stati non sono direttamente osservabili, ma si può unicamente risalire ad essi solo dai dati di addestramento:
+tale tipologia di modelli sono detti \emph{hidden Markov models}.
+
+Tali modelli sono in genere applicati per una serie di problemi di natura bio-informatica.
+Più in generale, gli HMM sono descritti dalla seguente quadrupla
+\[
+    S = (\Prob{i}[j], \Prob{X}[j], \Prob{i}, k)
+\]
+con
+\begin{itemize}
+    \item \(\Prob{i}[j]\) insieme delle probabilità di transizione;
+    \item \(\Prob{X}[i]\) insieme delle probabilità a priori;
+    \item \(\Prob{i}\) insieme delle probabilità di stato iniziale;
+    \item \(k\) numero degli stati.
+\end{itemize}
+
+Considerando ora un'applicazione di tali modelli, si descrive a seguito il \emph{pattern recognition}.
+
+\subsubsection{Pattern recognition}
+\subfile{../Livello III/Sottosottosezione 2.3.1 - Pattern recognition.tex}
+\end{document}

@@ -1,0 +1,34 @@
+\documentclass{subfiles}
+\begin{document}
+Quando si parla di clustering, si fa riferimento ad un insieme di algoritmi di apprendimento non-supervisionato,
+principalmente applicati per operazioni di data mining. In generale si parla più precisamente di m-clustering, definito come segue.
+\begin{Definition*}
+    dato \(X \in \Real^{n}\) un vettore di features, si definisce \emph{m-clustering} di \(X\) il partizionamento di \(X\) in
+    \(m\) classi \(\List{c}{1}{m}\), tali che
+    \begin{itemize}
+        \item \(c_{i} \ne \varnothing, i = 1, \ldots, m\);
+        \item \(\Bigcup{C_{i}}{i = 1}[m] = X\);
+        \item \(C_{i} \cap C_{j} = \varnothing, \forall i \ne j, i,j = 1, \ldots, m\).
+    \end{itemize}
+\end{Definition*}
+
+Analizzando il processo di clustering nel dettaglio, questi può essere sintetizzato nelle seguenti fasi.
+\begin{enumerate}
+    \item \emph{quantizzazione delle similarità}: nel quale si definiscono i range entro i quali due diversi record appartengano ad una stessa classe;
+    \item \emph{criterio di clustering}: si sceglie la funzione che determina le effettive classi;
+    \item \emph{scelta dell'algoritmo di clustering};
+    \item \emph{convalida dei risultati};
+    \item \emph{interpretazione dei risultati}.
+\end{enumerate}
+
+\begin{Remark*}
+    \`E opportuno puntualizzare che esistono diverse tipologie di clustering, tutte suddivisibili in \emph{partizionali \emph{o} gerarchici}.
+\end{Remark*}
+
+\subsection{Misure di qualità}
+\subfile{../Livello II/Sottosezione 5.1 - Misure di qualita di clustering.tex}
+
+\subsection{K-means}
+\subfile{../Livello II/Sottosezione 5.2 - K-means.tex}
+\clearpage
+\end{document}
