@@ -1,0 +1,26 @@
+\documentclass{subfiles}
+\begin{document}
+Siano dati \(m\) pattern di riferimento, ognuno descritto da un HMM e di questi si trovi \(S\).
+Sia ora \(p\) un nuovo pattern; riconoscere \(p\) equivale a ricercare quale tra gli \(m\) pattern sia più simile a \(p\) stesso.
+
+Più in generale, sia \(M\) un insieme di modelli noti, e sia \(X = \Tuple{x}{1}{n}\) sequenza di osservazioni.
+Il riconoscimento di \(X\) coincide con il determinare \(S_{X}\) tale che
+\[
+    S_{X} = \arg \Max*{\Prob{S}[X]}[S]
+\]
+che, nel caso ciascuno degli modelli in \(M\) è equiprobabile, diventa
+\[
+    S_{X} = \arg \Max*{\Prob{X}[S]}[S]
+\]
+Si osserva però che per ognuno dei modelli esiste una sequenza di stati di transizione \(\Omega_{i}\), da cui
+\[\begin{aligned}
+        \Prob{X}[S] & = \Sum{\Prob{X, \Omega_{i}}[S]}{i} \\
+                    & = \Sum{\Prob{X}[\Omega_{i}, S]}{i}
+    \end{aligned}\]
+che se posto per un qualche \(i_{k}\) al passo \(k\)
+\[\begin{aligned}
+        a(i_{k + 1}) & = \Prob{\List{x}{1}{k + 1}, i_{k + 1}}[S]                                   \\
+                     & = \Sum{a({i_k}) \Prob{i_{k + 1}}[i_{k}] \Prob{x_{k + 1}}[i_{k + 1}]}{i_{k}}
+    \end{aligned}\]
+può essere reso computazionalmente più efficiente.
+\end{document}
