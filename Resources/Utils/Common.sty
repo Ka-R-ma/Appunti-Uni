@@ -215,21 +215,37 @@
 }
 
 \ProvideDocumentCommand{\Eval}{m m o}{
-\left. \middle|{#1}^{\IfValueTF{#3}{#3}{}} \right.
+\left.  {#1}\right|^{\IfValueTF{#3}{#3}{}}_{#2}
 }
-
+%% TODO: Fix
 \ProvideDocumentCommand{\Derivative}{s m m o}{
     \IfBooleanTF{#1}{
         \IfValueTF{#4}{
-            \Frac{\:\Dd^#4}{\Dd \!#3^#4}{#2}
+            \Frac{\:\Dd^#4}{\Dd \ \!#3^#4}{#2}
         }{
-            \Frac{\:\:\Dd}{\Dd \!#3}{#2}
+            \Frac{\:\:\Dd}{\Dd \ \!#3}{#2}
         }
     }{
         \IfValueTF{#4}{
-            \Frac{\Dd^#4 \!#2}{\Dd \!#3^#4}
+            \Frac{\Dd^#4 \ \!#2}{\Dd \ \!#3^#4}
         }{
-            \Frac{\Dd \!#2}{\Dd \!#3}
+            \Frac{\Dd \ \!#2}{\Dd \ \!#3}
+        }
+    }
+}
+
+\ProvideDocumentCommand{\PartialDerivative}{s m m o}{
+    \IfBooleanTF{#1}{
+        \IfValueTF{#4}{
+            \Frac{\:\partial^#4}{\partial \ \!#3^#4}{#2}
+        }{
+            \Frac{\:\:\partial}{\partial \ \!#3}{#2}
+        }
+    }{
+        \IfValueTF{#4}{
+            \Frac{\partial^#4 \ \!#2}{\partial \ \!#3^#4}
+        }{
+            \Frac{\partial \ \!#2}{\partial \ \!#3}
         }
     }
 }
@@ -423,4 +439,20 @@
 
 \newcommand{\Grammar@Rule}[1]{
     \left. \middle|#1 \right.
+}
+
+\ProvideDocumentCommand{\Der}{s m m o}{
+    \IfBooleanTF{#1}{
+        \Derivative*{#2}{#3}[#4]
+    }{
+        \Derivative{#2}{#3}[#4]
+    }
+}
+
+\ProvideDocumentCommand{\PDer}{s m m o}{
+    \IfBooleanTF{#1}{
+        \PartialDerivative*{#2}{#3}[#4]
+    }{
+        \PartialDerivative{#2}{#3}[#4]
+    }
 }

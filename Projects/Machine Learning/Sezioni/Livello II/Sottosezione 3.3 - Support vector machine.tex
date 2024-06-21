@@ -1,0 +1,27 @@
+\documentclass{subfiles}
+\begin{document}
+Siano \(\omega_{i}, \omega_{j}\) classi linearmente separabili; obiettivo di una SVM è quello di definire un iper-piano
+\[
+    g(x) = w^{T}X + w_{0}
+\]
+tale che la distanza tra l'iper-piano e le due classi sia massima.
+Geometricamente, \(w\) rappresenta la direzione dell'iper-piano e \(w_{0}\) la posizione iniziale.
+Come detto con SVM si massimizza la distanza tra l'iper-piano e un punto \(X\), distanza definita come
+\[
+    d_{X} = \Frac{g(x)}{\Norm{w}}
+\]
+Inoltre, in generale, per semplificare i calcoli \(w, w_{0}\) sono riscalati così che
+\[
+    g(X) = \begin{cases}
+        1, \Text{se} X \in \omega_{i} \\
+        -1, \Text{se} X \in \omega_{j}
+    \end{cases}\]
+Circa \(J(w)\), si dimostra che questa risulta essere
+\[
+    J(w) = \Frac{\Norm{w}^{2}}{2}
+\]
+che, essendo una quadratica, può essere minimizzata calcolando gli zeri della seguente lagrangiana
+\[
+    \mathcal{L}(w, w_{0}, \lambda) = \Frac{1}{2} \Sum{\lambda_{i}[y_{i}(w^{T} x_{i} + w_{0}) - 1]}{i = 1}[N]
+\]
+\end{document}

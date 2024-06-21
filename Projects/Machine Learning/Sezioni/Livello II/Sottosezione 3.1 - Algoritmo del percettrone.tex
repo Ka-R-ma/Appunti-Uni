@@ -1,0 +1,16 @@
+\documentclass{subfiles}
+\begin{document}
+Sia \(X = \Tuple{x}{1}{k}\) un vettore di features, resta il problema di come calcolare \(w\).
+Tra le soluzioni quella a seguire. Siano \(\omega_{i}, \omega_{j}\) classi e sia supposto che le due siano linearmente separabili. Cioè
+\[
+    \exists w \Such x \in w_{i} \iff w^{T}x + w_{0} > 0 \land x \in w_{j} \iff w^{T}x + w_{0} < 0
+\]
+da cui posti \(w' = \begin{pmatrix} w & w_{0} \end{pmatrix}\) e \(X' = \begin{pmatrix} X & 1 \end{pmatrix}\), si ha
+\[
+    g(x) = w'X' = 0
+\]
+Ultimo paso è quello di scegliere una \emph{funzione di costo} e un algoritmo di minimizzazione della stessa.
+
+\subsubsection{Funzioni di costo}
+\subfile{../Livello III/Sottosottosezione 3.1.1 - Funzioni di costo.tex}
+\end{document}

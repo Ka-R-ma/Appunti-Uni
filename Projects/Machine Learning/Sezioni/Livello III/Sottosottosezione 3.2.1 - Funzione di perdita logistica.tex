@@ -1,0 +1,12 @@
+\documentclass{subfiles}
+\begin{document}
+Sia assunto che \(\Prob{y = 1}[X, w] = \sigma(w^{T}X)\) e che \(\Prob{y = 0}[X, w] = 1 - \sigma(w^{T}X)\).
+Posto di avere \(N\) osservazioni, la funzione di perdita logistica \(J(w)\) è definita come
+\[
+    J(w) = \Sum{y_{i} \Log*{\sigma(w^{T}X)} + (1 - y_{i}) \Log*{1 - \sigma(w^{T}X)}}{i = 1}[N]
+\]
+che risulta minimizzata quando
+\[
+    w = \Min*{\Sum{y_{i} \Log*{\sigma(w^{T}X)} + (1 - y_{i}) \Log*{1 - \sigma(w^{T}X)}}{i = 1}[N]}[w \in \Real^{n}]
+\]
+\end{document}

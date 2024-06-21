@@ -1,0 +1,20 @@
+\documentclass{subfiles}
+\begin{document}
+Un regressore logistico è un regressore che tenta di minimizzare \(\Abs{y - \sigma g(X)}\).
+Più in generale, una funzione logistica è una qualunque funzione del tipo
+\[
+    \sigma \Such \Real^{n} \to \Range*{0}{1}
+\]
+e tale che se \(g(X) \to + \infty, \Text{allora} \sigma \to 1^{-}\), viceversa se \(g(X) \to - \infty, \Text{si ha} \sigma \to 0^{+}\).
+Si può dunque pensare a \(\sigma\) come una funzione di probabilità.
+Segue che la più semplice rappresentazione è
+\[
+    \sigma = \Frac{1}{1 - e^{-g(X)}}
+\]
+
+Parlando del classificatore logistico, i dati di addestramento sono del tipo \((X, \Prob{y})\);
+in questo caso, il classificatore assegna \(X\) alla classe \(y\) se e solo se \(\Prob{y} \ge 0.5\).
+
+\subsubsection{Funzione di perdita logistica}
+\subfile{../Livello III/Sottosottosezione 3.2.1 - Funzione di perdita logistica.tex}
+\end{document}

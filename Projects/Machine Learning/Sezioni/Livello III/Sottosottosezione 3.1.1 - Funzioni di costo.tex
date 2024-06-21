@@ -1,0 +1,27 @@
+\documentclass{subfiles}
+\begin{document}
+Sia \(D = \Set{(X_{1}, C_{1}), \cdots, (X_{k}, C_{k})}\) dataset di addestramento,
+ove ogni \((X_{i}, C_{i})\) rappresenta la coppia vettore di addestramento e corretta classificazione dello stesso.
+Sia \(E = \Set{X_{i}}[C_{i} \ne \omega_{i}]\), ossia l'insieme dei vettori non classificati correttamente.
+Posta
+\[
+    \delta(w) = \begin{cases}
+        1, \Text{se} w^{T}X > 0; \\
+        0, \Text{se} w^{T}X < 0
+    \end{cases}\]
+si definisce funzione di costo
+\[
+    J(w) = \Sum{\delta(X) w^{T}X}{X \in E}
+\]
+Considerando il calcolo di \(w\), questi è in generale effettuati utilizzando la \emph{discesa del gradiente}.
+Per essa, si ha
+\[
+    w^{k + 1} = w^{k} - \Delta w, k = 0, 1, \ldots
+\]
+con
+\[
+    \Delta w = \PDer{J(w)}{w} = \cdots = \Sum{\delta(w)X}{x \in E}
+\]
+
+Si dimostra che l'algoritmo converge dopo un numero finito di passi.
+\end{document}

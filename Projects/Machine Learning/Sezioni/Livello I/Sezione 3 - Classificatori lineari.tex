@@ -1,0 +1,40 @@
+\documentclass{subfiles}
+\begin{document}
+I classificatori sinora descritti, risultano ottimi per quel che riguarda la minimizzazione dell'errore;
+presentano però un problema: sono strettamente dipendenti dalla distribuzione di probabilità che può non essere nota,
+o difficile da calcolare.
+
+Si considera ora una tipologia di classificatori che, sebbene non ottimali\footnotemark[1], risultano meno restrittivi.
+Nello specifico tali classificatori, detti \emph{lineari}, per ogni coppia di classi determinano un iper-piano tale da non causare ambiguita nella classificazione.
+\footnotetext[1]{Ci si riferisce alla possibilità in cui l'errore di classificazione può non essere minimizzato.}
+\begin{Definition*}
+    sia \(X = \Tuple{x}{1}{k} \in \Real^{n}\). Sia inoltre
+    \[
+        g(X) = w_{0} + w_{1}x_{1} + \cdots + w_{k}x_{k}
+    \]
+    una combinazione lineare di \(X\).
+    Siano \(\omega_{i}, \omega_{j}\) le soli classi, per il classificatore lineare se \(g(X) > 0\), allora \(X\) sarà classificato appartenente a \(\omega_{i}\),
+    viceversa ad \(\omega_{j}\).
+\end{Definition*}
+
+\noindent In particolare, il luogo dei punti tali che \(g_{ij}(x) = 0\) è detto iper-piano di decisione tra le classi \(\omega_{i}, \omega_{j}\).
+
+Siano \(x_{1}, x_{2}\) punti dell'iper-piano, posto \(W^{T} = (w_{1}, w_{2})^{T}\) segue
+\[
+    w_{0} + w^{T} x_{1} = w_{0} + w^{T}x_{2}
+\]
+da cui allora
+\[
+    w^{T}(x_{1} - x_{2}) = 0, \qquad \forall x_{1}, x_{2}
+\]
+cioè \(w^{T}\) è perpendicolare all'iper-piano.
+
+\subsection{Algoritmo del percettrone}
+\subfile{../Livello II/Sottosezione 3.1 - Algoritmo del percettrone.tex}
+
+\subsection{Funzione logistica e regressore logistico}
+\subfile{../Livello II/Sottosezione 3.2 - Funzione logistica e regressore logistico.tex}
+
+\subsection{Support vector machine}
+\subfile{../Livello II/Sottosezione 3.3 - Support vector machine.tex}
+\end{document}
