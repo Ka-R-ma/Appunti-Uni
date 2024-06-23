@@ -1,0 +1,35 @@
+\documentclass{subfiles}
+\begin{document}
+
+\begin{figure*}[h!]
+    \centering
+    \begin{tikzpicture}[
+            neuron/.style={
+                    circle,
+                    thick,
+                    draw=black!80,
+                    fill=gray!20
+                }
+        ]
+
+        \node[neuron] (input1) at (0,0) {\(x_{1}\)};
+        \node[neuron] (input2) [below = of input1] {\(x_{2}\)};
+        \node (input3) [below = of input2] {};
+        \node[neuron] (inputk) [below = of input3] {\(x_{k}\)};
+
+        \node[neuron] (sum) at (3, -2.5) {\(\Sigma\)};
+
+        \node[neuron] (bias) [below = of sum] {\(b\)};
+
+        \node[neuron] (out) [right = of sum] {\(f(x)\)};
+
+        \path[-{Latex}]
+        (input1) edge node[above] {\(w_{1}\)} (sum)
+        (input2) edge node[above] {\(w_{2}\)} (sum)
+        (inputk) edge node[above] {\(w_{k}\)} (sum)
+        (bias) edge node[left] {\(w_{b}\)} (sum)
+        (sum) edge (out);
+    \end{tikzpicture}
+
+\end{figure*}
+\end{document}

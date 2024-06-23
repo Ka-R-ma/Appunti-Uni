@@ -1,0 +1,43 @@
+\documentclass{subfiles}
+\begin{document}
+Potrebbe capitare che il calcolo delle regioni decisionali non sia possibile, o che ciò risulti complesso;
+è dunque necessario un algoritmo che proceda a calcolarle automaticamente: una soluzione è l'algoritmo di retro propagazione.
+Tale algoritmo computa autonomamente, in maniera iterativa, i pesi di ogni sinapsi, cosicché la funzione di costo scelta sia minimizzata.
+
+\begin{Remark*}
+    Poiché il calcolo dei pesi comporta il calcolo di derivate, la funzione di attivazione definita in \eqref{Eq:3} non può essere utilizzata,
+    in quanto discontinua. Per ovviare a ciò, nel seguito si assume che la funzione di attivazione sia la funzione logistica.
+\end{Remark*}
+
+Considerando l'algoritmo in se: dopo aver definito la funzione di costo da ottimizzare e il metodo di minimizzazione,
+l'algoritmo procede a ottimizzare \(w\) vettore di pesi.
+Assunto che il metodo scelto sia il gradient descent, si ha quanto segue
+\[
+    w^{(k + 1)} = w^{(k)} - \Delta w^{(k)}
+\]
+con
+\[
+    \Delta w^{(k)} = - \PDer{J(w)}{w^{(k)}}
+\]
+ove \(J(w)\) è la funzione di costo.
+
+\begin{Example*}
+    sia supposta la seguente rete
+    \subfile{../../Tikz/Figure *.8 - Esempio retro-propagazione.tex}
+\end{Example*}
+Sia \(f\) la funzione di attivazione e siano \(y_{1}, y_{2}\) output di \(h_{1}, h_{2}\) rispettivamente.
+Segue che \(out = f(w_{3} h_{2}), h_{2} = f(w_{2} h_{1}), h_{1} = f(w_{1} in)\). Cioè
+\[
+    out = f(w_{3} f(w_{2} f(w_{1} in)))
+\]
+Da ciò, passando alle derivate, si ha
+\[\begin{aligned}
+        \PDer{E}{w_{3}} & = \PDer{E}{v_{3}} \PDer{v_{3}}{w_{3}} = - (y - f(v_{3})) f(v_{3}) y_{2}                         \\
+        \PDer{E}{w_{2}} & = \PDer{E}{v_{2}} \PDer{v_{2}}{w_{2}} = \PDer{E}{v_{3}} \PDer{v_{3}}{v_{2}} \PDer{v_{2}}{w_{2}} \\
+        \PDer{E}{w_{1}} & = \PDer{E}{v_{1}} \PDer{v_{1}}{w_{1}} = \PDer{E}{v_{2}} \PDer{v_{2}}{v_{1}} \PDer{v_{1}}{w_{1}} \\
+    \end{aligned}\]
+da cui calcolando il gradiente
+\[
+    E = (y - f(w_{3} y_{2}))^{2}
+\]
+\end{document}

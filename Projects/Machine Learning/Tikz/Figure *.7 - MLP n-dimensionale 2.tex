@@ -1,0 +1,40 @@
+\documentclass{subfiles}
+\begin{document}
+\begin{figure*}[h!]
+    \centering
+    \resizebox{!}{125pt}{
+        \begin{tikzpicture}[
+                neuron/.style={
+                        circle,
+                        thick,
+                        draw=black!80,
+                        fill=gray!20,
+                        minimum size = 12.5pt
+                    }
+            ]
+
+            \node [neuron] (input1) at (0, 0) {\(x_{1}\)};
+            \node          (empty)  [below = of input1] {};
+            \node [neuron] (input2) [below = of empty] {\(x_{2}\)};
+
+            \node [neuron] (inner1) [above right = of input1] {};
+            \node [neuron] (inner2) [below = of inner1] {};
+            \node [neuron] (inner3) [below = of inner2] {};
+            \node [neuron] (inner4) [below = of inner3] {};
+            \node [neuron] (inner5) [below = of inner4] {};
+
+            \node [neuron] (sum) [right = of inner3] {\(\Sigma\)};
+            \node [neuron] (out) [right = of sum] {\(f(x)\)};
+
+            \path[-{Latex}]
+            \foreach \arrow in {inner1, inner2, inner3, inner4, inner5}{
+                    (input1) edge (\arrow)
+                    (input2) edge (\arrow)
+                    (\arrow) edge (sum)
+                }
+            (sum) edge (out);
+
+        \end{tikzpicture}
+    }
+\end{figure*}
+\end{document}

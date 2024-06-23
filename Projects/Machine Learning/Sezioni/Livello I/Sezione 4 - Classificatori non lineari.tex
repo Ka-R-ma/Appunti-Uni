@@ -1,0 +1,31 @@
+\documentclass{subfiles}
+\begin{document}
+Nella precedente sezione si è discusso l'algoritmo del percettrone, alla base del quale vi sono i \emph{percettroni}.
+Quest'ultimi, nel seguito rappresentati con la seguente struttura, identificano una qualsiasi struttura tale che,
+sfruttando l'algoritmo del percettrone, sia capace di apprendere.
+\subfile{../../Tikz/Figure *.3 - Struttura percettrone.tex}
+Considerando il percettrone in se, questi è dipendente da una funzione di attivazione, che nel caso più semplice è definita come
+\begin{equation}
+    f(X) = \begin{cases}
+        1, \Text{se} X \ge 0; \\
+        0, \Text{altrimenti}.
+    \end{cases}
+\end{equation}
+In molti casi però la funzione di attivazione definita in \eqref{Eq:3}, può risultare restrittiva:
+è in questi casi che si fa uso di una funzione di attivazione sigmoidale.
+Questa definita come
+\[
+    f(X) = \Frac{1}{1 + \Exp{-z}}
+\]
+con
+\[
+    z = \Sum{\left( w_{i} x_{i} \right)}{i} - Bias
+\]
+permette di definire un classificatore più flessibile.
+
+\subsection{Reti neurali}
+\subfile{../Livello II/Sottosezione 4.1 - Reti neurali.tex}
+
+\subsection{Retro propagazione}
+\subfile{../Livello II/Sottosezione 4.2 - Retro propagazione.tex}
+\end{document}

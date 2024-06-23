@@ -1,0 +1,13 @@
+\documentclass{subfiles}
+\begin{document}
+Come anticipato, le MLP possono essere impiegate per realizzare una qualsiasi porta logica.
+\begin{Example*}
+    si supponga di dover realizzare una porta NOT, la cui tavola di verità si ricorda essere la seguente.
+    \subfile{../../Tikz/Figure *.4 - Tavola della verita NOT.tex}
+
+    Segue banalmente che una rappresentazione tramite MLP, è descritta dalla seguente struttura
+    \subfile{../../Tikz/Figure *.5 - NOT tramite MLP.tex}
+    Qui assunto \(A\) l'input, resta da definire \(b\) bias e \(f(x)\).
+    Segue però da una semplice osservazione che, una soluzione valida è \(b = 1, f(x) = -A + b\).
+\end{Example*}
+\end{document}

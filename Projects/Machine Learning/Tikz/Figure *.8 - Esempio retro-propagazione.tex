@@ -1,0 +1,27 @@
+\documentclass{subfiles}
+\begin{document}
+\begin{figure*}[h!]
+    \centering
+    \begin{tikzpicture}[
+            neuron/.style={
+                    circle,
+                    thick,
+                    draw=black!80,
+                    fill=gray!20,
+                    minimum size = 12.5pt
+                }
+        ]
+
+        \node[neuron] (source) at (0, 0) {\(in\)};
+        \node[neuron] (inner1) [right = of source] {\(h_{1}\)};
+        \node[neuron] (inner2) [right = of inner1] {\(h_{2}\)};
+        \node[neuron] (out) [right = of inner2] {\(out\)};
+
+        \path[-{Latex}]
+        (source) edge node[above] {\(w_{1}\)} node[below right] {\(v_{1}\)} (inner1)
+        (inner1) edge node[above] {\(w_{2}\)} node[below right] {\(v_{2}\)} (inner2)
+        (inner2) edge node[above] {\(w_{3}\)} node[below right] {\(v_{3}\)} (out);
+
+    \end{tikzpicture}
+\end{figure*}
+\end{document}
